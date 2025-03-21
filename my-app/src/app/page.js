@@ -3,7 +3,6 @@ import Header from "./(components)/header";
 import Slider from "./(components)/slider";
 import HotDeal from "./(components)/hot-deals";
 import Banner from "./(components)/banner";
-
 export default function home() {
   return (
     <div>

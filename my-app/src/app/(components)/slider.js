@@ -1,9 +1,5 @@
 'use client'
 import { useState } from "react";
-//component
-
-import Banner from "./banner";
-
 
 const images = [
     "https://lh3.googleusercontent.com/XzEGUfZGwNS9A4Yymq0Gf-fgbZylEv3lw_GJoV4t-fVnL6_aRLFsdUfHNn12YLBH48n-iUX0wFOQY6adZnCGzsIQVv8aTgc=w1920-rw",
