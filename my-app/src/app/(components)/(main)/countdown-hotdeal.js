@@ -25,7 +25,7 @@ const CountdownTimer = ({ targetDate }) => {
     }, []);
 
     return (
-        <div className="flex gap-2 items-center text-white bg-blue-700 p-4 rounded-lg text-xl font-bold">
+        <div className="flex gap-2 justify-between items-center text-white bg-blue-700 p-4 rounded-lg text-xl font-bold">
             <div className="">
                 <img className="relative bottom-0 left-0 w-25" alt="" src="./flashsale/flash-sale-banner.png"></img>
             </div>
