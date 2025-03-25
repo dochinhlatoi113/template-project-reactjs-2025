@@ -1,6 +1,5 @@
 import "tailwindcss";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 export default function Header() {
     return (
@@ -52,12 +51,12 @@ export default function Header() {
                     </nav>
                 </div>
             </div>
-            <div className="bg-[#ffffff]  mx-auto flex justify-center items-center">
+            <div className="bg-[#ffffff] pt-4 pb-4  mx-auto flex justify-center items-center">
                 {/* Menu */}
                 <nav>
                     <ul className="flex space-x-5">
                         <li className="flex items-center space-x-2 hover:text-gray-300">
-                            <img src="logo.webp" className="w-25 h-25"></img>
+                            <img src="logo.png" className="w-20 h-10"></img>
                         </li>
                         <li className="flex items-center space-x-2 hover:text-gray-300">
                             <Menu as="div" className="relative inline-block text-left">
@@ -74,9 +73,9 @@ export default function Header() {
 
                                 <MenuItems
                                     transition
-                                    className="absolute right-0 z-10 mt-7 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                    className="absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                                 >
-                                    <div className="py-5">
+                                    <div className="py-4">
                                         <MenuItem>
                                             <a
                                                 href="#"

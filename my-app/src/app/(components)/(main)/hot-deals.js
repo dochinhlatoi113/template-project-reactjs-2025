@@ -19,7 +19,7 @@ export default function HotDeal() {
     if (!isMounted) return null;
 
     let imageElements = [
-        "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/4/2018/03/fefeef",
+        "https://lh3.googleusercontent.com/QvkjL4K3rTX5KnVTGXaeELB3QdcIigHBpPkWl4gKn072fU4zJf82mPVrJS5Wm9Wgz9CwrlPLb8Bo7cR8aLo=w230-rw",
         "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/4/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",
         "https://lh3.googleusercontent.com/QvkjL4K3rTX5KnVTGXaeELB3QdcIigHBpPkWl4gKn072fU4zJf82mPVrJS5Wm9Wgz9CwrlPLb8Bo7cR8aLo=w230-rw",
         "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/6/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",

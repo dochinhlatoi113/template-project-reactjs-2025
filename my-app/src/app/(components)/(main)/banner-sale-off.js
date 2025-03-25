@@ -1,8 +1,8 @@
-export default function BannerSaleOff() {
-
+export default function BannerSaleOff({dataBanner}) {
+    console.log(dataBanner)
     return (
         <div className="">
-            <img src="./banner/banner-sale-off.webp"></img>
+            <img src={dataBanner} alt="Banner Sale Off" />
         </div>
     )
 }
