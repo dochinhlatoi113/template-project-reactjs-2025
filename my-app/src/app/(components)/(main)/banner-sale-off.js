@@ -1,8 +1,8 @@
 export default function BannerSaleOff({dataBanner}) {
-    console.log(dataBanner)
+
     return (
-        <div className="">
-            <img src={dataBanner} alt="Banner Sale Off" />
+        <div className="container mx-auto flex justify-center items-center">
+            <img src={dataBanner} alt="banner"></img>
         </div>
     )
 }
