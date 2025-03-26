@@ -1,7 +1,7 @@
 /* Mobile (dưới 768px) */
 @media (max-width: 767px) {
   .body {
-    background-color: grey;
+    background-color: white;
   }
     .main-banner{
       margin-top: 10px;
