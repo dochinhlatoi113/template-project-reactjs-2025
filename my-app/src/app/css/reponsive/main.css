@@ -1,8 +1,6 @@
 /* Mobile (dưới 768px) */
 @media (max-width: 767px) {
-  .body {
-    background-color: white;
-  }
+
     .main-banner{
       margin-top: 10px;
     }
@@ -15,6 +13,7 @@
      }
      .banner-sale-off-hot{
        bottom: 0px;
+       
      }
     
   }
