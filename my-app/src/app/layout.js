@@ -1,4 +1,4 @@
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Inter, Roboto_Mono } from "next/font";
 import "./globals.css";
 //web
 import "./css/web/header.css";
