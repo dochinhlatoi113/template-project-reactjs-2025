@@ -16,7 +16,7 @@ export default function ProductCardMain({ title_item_product, price_item_product
                 <div>
                     {price_item_product ?? "200.000"}
                 </div>
-                <div className="grid grid-cols-2 gap-1">
+                <div className="grid grid-cols-2 gap-1 product-card-main-hot">
                     <div className="card-actions">
                         <button className="btn btn-accent text-white w-full text-xs">Buy Now</button>
                     </div>

@@ -11,11 +11,6 @@ import MainProduct from "./(components)/(main)/product-main";
 
 //responsive
 import HeaderReponsive from "./(reponsive)/(main)/header";
-import SliderReponsive from "./(reponsive)/(main)/slider";
-import BannerSaleOffHot from "./(reponsive)/(main)/banner";
-import HotDealReponsive from "./(reponsive)/(main)/hot-deals";
-import ProductHotReponsiveMain from "./(reponsive)/(main)/product-hot";
-import MainProductReponsive from "./(reponsive)/(main)/product-main";
 export default function home() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -140,21 +135,21 @@ export default function home() {
         {isMobile ? <HeaderReponsive /> : <Header />}
       </div>
       <div className="main-slider">
-        {isMobile ? <SliderReponsive /> : <Slider />}
+        <Slider></Slider>
       </div>
       <div className="main-banner">
-        {isMobile ? <BannerSaleOffHot /> : <Banner />}
+        <Banner></Banner>
       </div>
       <div className="container mx-auto max-w-[1200px] ">
         <div className="mt-6 main-hot-deal ">
-          {isMobile ? <HotDealReponsive /> : <HotDeal />}
+           <HotDeal />
         </div>
         <div>
           <div className="mt-6 main-banner-sale-off">
             <BannerSaleOff dataBanner="./banner/banner-sale-off.webp"></BannerSaleOff>
           </div>
           <div className="mt-6 main-product-hot bg-[url(/background/bg-hot.png)]  bg-cover">
-            {isMobile ? <ProductHotReponsiveMain /> : <ProductHotMain />}
+            <ProductHotMain />
           </div>
         </div>
         {productList.map((items, index) => (
@@ -167,9 +162,7 @@ export default function home() {
               <div className="bg-[#ffffff]" >
                 <div className="mt-6 main-product-hot">
                   <div className="mt-6 main-product-hot">
-                    {isMobile ?
-                      <MainProductReponsive title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} /> :
-                      <MainProduct title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} />}
+                  <MainProduct title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} />
                   </div>
                 </div>
               </div>

@@ -20,12 +20,12 @@ export default function Slider() {
     };
 
     return (
-        <div className="w-full h-150">
-            <div className="overflow-hidden shadow-lg">
+        <div className="w-full h-150 silder-main-box">
+            <div className="overflow-hidden shadow-lg silder-main">
                 <img
                     src={images[currentIndex]}
                     alt={`Slide ${currentIndex + 1}`}
-                    className="w-full h-150 object-cover"
+                    className="w-full h-150 object-cover silder-main-image"
                 />
             </div>
 

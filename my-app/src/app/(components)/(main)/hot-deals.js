@@ -7,7 +7,6 @@ export default function HotDeal() {
     let [flagNextFilter, setFlagNextFilter] = useState(true)
     const [flagPrevFilter, setFlagPrevFilter] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-
     let isDiscounted = true;
     const [discountPrice, setDiscountPrice] = useState(null);
 
@@ -83,9 +82,9 @@ export default function HotDeal() {
             <Tabs data={["Laptop", "PC", "Mouse", "Keyboard", "Hot"]} />
 
             {/* Product Slider */}
-            <div className="carousel w-full  gap-2 p-4">
+            <div className="carousel w-full gap-2 p-4 hot-deal-main">
                 <div className="carousel-item relative w-full overflow-hidden ">
-                    <div className="text-white grid grid-cols-5 gap-2">
+                    <div className="text-white grid grid-cols-5 gap-2 hot-deal-main-box">
                         {imageElementsSlice.map((image, index) => (
                             <div key={index} className="border border-blue-300 card bg-base-100 w-full shadow-sm rounded-lg">
                                 <figure className="">
@@ -102,7 +101,7 @@ export default function HotDeal() {
                                     </h3>
                                     {discountPrice && <h3 className="text-red-500">{discountPrice}</h3>}
                                     <p className="text-black">A card component has a figure...</p>
-                                    <div className="grid grid-cols-2 gap-1">
+                                    <div className="grid grid-cols-2 gap-1 btn-action-card">
                                         <div className="card-actions">
                                             <button className="btn btn-accent text-white w-full text-xs">Buy Now</button>
                                         </div>

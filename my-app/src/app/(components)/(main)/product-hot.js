@@ -10,7 +10,7 @@ export default function ProductHotMain() {
             <div className="title text-center  flex justify-between">
                <Tabs data={["Laptop","Pc","Smartphone"]} bgBtn="bg-white" textColor="black"></Tabs>
             </div>
-            <div className="grid grid-cols-5 gap-2 p-4">
+            <div className="grid grid-cols-5 gap-2 p-4 product-card">
                 {products.map((_, index) => (
                     <ProductCardMain key={index} />
                 ))}
