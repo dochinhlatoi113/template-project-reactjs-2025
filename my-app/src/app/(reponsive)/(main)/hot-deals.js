@@ -24,7 +24,7 @@ export default function HotDealReponsive() {
         "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/4/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",
         "https://lh3.googleusercontent.com/QvkjL4K3rTX5KnVTGXaeELB3QdcIigHBpPkWl4gKn072fU4zJf82mPVrJS5Wm9Wgz9CwrlPLb8Bo7cR8aLo=w230-rw",
         "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/6/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",
-        "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/7/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",
+        "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/6/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",
         "https://lh3.googleusercontent.com/QvkjL4K3rTX5KnVTGXaeELB3QdcIigHBpPkWl4gKn072fU4zJf82mPVrJS5Wm9Wgz9CwrlPLb8Bo7cR8aLo=w230-rw",
         "https://phongvu.vn/hoi-dap/wp-content/uploads/sites/6/2018/03/tai-anh-nen-laptop-full-hd-o-dau-thumbnail.jpg",
         "https://lh3.googleusercontent.com/QvkjL4K3rTX5KnVTGXaeELB3QdcIigHBpPkWl4gKn072fU4zJf82mPVrJS5Wm9Wgz9CwrlPLb8Bo7cR8aLo=w230-rw",
@@ -103,11 +103,11 @@ export default function HotDealReponsive() {
                                     </h3>
                                     {discountPrice && <h3 className="text-red-500">{discountPrice}</h3>}
                                     <p className="text-black">A card component has a figure...</p>
-                                    <div className="grid grid-cols-2 gap-1">
+                                    <div className="">
                                         <div className="card-actions">
                                             <button className="btn btn-accent text-white w-full ">Buy Now</button>
                                         </div>
-                                        <div className="card-actions">
+                                        <div className="card-actions mt-2">
                                             <button className="btn btn-secondary text-white w-full">Add To Cart</button>
                                         </div>
                                     </div>
