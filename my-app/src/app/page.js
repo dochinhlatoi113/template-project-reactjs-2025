@@ -50,6 +50,21 @@ export default function home() {
           "image": "https://shopdunk.com/images/thumbs/0030771_iphone-16-128gb.png"
         },
         {
+          "title_product": "iPhone 16",
+          "price": "20.000.000",
+          "image": "https://shopdunk.com/images/thumbs/0030771_iphone-16-128gb.png"
+        },
+        {
+          "title_product": "iPhone 16",
+          "price": "20.000.000",
+          "image": "https://shopdunk.com/images/thumbs/0030771_iphone-16-128gb.png"
+        },
+        {
+          "title_product": "iPhone 16",
+          "price": "20.000.000",
+          "image": "https://shopdunk.com/images/thumbs/0030771_iphone-16-128gb.png"
+        },
+        {
           "title_product": "iPhone 16 promax",
           "price": "50.000.000",
           "image": "https://shopdunk.com/images/thumbs/0030771_iphone-16-128gb.png"

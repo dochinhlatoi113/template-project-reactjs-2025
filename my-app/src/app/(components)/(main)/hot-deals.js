@@ -96,7 +96,7 @@ export default function HotDeal() {
                                     />
                                 </figure>
                                 <div className="card-body">
-                                    <h2 className="card-title text-black">Card Title</h2>
+                                    <h1 className="card-title text-black">Card Title</h1>
                                     <h3 className={`text-blue-500 ${isDiscounted ? "line-through" : ""}`}>
                                         1.900.000 $
                                     </h3>

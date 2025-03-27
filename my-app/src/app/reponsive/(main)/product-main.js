@@ -15,13 +15,18 @@ export default function MainProductReponsive({ title_category, data_product, dat
                     Xem thêm
                 </a>
             </div>
-            <div className="grid grid-cols-2 gap-2 p-4">
-                {data_product.map((item, index) => (
-                    <div key={index}>
-                        <ProductCardReponsiveMain title_item_product={item.title_product}
-                            price_item_product={item.price} image_item_product={item.image} />
-                    </div>
-                ))}
+            <div className="w-full overflow-x-auto">
+                <div className="flex w-max gap-2 p-4">
+                    {data_product.map((item, index) => (
+                        <div key={index} className="w-[250px] flex-shrink-0">
+                            <ProductCardMain
+                                title_item_product={item.title_product}
+                                price_item_product={item.price}
+                                image_item_product={item.image}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 //web
-import "./css/web/header.css";
+import "./css/web/main.css";
 //reponsive
 import "./css/reponsive/main.css";
 const inter = Inter({
