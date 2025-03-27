@@ -10,12 +10,12 @@ import ProductHotMain from "./(components)/(main)/product-hot";
 import MainProduct from "./(components)/(main)/product-main";
 
 //responsive
-import HeaderReponsive from "./reponsive/(main)/header";
-import SliderReponsive from "./reponsive/(main)/slider";
-import BannerSaleOffHot from "./reponsive/(main)/banner";
-import HotDealReponsive from "./reponsive/(main)/hot-deals";
-import ProductHotReponsiveMain from "./reponsive/(main)/product-hot";
-import MainProductReponsive from "./reponsive/(main)/product-main";
+import HeaderReponsive from "./(reponsive)/(main)/header";
+import SliderReponsive from "./(reponsive)/(main)/slider";
+import BannerSaleOffHot from "./(reponsive)/(main)/banner";
+import HotDealReponsive from "./(reponsive)/(main)/hot-deals";
+import ProductHotReponsiveMain from "./(reponsive)/(main)/product-hot";
+import MainProductReponsive from "./(reponsive)/(main)/product-main";
 export default function home() {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
