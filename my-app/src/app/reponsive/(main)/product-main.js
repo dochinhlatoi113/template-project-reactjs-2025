@@ -19,7 +19,7 @@ export default function MainProductReponsive({ title_category, data_product, dat
                 <div className="flex w-max gap-2 p-4">
                     {data_product.map((item, index) => (
                         <div key={index} className="w-[250px] flex-shrink-0">
-                            <ProductCardMain
+                            <ProductCardReponsiveMain
                                 title_item_product={item.title_product}
                                 price_item_product={item.price}
                                 image_item_product={item.image}
