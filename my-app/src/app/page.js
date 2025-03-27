@@ -23,17 +23,10 @@ export default function home() {
   }, []);
 
   const productList = [
-    {
-      "title_category": "Laptop Nổi Bật",
-      "slug": "laptop-noi-bat",
-      "banner_left": "./banner/banner-mobile-product-right.png",
-      "banner_right": "./banner/banner-mobile-product-left.png",
-      "total_product": 0,
-      "list_product": [
-      ],
-    },
+   
     {
       "title_category": "Điện Thoại Mới Nhất",
+      "id_category" : "0",
       "slug": "smartphones",
       "banner_left": "./banner/banner-mobile-product-right.png",
       "banner_right": "./banner/banner-mobile-product-left.png",
@@ -83,6 +76,7 @@ export default function home() {
     },
     {
       "title_category": "Beauty",
+      "id_category" : "1",
       "slug": "beauty",
       "banner_left": "./banner/banner-mobile-product-right.png",
       "banner_right": "./banner/banner-mobile-product-left.png",
@@ -102,6 +96,7 @@ export default function home() {
     },
     {
       "title_category": "Phụ Kiện Hot",
+      "id_category" : "2",
       "slug": "phu-kien-hot",
       "banner_left": "./banner/banner-mobile-product-right.png",
       "banner_right": "./banner/banner-mobile-product-left.png",
@@ -111,6 +106,7 @@ export default function home() {
     },
     {
       "title_category": "Tablet Giá Tốt",
+      "id_category" : "3",
       "slug": "tablet",
       "banner_left": "./banner/banner-mobile-product-right.png",
       "banner_right": "./banner/banner-mobile-product-left.png",
@@ -120,6 +116,7 @@ export default function home() {
     },
     {
       "title_category": "Màn Hình & Thiết Bị Văn Phòng",
+      "id_category" : "4",
       "slug": "man-hinh-thiet-bi",
       "banner_left": "./banner/banner-mobile-product-right.png",
       "banner_right": "./banner/banner-mobile-product-left.png",
@@ -142,7 +139,7 @@ export default function home() {
       </div>
       <div className="container mx-auto max-w-[1200px] ">
         <div className="mt-6 main-hot-deal ">
-           <HotDeal />
+           <HotDeal isMobile={isMobile} productList = {productList}/>
         </div>
         <div>
           <div className="mt-6 main-banner-sale-off">
@@ -162,7 +159,7 @@ export default function home() {
               <div className="bg-[#ffffff]" >
                 <div className="mt-6 main-product-hot">
                   <div className="mt-6 main-product-hot">
-                  <MainProduct title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} />
+                     <MainProduct title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} />
                   </div>
                 </div>
               </div>

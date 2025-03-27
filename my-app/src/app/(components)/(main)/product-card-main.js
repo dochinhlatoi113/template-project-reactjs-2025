@@ -12,7 +12,7 @@ export default function ProductCardMain({ title_item_product, price_item_product
                     {title_item_product}
                 </h1>
                 <div className="badge badge-secondary">NEW</div>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+                <p className="description-product">A card component has a figure, a body part, and inside body there are title and actions parts</p>
                 <div>
                     {price_item_product ?? "200.000"}
                 </div>
