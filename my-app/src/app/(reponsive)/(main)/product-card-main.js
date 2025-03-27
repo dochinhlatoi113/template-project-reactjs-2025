@@ -16,12 +16,14 @@ export default function ProductCardReponsiveMain({ title_item_product, price_ite
                 <div>
                     {price_item_product ?? "200.000"}
                 </div>
-                <div className="grid grid-cols-2 gap-1">
+                <div className="">
                     <div className="card-actions">
-                        <button className="btn btn-accent text-white w-full text-[10px]">Buy Now</button>
+                        <button className="btn btn-accent text-white w-full ">Buy Now</button>
                     </div>
-                    <div className="card-actions">
-                        <button className="btn btn-secondary text-white w-full text-[10px]">Add To Cart</button>
+                    <div className="card-actions  mt-2">
+                        <button className="btn btn-secondary text-white w-full ">
+                            Add to card
+                        </button>
                     </div>
                 </div>
             </div>

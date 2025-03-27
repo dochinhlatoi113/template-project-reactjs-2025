@@ -17,7 +17,7 @@ export default function TabReponsive({ data, textColor = null }) {
                                 "hover:text-blue-700 hover:bg-gray-100 border-[1px] text-gray-700"}
                    `}
                     >
-                        <span className={`text-[70%] text-center ${textColor == null ? "text-black" : "text-"+textColor}`}>{tab}</span>
+                        <span className={`text-[100%] text-center ${textColor == null ? "text-black" : "text-"+textColor}`}>{tab}</span>
                     </button>
                 ))}
             </div>

@@ -105,10 +105,10 @@ export default function HotDealReponsive() {
                                     <p className="text-black">A card component has a figure...</p>
                                     <div className="grid grid-cols-2 gap-1">
                                         <div className="card-actions">
-                                            <button className="btn btn-accent text-white w-full text-[10px]">Buy Now</button>
+                                            <button className="btn btn-accent text-white w-full ">Buy Now</button>
                                         </div>
                                         <div className="card-actions">
-                                            <button className="btn btn-secondary text-white w-full text-[10px]">Add To Cart</button>
+                                            <button className="btn btn-secondary text-white w-full">Add To Cart</button>
                                         </div>
                                     </div>
                                 </div>

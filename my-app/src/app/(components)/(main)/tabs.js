@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Tabs({ data, bgBtn = null, textColor = null }) {
     const [activeTab, setActiveTab] = useState(0);
     return (
-        <div className="main-tab flex justify-between text-center gap-2 p-4">
+        <div className="main-tab flex justify-between text-center gap-2 p-4 text-[100%]">
             {data.map((tab, index) => (
                 <button
                     key={index}
