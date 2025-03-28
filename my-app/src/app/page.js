@@ -158,9 +158,7 @@ export default function home() {
               </div>
               <div className="bg-[#ffffff]" >
                 <div className="mt-6 main-product-hot">
-                  <div className="mt-6 main-product-hot">
                      <MainProduct title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} />
-                  </div>
                 </div>
               </div>
             </div>

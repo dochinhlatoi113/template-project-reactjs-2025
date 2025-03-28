@@ -18,7 +18,7 @@ export default function MainProduct({ title_category, data_product, data_link = 
             <div className="w-full overflow-x-auto">
                 <div className="flex w-max gap-2 p-4">
                     {data_product.map((item, index) => (
-                        <div key={index} className="w-[250px] flex-shrink-0">
+                        <div key={index} className="w-[220px] product-main flex-shrink-0">
                             <ProductCardMain
                                 title_item_product={item.title_product}
                                 price_item_product={item.price}

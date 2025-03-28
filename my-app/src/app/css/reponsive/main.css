@@ -3,6 +3,12 @@
   button {
     font-size: 11px;
   }
+/**
+product-main
+*/
+.product-main{
+  width: 180px;
+}
 
 /**
   hot deal

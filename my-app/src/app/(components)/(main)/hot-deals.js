@@ -86,13 +86,11 @@ export default function HotDeal({ isMobile, productList }) {
                                 <div key={index}>
                                     <div className="bg-[#ffffff]" >
                                         <div className="mt-6 main-product-hot">
-                                            <div className="mt-6 main-product-hot">
-                                                <ProductCardMain
-                                                    title_item_product={items.title_product}
-                                                    price_item_product={items.price}
-                                                    image_item_product={items.image}
-                                                />
-                                            </div>
+                                            <ProductCardMain
+                                                title_item_product={items.title_product}
+                                                price_item_product={items.price}
+                                                image_item_product={items.image}
+                                            />
                                         </div>
                                     </div>
                                 </div>
