@@ -59,7 +59,7 @@ export default function CategoryPage({ params }) {
                                     id="fromSlider" type="range" value={minValue} min="0" max="100" onChange={handleMinChange} />
 
                                 <input
-                                    className="absolute h-[10px] w-full pointer-events-none"
+                                    className="absolute h-[10px] w-full bpointer-events-none"
                                     id="toSlider" type="range" value={maxValue} min="0" max="100" onChange={handleMaxChange} />
                             </div>
                         </div>
