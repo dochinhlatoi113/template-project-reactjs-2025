@@ -4,6 +4,8 @@ import "./globals.css";
 import "./css/web/main.css";
 //reponsive
 import "./css/reponsive/main.css";
+//components
+import ResponsiveHeader from "./(components)/(main)/header-main";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -25,7 +27,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
-        {children}
+        <ResponsiveHeader />
+          <main>{children}</main>
       </body>
     </html>
   );

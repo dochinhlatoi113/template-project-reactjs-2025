@@ -1,6 +1,7 @@
 'use client'
 import ProductCardMain from "./product-card-main";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function MainProduct({ title_category, data_product, data_link = null, data_slug = null }) {
 
@@ -9,11 +10,9 @@ export default function MainProduct({ title_category, data_product, data_link = 
         <div>
             <div className="p-4 flex justify-between">
                 <h1 className="font-semibold">{title_category}</h1>
-                {data_slug && (
-                    <a href={`/${data_slug ?? ''}`} className="text-blue-600">
-                        Xem thêm
-                    </a>
-                )}
+                <Link href={`/${data_slug}`}>
+                    <h1 className="text-blue-600">Xem thêm</h1>
+                </Link>
             </div>
             <div className="w-full overflow-x-auto">
                 <div className="flex w-max gap-2 p-4">

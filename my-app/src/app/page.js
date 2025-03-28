@@ -1,26 +1,17 @@
 "use client"
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Header from "./(components)/(main)/header";
 import Slider from "./(components)/(main)/slider";
 import HotDeal from "./(components)/(main)/hot-deals";
 import Banner from "./(components)/(main)/banner";
 import BannerSaleOff from "./(components)/(main)/banner-sale-off";
 import ProductHotMain from "./(components)/(main)/product-hot";
 import MainProduct from "./(components)/(main)/product-main";
+//helper
+import useCheckSize from "./helper";
 
-//responsive
-import HeaderReponsive from "./(reponsive)/(main)/header";
 export default function home() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
+  let isMobile = useCheckSize();
 
   const productList = [
    
@@ -128,16 +119,13 @@ export default function home() {
 
   return (
     <div>
-      <div className="main-header">
-        {isMobile ? <HeaderReponsive /> : <Header />}
-      </div>
       <div className="main-slider">
         <Slider></Slider>
       </div>
       <div className="main-banner">
         <Banner></Banner>
       </div>
-      <div className="container mx-auto max-w-[1200px] ">
+      <div className="container mx-auto max-w-[1300px] ">
         <div className="mt-6 main-hot-deal ">
            <HotDeal isMobile={isMobile} productList = {productList}/>
         </div>
