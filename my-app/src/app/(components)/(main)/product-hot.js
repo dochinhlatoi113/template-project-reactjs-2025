@@ -5,7 +5,7 @@ export default function ProductHotMain() {
     return (
         <div>
             <div className=" card-title text-white">
-                <img src="./banner/top-product-banner.png"></img>
+                <img className="w-[100%]"src="./banner/top-product-banner.png"></img>
             </div>
             <div className="grid grid-cols-5 gap-2 p-4 product-card">
                 {products.map((_, index) => (

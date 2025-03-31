@@ -30,7 +30,6 @@ export default function home() {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   const productHotList = data?.productHot || [];
-
   return (
     <div>
       <div className="main-slider">

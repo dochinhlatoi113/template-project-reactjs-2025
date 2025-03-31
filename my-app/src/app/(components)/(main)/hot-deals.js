@@ -71,6 +71,10 @@ export default function HotDeal({ isMobile, productList }) {
         });
     };
     let imageElementsSlice = imageElements.slice(currentFilter, currentFilter + itemPerPage)
+    let imageProductHot = "";
+    imageElementsSlice.map((x) =>
+         x.price_list.map((y)=>(imageProductHot = y.picture))
+    )
     return (
         <div>
             {/* Countdown Timer */}
@@ -92,7 +96,7 @@ export default function HotDeal({ isMobile, productList }) {
                                         <ProductCardMain
                                             title_item_product={items.productName}
                                             price_item_product={items.PriceSAP}
-                                            image_item_product={items.price_list}
+                                            image_item_product={imageProductHot}
                                         />
                                     </div>
                                 </div>

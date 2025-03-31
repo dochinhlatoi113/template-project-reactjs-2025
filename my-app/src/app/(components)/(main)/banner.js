@@ -2,7 +2,7 @@ export default function Banner() {
     let imageElements = [];
     let images = "./banner/banner1.webp" ;
     for (let index = 0; index < 4; index++) {
-        imageElements.push(<img className="px-3 w-[20%]  banner-sale-off-hot-image" key={index} src={images} alt={`Banner ${index + 1}`} />);
+        imageElements.push(<img className="px-3 w-[15%]  banner-sale-off-hot-image" key={index} src={images} alt={`Banner ${index + 1}`} />);
     }
 
     return (

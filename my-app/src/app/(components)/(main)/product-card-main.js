@@ -1,16 +1,17 @@
 import Link from "next/link";
-
+import { useEffect,useState } from "react";
 import useFormatPrice from "@/app/(heper)/format-price";
 
+import { IMAGE_FAILED,API_MEDIA_PICTURE } from "@/api/api-file";
 export default function ProductCardMain({ title_item_product, price_item_product, image_item_product }) {
     const formattedPrice = useFormatPrice(price_item_product); 
-    console.log(image_item_product )
+    const [img,setImg] = useState()
     return (
         <div className="card bg-base-100 w-[100%] shadow-sm">
             <figure>
                 <Link href="/(product)/hello-world">
                     <img className="transition-transform duration-300 hover:scale-105 rounded-lg"
-                        src={image_item_product ?? "https://lh3.googleusercontent.com/ixzTQIoSD7vZmVyrdZikEjHB4xMnkJI2Nk8juEtq6o5KYtCroW6gLkC6bxNgYlRc22ytV6V6fynEodvg737BVtEAW2vXubXb=w230-rw"}
+                        src={API_MEDIA_PICTURE+image_item_product ?? IMAGE_FAILED}
                         alt={title_item_product ?? 'no-title'} />
                 </Link>
             </figure>
