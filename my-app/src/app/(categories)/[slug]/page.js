@@ -14,7 +14,6 @@ export default function CategoryPage({ params }) {
         setZIndexLeft(1);
         setZIndexRight(0)
         const valueMin = Number(e.target.value);
-        console.log(minValue)
         setPriceBarColor(valueMin)
         if (valueMin < maxValue - 5) {
             setMinValue(valueMin);
@@ -66,7 +65,7 @@ export default function CategoryPage({ params }) {
                             <div className={styles.sliders_control}>
                                 <div className="">
                                     <input
-                                        className={`${styles.rangeSlider} left-[1%]`}
+                                        className={`${styles.rangeSlider} `}
                                         style={{
                                             '--bg-color': `${(minValue / 100) * 100}%`, 
                                             '--z-index-left': zIndexLeft,
@@ -75,7 +74,7 @@ export default function CategoryPage({ params }) {
                                 </div>
                                 <div className="">
                                     <input
-                                        className={`${styles.rangeSlider} left-[14%] z-${zIndexRight}`}
+                                        className={`${styles.rangeSlider} left-[25px] z-${zIndexRight}`}
                                         style={{
                                             '--bg-color': `${(maxValue / 100) * 100}%`, 
                                             '--z-index': zIndexRight,

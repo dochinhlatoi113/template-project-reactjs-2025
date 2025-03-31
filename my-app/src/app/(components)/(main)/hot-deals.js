@@ -12,7 +12,7 @@ export default function HotDeal({ isMobile, productList }) {
     const [isMounted, setIsMounted] = useState(false);
     const [discountPrice, setDiscountPrice] = useState(null);
     const [dataCategory, setDataCategory] = useState([]);
-    const [activeTabChangeData, setActiveTabChangeData] = useState(0);
+    const [activeTabChangeData, setActiveTabChangeData] = useState(202);
 
     let isDiscounted = true;
     useEffect(() => {
@@ -26,15 +26,20 @@ export default function HotDeal({ isMobile, productList }) {
     let dataCategoryList = [];
     productList.map((items) => {
         dataCategoryList.push({
-            "title_category": items.title_category,
-            "id_category": items.id_category
+            "title_category": items.FirmName,
+            "id_category": items.cat_id
         })
-        if (items.list_product.length > 0 && items.id_category == activeTabChangeData) {
-            items.list_product.map((item) => {
-                imageElements.push(item);
-            })
+        if (productList.length > 0 && items.cat_id == activeTabChangeData) {
+            imageElements.push(items);
         }
     })
+    dataCategoryList = dataCategoryList.reduce((acc, item) => {
+        if (!acc.some(cat => cat.id_category === item.id_category)) {
+            acc.push(item);
+        }
+        return acc;
+    }, []);
+    
     let itemPerPage = 5
     isMobile == true ? itemPerPage = 2 : itemPerPage
     const totalItems = imageElements.length;
@@ -66,7 +71,6 @@ export default function HotDeal({ isMobile, productList }) {
         });
     };
     let imageElementsSlice = imageElements.slice(currentFilter, currentFilter + itemPerPage)
-    console.log(imageElementsSlice)
     return (
         <div>
             {/* Countdown Timer */}
@@ -82,38 +86,39 @@ export default function HotDeal({ isMobile, productList }) {
                 <div className="carousel-item relative w-full overflow-hidden ">
                     <div className="text-white grid grid-cols-5 gap-2 hot-deal-main-box">
                         {imageElementsSlice.map((items, index) => (
-                            items.total_product != 0 && (
-                                <div key={index}>
-                                    <div className="bg-[#ffffff]" >
-                                        <div className="mt-6 main-product-hot">
-                                            <ProductCardMain
-                                                title_item_product={items.title_product}
-                                                price_item_product={items.price}
-                                                image_item_product={items.image}
-                                            />
-                                        </div>
+                            <div key={index}>
+                                <div className="bg-[#ffffff]" >
+                                    <div className="mt-6 main-product-hot">
+                                        <ProductCardMain
+                                            title_item_product={items.productName}
+                                            price_item_product={items.PriceSAP}
+                                            image_item_product={items.price_list}
+                                        />
                                     </div>
                                 </div>
-                            )
+                            </div>
                         ))}
                     </div>
 
                     {/* Navigation Buttons */}
-                    <div className="absolute left-1 right-1 top-30 flex -translate-y-1/2 transform justify-between">
-                        <button
-                            className={`btn btn-circle ${flagPrevFilter ? "" : "invisible"}`}
-                            onClick={prevFilter}
-                        >
-                            ❮
-                        </button>
+                    {itemPerPage > 5 && (
+                        <div className="absolute left-1 right-1 top-30 flex -translate-y-1/2 transform justify-between">
+                            <button
+                                className={`btn btn-circle ${flagPrevFilter ? "" : "invisible"}`}
+                                onClick={prevFilter}
+                            >
+                                ❮
+                            </button>
 
-                        <button
-                            className={`btn btn-circle ${flagNextFilter ? "" : "invisible"}`}
-                            onClick={nextFilter}
-                        >
-                            ❯
-                        </button>
-                    </div>
+                            <button
+                                className={`btn btn-circle ${flagNextFilter ? "" : "invisible"}`}
+                                onClick={nextFilter}
+                            >
+                                ❯
+                            </button>
+                        </div>
+                    )}
+
                 </div>
             </div>
         </div>

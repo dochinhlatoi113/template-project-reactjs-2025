@@ -1,20 +1,27 @@
-export default function ProductCardMain({ title_item_product, price_item_product, image_item_product }) {
+import Link from "next/link";
 
+import useFormatPrice from "@/app/(heper)/format-price";
+
+export default function ProductCardMain({ title_item_product, price_item_product, image_item_product }) {
+    const formattedPrice = useFormatPrice(price_item_product); 
+    console.log(image_item_product )
     return (
         <div className="card bg-base-100 w-[100%] shadow-sm">
             <figure>
-                <img className="transition-transform duration-300 hover:scale-105 rounded-lg"
-                    src={image_item_product ?? "https://lh3.googleusercontent.com/ixzTQIoSD7vZmVyrdZikEjHB4xMnkJI2Nk8juEtq6o5KYtCroW6gLkC6bxNgYlRc22ytV6V6fynEodvg737BVtEAW2vXubXb=w230-rw"}
-                    alt={title_item_product ?? 'no-title'} />
+                <Link href="/(product)/hello-world">
+                    <img className="transition-transform duration-300 hover:scale-105 rounded-lg"
+                        src={image_item_product ?? "https://lh3.googleusercontent.com/ixzTQIoSD7vZmVyrdZikEjHB4xMnkJI2Nk8juEtq6o5KYtCroW6gLkC6bxNgYlRc22ytV6V6fynEodvg737BVtEAW2vXubXb=w230-rw"}
+                        alt={title_item_product ?? 'no-title'} />
+                </Link>
             </figure>
             <div className="card-body">
-                <h1 className="card-title text-[100%]">
+                <h1 className="card-title text-[100%] line-clamp-2">
                     {title_item_product}
                 </h1>
                 <div className="badge badge-secondary">NEW</div>
                 <p className="description-product">A card component has a figure, a body part, and inside body there are title and actions parts</p>
                 <div>
-                    {price_item_product ?? "200.000"}
+                       {formattedPrice}
                 </div>
                 <div className="grid grid-cols-2 gap-1 product-card-main-hot">
                     <div className="card-actions">
