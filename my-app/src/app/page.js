@@ -64,7 +64,7 @@ export default function home() {
             <BannerSaleOff dataBanner="./banner/banner-sale-off.webp"></BannerSaleOff>
           </div>
           <div className="mt-6 main-product-hot bg-[url(/background/bg-hot.png)]  bg-cover">
-            <ProductHotMain />
+            <ProductHotMain isMobile={isMobile} />
           </div>
         </div>
         <div className={`main-product-hot`}>

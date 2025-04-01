@@ -42,6 +42,8 @@ export default function HotDeal({ isMobile, productList }) {
     
     let itemPerPage = 5
     isMobile == true ? itemPerPage = 2 : itemPerPage
+    let cols = isMobile == true ? 5 : 2
+    
     const totalItems = imageElements.length;
     const nextFilter = () => {
         setCurrentFilter((prev) => {
@@ -86,11 +88,11 @@ export default function HotDeal({ isMobile, productList }) {
             {/* Product Slider */}
             <div className="carousel w-full gap-2 p-4 hot-deal-main">
                 <div className="carousel-item relative w-full overflow-hidden ">
-                    <div className="text-white grid grid-cols-5 gap-2 hot-deal-main-box">
+                    <div className={`text-white grid grid-cols-${cols} gap-2 hot-deal-main-box`}>
                         {imageElementsSlice.map((items, index) => (
                             <div key={index}>
                                 <div className="bg-[#ffffff]" >
-                                    <div className="mt-6 main-product-hot w-[250px] h-[500px]">
+                                    <div className="mt-6 main-product-hot  h-[10%]">
                                         <ProductCardMain
                                             title_item_product={items.productName}
                                             price_item_product={items.PriceSAP}
