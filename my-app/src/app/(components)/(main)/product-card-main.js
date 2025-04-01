@@ -27,7 +27,7 @@ export default function ProductCardMain({ title_item_product, price_item_product
                     </Link>
                 </h1>
                 <div className="badge badge-secondary">NEW</div>
-                <p className="description-product">{description_item_product ?? ""}</p>
+                <p className="description-product">{description_item_product ?? "updating..."}</p>
                 <div>
                     {formattedPrice}
                 </div>
