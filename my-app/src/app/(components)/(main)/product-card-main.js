@@ -12,7 +12,7 @@ export default function ProductCardMain({ title_item_product, price_item_product
         <div className="card bg-base-100 w-full h-full object-contain shadow-sm">
             <div>
                 <Link href="/(product)/hello-world">
-                    <img className="transition-transform duration-300 object-contain hover:scale-105 rounded-lg w-[75%] m-auto image-product-main h-[200px]"
+                    <img className="pt-5 transition-transform duration-300 object-contain hover:scale-105 rounded-lg w-[100%] m-auto image-product-main h-[200px]"
                         src={imgSrc}
                         alt={title_item_product ?? 'no-title'} />
                 </Link>

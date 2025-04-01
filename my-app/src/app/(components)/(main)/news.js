@@ -1,6 +1,25 @@
 
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
+import { useQuery } from '@tanstack/react-query';
+//api file
+import { API_NEWS_MAIN } from "@/api/api-file";
 export default function News({ isMobile }) {
+    //api
+    const { data: dataNews, error: errorDataNews, isLoading: isLoadingDataNews } = useQuery({
+        queryKey: ["data-news"],
+        queryFn: async () => {
+            const response = await fetch(API_NEWS_MAIN);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return  response.json();
+        },
+    });
+
+    if (isLoadingDataNews) return <p>Loading...</p>;
+    if (errorDataNews ) return <p>Error: {errorDataNews.message}</p>;
+   
+    //check reponsive
     let colItem = "";
 
     if (isMobile == true) {
@@ -21,12 +40,12 @@ export default function News({ isMobile }) {
             >
                 Thông tin hữu ích - Mua sắm thông minh
             </div>
-            <div class="grid grid-cols-2 grid-rows-4 gap-4">
-                <div>01</div>
-                <div>
-                    <div>09</div>
-                    <div>09</div>
-                </div>
+            <div className="p-4 grid grid-cols-3 grid-rows-4 gap-4">
+                {/* {newsList && newsList.map((x) => (
+                    <div>
+                        <img src=""></img>
+                    </div>
+                ))} */}
             </div>
         </div>
 
