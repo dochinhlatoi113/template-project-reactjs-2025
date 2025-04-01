@@ -15,9 +15,8 @@ import { useQuery } from '@tanstack/react-query';
 
 export default function home() {
   //ramdom color bg
-  const colors = ["bg-red-500", "bg-green-500", "bg-blue-500"];
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];;
-  
+  const colors = ["#fc7899","#1435c3", "#3D8D7A"];
+
   let isMobile = useCheckSize();
 
   //product hot
@@ -47,7 +46,6 @@ export default function home() {
   if (isLoadingProductHot || isLoadingProductCategoryMain) return <p>Loading...</p>;
   if (errorProductHot || errorProductCategoryMain) return <p>Error: {error.message}</p>;
   const productHotList = productHotData?.productHot || [];
-  console.log(productCategoryMain)
 
   return (
     <div>
@@ -72,18 +70,18 @@ export default function home() {
         <div className={`main-product-hot`}>
         {
             productCategoryMain &&
-            productCategoryMain.data.map((items) => (
+            productCategoryMain.data.map((items,index) => (
               <div key={items.cat_id} >
                 <div className={`grid grid-cols-2 gap-4 h-[100%] main-banner-product-left-right`}>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
                 </div>
-                <div className={` ${randomColor}`}>
-                  <MainProduct
+                <div  style={{ backgroundColor: `${colors[index % colors.length]}`}}> 
+                  <MainProduct 
                     title_category={items.category_desc.cat_name}
                      data_slug={items.category_desc.friendly_url}
                   // data_link={items.link}
-                  // data_product={items.list_product}
+                    data_product={items.product_child}
                   />
                 </div>
               </div>
