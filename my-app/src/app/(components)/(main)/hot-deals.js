@@ -72,9 +72,7 @@ export default function HotDeal({ isMobile, productList }) {
     };
     let imageElementsSlice = imageElements.slice(currentFilter, currentFilter + itemPerPage)
     let imageProductHot = "";
-    imageElementsSlice.map((x) =>
-         x.price_list.map((y)=>(imageProductHot = y.picture))
-    )
+    
     return (
         <div>
             {/* Countdown Timer */}
@@ -92,11 +90,11 @@ export default function HotDeal({ isMobile, productList }) {
                         {imageElementsSlice.map((items, index) => (
                             <div key={index}>
                                 <div className="bg-[#ffffff]" >
-                                    <div className="mt-6 main-product-hot">
+                                    <div className="mt-6 main-product-hot w-[250px] h-[500px]">
                                         <ProductCardMain
                                             title_item_product={items.productName}
                                             price_item_product={items.PriceSAP}
-                                            image_item_product={imageProductHot}
+                                            image_item_product={items.price_list.map((y)=>(y.picture))}
                                         />
                                     </div>
                                 </div>

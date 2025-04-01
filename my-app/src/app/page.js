@@ -10,26 +10,45 @@ import MainProduct from "./(components)/(main)/product-main";
 //helper
 import useCheckSize from "./(heper)/reponsive-check-size";
 //Api
-import { API_PRODUCT_HOT } from "@/api/api-file";
+import { API_PRODUCT_HOT, API_CATEGORY_PRODUCT_MAIN_PAGE } from "@/api/api-file";
 import { useQuery } from '@tanstack/react-query';
 
 export default function home() {
+  //ramdom color bg
+  const colors = ["bg-red-500", "bg-green-500", "bg-blue-500"];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];;
+  
   let isMobile = useCheckSize();
 
-  const { data, error, isLoading } = useQuery({
+  //product hot
+  const { data: productHotData, error: errorProductHot, isLoading: isLoadingProductHot } = useQuery({
     queryKey: ["product-hot"],
     queryFn: async () => {
       const response = await fetch(API_PRODUCT_HOT);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const data = await response.json();
-      return data;
+      return await response.json();
     },
   });
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  const productHotList = data?.productHot || [];
+
+
+  //category product main page
+  const { data: productCategoryMain, error: errorProductCategoryMain, isLoading: isLoadingProductCategoryMain } = useQuery({
+    queryKey: ["product-category-main-page"],
+    queryFn: async () => {
+      const response = await fetch(API_CATEGORY_PRODUCT_MAIN_PAGE);
+      if (!response.ok) throw new Error("Failed to fetch product new");
+      return response.json();
+    },
+  });
+
+
+  if (isLoadingProductHot || isLoadingProductCategoryMain) return <p>Loading...</p>;
+  if (errorProductHot || errorProductCategoryMain) return <p>Error: {error.message}</p>;
+  const productHotList = productHotData?.productHot || [];
+  console.log(productCategoryMain)
+
   return (
     <div>
       <div className="main-slider">
@@ -50,19 +69,27 @@ export default function home() {
             <ProductHotMain />
           </div>
         </div>
-        {productHotList.map((items, index) => (
-          <div key={index}>
-            <div className="mt-6 grid grid-cols-2 gap-4 main-banner-product-left-right">
-              <BannerSaleOff dataBanner={"banner-mobile-product-left.png"}></BannerSaleOff>
-              <BannerSaleOff dataBanner={"banner-mobile-product-right.png"}></BannerSaleOff>
-            </div>
-            <div className="bg-[#ffffff]" >
-              <div className="mt-6 main-product-hot">
-                {/* <MainProduct title_category={items.title_category} data_slug={items.slug} data_link={items.link} data_product={items.list_product} /> */}
+        <div className={`main-product-hot`}>
+        {
+            productCategoryMain &&
+            productCategoryMain.data.map((items) => (
+              <div key={items.cat_id} >
+                <div className={`grid grid-cols-2 gap-4 h-[100%] main-banner-product-left-right`}>
+                  <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
+                  <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
+                </div>
+                <div className={` ${randomColor}`}>
+                  <MainProduct
+                    title_category={items.category_desc.cat_name}
+                     data_slug={items.category_desc.friendly_url}
+                  // data_link={items.link}
+                  // data_product={items.list_product}
+                  />
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            ))
+          }
+        </div>
       </div>
     </div>
   );
