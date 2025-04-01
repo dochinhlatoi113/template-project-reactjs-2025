@@ -7,6 +7,8 @@ import Banner from "./(components)/(main)/banner";
 import BannerSaleOff from "./(components)/(main)/banner-sale-off";
 import ProductHotMain from "./(components)/(main)/product-hot";
 import MainProduct from "./(components)/(main)/product-main";
+import News from "./(components)/(main)/news";
+
 //helper
 import useCheckSize from "./(heper)/reponsive-check-size";
 //Api
@@ -15,7 +17,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export default function home() {
   //ramdom color bg
-  const colors = ["#fc7899","#1435c3", "#3D8D7A"];
+  const colors = ["#1435c3", "#3D8D7A", "#fc7899"];
 
   let isMobile = useCheckSize();
 
@@ -68,25 +70,28 @@ export default function home() {
           </div>
         </div>
         <div className={`main-product-hot`}>
-        {
+          {
             productCategoryMain &&
-            productCategoryMain.data.map((items,index) => (
+            productCategoryMain.data.map((items, index) => (
               <div key={items.cat_id} >
                 <div className={`grid grid-cols-2 gap-4 h-[100%] main-banner-product-left-right`}>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
                 </div>
-                <div  style={{ backgroundColor: `${colors[index % colors.length]}`}}> 
-                  <MainProduct 
+                <div style={{ backgroundColor: `${colors[index % colors.length]}` }}>
+                  <MainProduct
                     title_category={items.category_desc.cat_name}
-                     data_slug={items.category_desc.friendly_url}
-                  // data_link={items.link}
+                    data_slug={items.category_desc.friendly_url}
+                    // data_link={items.link}
                     data_product={items.product_child}
                   />
                 </div>
               </div>
             ))
           }
+        </div>
+        <div className="mt-6 main-news bg-[#ffffff]">
+            <News isMobile={isMobile}></News>
         </div>
       </div>
     </div>
