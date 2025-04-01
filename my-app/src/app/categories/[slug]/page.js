@@ -1,6 +1,6 @@
 "use client";
 import { use, useState } from "react";
-import styles from "../../(categories)/[slug]/pricebar.module.css";
+import styles from "../../categories/[slug]/pricebar.module.css";
 
 export default function CategoryPage({ params }) {
     const unwrappedParams = use(params);
