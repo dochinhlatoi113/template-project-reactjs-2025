@@ -74,7 +74,7 @@ export default function home() {
             productCategoryMain &&
             productCategoryMain.data.map((items, index) => (
               <div key={items.cat_id} >
-                <div className={`grid grid-cols-2 gap-4 h-[100%] main-banner-product-left-right`}>
+                <div className={`grid grid-cols-2 gap-4 h-[100%] p-4 main-banner-product-left-right`}>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
                 </div>

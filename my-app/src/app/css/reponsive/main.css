@@ -71,9 +71,12 @@ product-main
    .main-banner {
     margin-top: 10px;
   }
-
+  .banner-item-img{
+    height: 100%;
+  }
   .banner-sale-off-hot-image {
     width: 25%;
+    
   }
 
   .banner-sale-off-hot {
