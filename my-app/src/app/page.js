@@ -62,7 +62,7 @@ export default function home() {
           <HotDeal isMobile={isMobile} productList={productHotList} />
         </div>
         <div className="mt-6 main-category bg-red-500 ">
-            <CategoryMain></CategoryMain>
+            <CategoryMain isMobile = {isMobile}></CategoryMain>
         </div>
         <div>
           <div className="mt-6 main-banner-sale-off">

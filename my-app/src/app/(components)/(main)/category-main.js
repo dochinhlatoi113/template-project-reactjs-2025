@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
-export default function CategoryMain() {
+export default function CategoryMain(isMobile) {
     const { data: productCategoryMain, error, isLoading } = useQuery({
         queryKey: ["product-category-main-page"],
         queryFn: async () => {
@@ -12,21 +11,28 @@ export default function CategoryMain() {
         refetchOnMount: false,
         refetchOnWindowFocus: false,
     });
-    productCategoryMain.data.map((x)=>(
-        console.log(x.category_desc)
-    ))
+    
     if (isLoading) return <p>Loading categories...</p>;
     if (error) return <p>Error loading categories.</p>;
+    //checksize
+    let colItem = "";
+
+    if (isMobile == true) {
+        colItem = 2;
+    } else {
+        colItem = 4;
+    }
+    console.log("isMobile:", isMobile, "colItem:", colItem);
 
     return (
         <div className="p-4">
-            <h1>Danh mục sản phẩm</h1>
-            <ul>
+            <h1 className="font-semibold text-white">Danh mục sản phẩm</h1>
+            <div className={`grid grid-cols-${colItem} gap-4 text-white`}>
                 {productCategoryMain.data && productCategoryMain.data
                     .map((category) => (
-                        <li key={category.category_desc.cat_id}>{category.category_desc.cat_name}</li>
+                        <div key={category.category_desc.cat_id}>{category.category_desc.cat_name}</div>
                     ))}
-            </ul>
+            </div>
         </div>
     );
 }
