@@ -99,6 +99,13 @@ product-main
     font-size: 100%;
   }
   
+  /**
+    news
+  */
+  .title-news{
+    font-size: 22px;
+    margin: auto;
+  }
 }
 
 /* Tablet (768px - 1024px) */

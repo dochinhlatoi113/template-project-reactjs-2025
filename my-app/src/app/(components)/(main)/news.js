@@ -2,7 +2,7 @@
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import { useQuery } from '@tanstack/react-query';
 //api file
-import { API_NEWS_MAIN } from "@/api/api-file";
+import { API_NEWS_MAIN, API_MEDIA_PICTURE } from "@/api/api-file";
 export default function News({ isMobile }) {
     //api
     const { data: dataNews, error: errorDataNews, isLoading: isLoadingDataNews } = useQuery({
@@ -18,34 +18,34 @@ export default function News({ isMobile }) {
 
     if (isLoadingDataNews) return <p>Loading...</p>;
     if (errorDataNews ) return <p>Error: {errorDataNews.message}</p>;
-   
+ 
     //check reponsive
     let colItem = "";
 
     if (isMobile == true) {
         colItem = 2;
     } else {
-        colItem = 5;
+        colItem = 4;
     }
 
     return (
         <div>
             <div
-                className="bg-red-500 w-full text-center my-[15px] uppercase "
+                className="bg-red-500 w-full  text-center my-[15px] uppercase "
                 style={{
-                    textShadow: '2px 2px #FF0000',
-                    fontSize: '48px',
+                    textShadow: '2px 2px red',
+                    fontSize: '30px',
                     color: 'white'
                 }}
             >
-                Thông tin hữu ích - Mua sắm thông minh
+                <span className="title-news">Báo chí nói gì về chúng tôi</span>
             </div>
-            <div className="p-4 grid grid-cols-3 grid-rows-4 gap-4">
-                {/* {newsList && newsList.map((x) => (
-                    <div>
-                        <img src=""></img>
+            <div className={`p-4 grid grid-cols-${colItem} grid-rows-4 gap-4`}>
+                 {dataNews.news && dataNews.news.map((x,index) => (
+                    <div key={index} className="border border-[#c0c0c8]">
+                        <img className=" m-auto"src={API_MEDIA_PICTURE+x.picture}></img>
                     </div>
-                ))} */}
+                ))}
             </div>
         </div>
 
