@@ -27,7 +27,7 @@ export default function CategoryMain(isMobile) {
     return (
         <div className="p-4">
             <h1 className="font-semibold text-white">Danh mục sản phẩm</h1>
-            <div className={`grid grid-cols-${colItem} gap-4 text-white`}>
+            <div className={` grid grid-cols-${colItem} grid-rows-4 gap-4 text-white`}>
                 {productCategoryMain.data && productCategoryMain.data
                     .map((category) => (
                         <div key={category.category_desc.cat_id}>{category.category_desc.cat_name}</div>
