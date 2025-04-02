@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import Link from "next/link";
-export default function CategoryMain(isMobile) {
+export default function CategoryMain({isMobile}) {
     const { data: productCategoryMain, error, isLoading } = useQuery({
         queryKey: ["product-category-main-page"],
         queryFn: async () => {
@@ -16,12 +17,9 @@ export default function CategoryMain(isMobile) {
     if (isLoading) return <p>Loading categories...</p>;
     if (error) return <p>Error loading categories.</p>;
     //checksize
-    let colItem = "";
-
-    if (isMobile == true) {
-        colItem = 3;
-    } else {
-        colItem = 6;
+    let colItem = 6;
+    if(isMobile == true) {
+         colItem = 2;
     }
     //data icon
     let dataIcom = [

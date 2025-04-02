@@ -78,7 +78,10 @@ product-main
     width: 25%;
     
   }
-
+  .main-banner-product-left-right{
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
   .banner-sale-off-hot {
     bottom: 0px;
     margin-left: auto;
@@ -105,6 +108,10 @@ product-main
   .title-news{
     font-size: 22px;
     margin: auto;
+  }
+  /** footer*/
+  .main-footer-info{
+    display: none;
   }
 }
 
