@@ -40,7 +40,7 @@ export default function News({ isMobile }) {
             >
                 <span className="title-news">Báo chí nói gì về chúng tôi</span>
             </div>
-            <div className={`p-4 grid grid-cols-${colItem} grid-rows-4 gap-4`}>
+            <div className={`p-4 grid grid-cols-${colItem}  gap-4`}>
                 {dataNews.news && dataNews.news.map((x, index) => (
                     <div key={index} className="border border-[#c0c0c8] grid place-items-center">
                         <img className="max-w-[90%] max-h-full" src={API_MEDIA_PICTURE + x.picture} />

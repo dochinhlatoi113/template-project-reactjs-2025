@@ -6,6 +6,7 @@ import "./css/web/main.css";
 import "./css/reponsive/main.css";
 //components
 import ResponsiveHeader from "./(components)/(main)/header-main";
+import ResponsiveFooter from "./(components)/(main)/footer";
 import ReactQueryProvider from "./ReactQueryProvider";
 const inter = Inter({
   variable: "--font-inter",
@@ -29,9 +30,10 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
         <ResponsiveHeader />
-        <ReactQueryProvider>
-          <main>{children}</main>
-        </ReactQueryProvider>
+          <ReactQueryProvider>
+            <main>{children}</main>
+          </ReactQueryProvider>
+        <ResponsiveFooter />
       </body>
     </html>
   );
