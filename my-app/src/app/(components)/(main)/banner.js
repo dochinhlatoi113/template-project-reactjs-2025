@@ -6,7 +6,7 @@ export default function Banner() {
     }
 
     return (
-        <div className="container banner-sale-off-hot mx-auto flex justify-center relative bottom-17 left-0 items-center">
+        <div className="container banner-sale-off-hot mx-auto flex justify-center relative  bottom-[50px] left-0 items-center">
             {imageElements}
         </div>
     )
