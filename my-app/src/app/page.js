@@ -8,7 +8,7 @@ import BannerSaleOff from "./(components)/(main)/banner-sale-off";
 import ProductHotMain from "./(components)/(main)/product-hot";
 import MainProduct from "./(components)/(main)/product-main";
 import News from "./(components)/(main)/news";
-
+import CategoryMain from "./(components)/(main)/category-main";
 //helper
 import useCheckSize from "./(heper)/reponsive-check-size";
 //Api
@@ -60,6 +60,9 @@ export default function home() {
       <div className="container mx-auto max-w-[1300px] ">
         <div className="mt-6 main-hot-deal ">
           <HotDeal isMobile={isMobile} productList={productHotList} />
+        </div>
+        <div className="mt-6 main-category bg-red-500 ">
+            <CategoryMain></CategoryMain>
         </div>
         <div>
           <div className="mt-6 main-banner-sale-off">

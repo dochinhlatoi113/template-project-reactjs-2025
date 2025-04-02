@@ -12,13 +12,13 @@ export default function News({ isMobile }) {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
-            return  response.json();
+            return response.json();
         },
     });
 
     if (isLoadingDataNews) return <p>Loading...</p>;
-    if (errorDataNews ) return <p>Error: {errorDataNews.message}</p>;
- 
+    if (errorDataNews) return <p>Error: {errorDataNews.message}</p>;
+
     //check reponsive
     let colItem = "";
 
@@ -41,9 +41,9 @@ export default function News({ isMobile }) {
                 <span className="title-news">Báo chí nói gì về chúng tôi</span>
             </div>
             <div className={`p-4 grid grid-cols-${colItem} grid-rows-4 gap-4`}>
-                 {dataNews.news && dataNews.news.map((x,index) => (
-                    <div key={index} className="border border-[#c0c0c8]">
-                        <img className=" m-auto"src={API_MEDIA_PICTURE+x.picture}></img>
+                {dataNews.news && dataNews.news.map((x, index) => (
+                    <div key={index} className="border border-[#c0c0c8] grid place-items-center">
+                        <img className="max-w-[90%] max-h-full" src={API_MEDIA_PICTURE + x.picture} />
                     </div>
                 ))}
             </div>
