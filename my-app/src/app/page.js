@@ -50,7 +50,7 @@ export default function home() {
   const productHotList = productHotData?.productHot || [];
 
   return (
-    <div>
+    <div className="pt-[5%]">
       <div className="main-slider">
         <Slider></Slider>
       </div>

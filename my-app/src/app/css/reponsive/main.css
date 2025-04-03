@@ -3,6 +3,12 @@
   button {
     font-size: 11px;
   }
+  /**
+    slider
+  */
+  .main-slider{
+    padding-top: 88px;
+  }
 /**
 product-main
 */

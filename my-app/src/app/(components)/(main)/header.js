@@ -15,7 +15,6 @@ export default function Header() {
             return response.json();
         },
     })
-    console.log(dataMenu)
     if (isPending) {
         return <span>Loading...</span>
     }
@@ -25,7 +24,7 @@ export default function Header() {
     }
     return (
         <div>
-            <div className="bg-[#1435c3] text-white py-1 shadow-md">
+            <div className="bg-[#1435c3] text-white py-1 shadow-md ">
                 {/* Logo */}
                 <div className="container mx-auto flex justify-center items-center">
                     {/*menu behind*/}
