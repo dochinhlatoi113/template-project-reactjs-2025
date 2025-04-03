@@ -78,7 +78,7 @@ product-main
     width: 25%;
   }
   .banner-sale-off{
-    top:6px;
+    bottom: -5px
   }
   .main-banner-product-left-right{
     padding-top: 4px;
