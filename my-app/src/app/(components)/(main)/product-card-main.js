@@ -2,7 +2,7 @@ import Link from "next/link";
 import useFormatPrice from "@/app/(heper)/format-price";
 
 import { IMAGE_FAILED, API_MEDIA_PICTURE } from "@/api/api-file";
-export default function ProductCardMain({ title_item_product, price_item_product, description_item_product, image_item_product }) {
+export default function ProductCardMain({ title_item_product, price_item_product, description_item_product, image_item_product, slug_item_product }) {
     const formattedPrice = useFormatPrice(price_item_product);
     let imgSrc = IMAGE_FAILED
     if (image_item_product != "") {
@@ -11,7 +11,7 @@ export default function ProductCardMain({ title_item_product, price_item_product
     return (
         <div className="card bg-base-100 w-full h-full object-contain shadow-sm">
             <div>
-                <Link href="/(product)/hello-world">
+                <Link href={`${slug_item_product}`}>
                     <img className="pt-5 transition-transform duration-300 object-contain hover:scale-105 rounded-lg w-[80%] m-auto image-product-main h-[200px]"
                         src={imgSrc}
                         alt={title_item_product ?? 'no-title'} />
@@ -19,7 +19,7 @@ export default function ProductCardMain({ title_item_product, price_item_product
             </div>
             <div className="card-body">
                 <h1 className="card-title text-[100%] line-clamp-2">
-                    <Link href="/(product)/hello-world">
+                    <Link href={`${slug_item_product}`}>
                         {title_item_product}
                     </Link>
                 </h1>

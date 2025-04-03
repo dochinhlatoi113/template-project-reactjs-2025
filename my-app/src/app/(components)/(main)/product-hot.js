@@ -2,16 +2,16 @@ import ProductCardMain from "./product-card-main";
 import Tabs from "./tabs";
 import { useQueryClient } from "@tanstack/react-query";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
-export default function ProductHotMain({isMobile}) {
+export default function ProductHotMain({ isMobile }) {
     const queryClient = useQueryClient();
     const cachedDataProductHot = queryClient.getQueryData(["product-hot"]);
     const productHotList = cachedDataProductHot?.productHot || [];
     let colItem = "";
-    
-    if(isMobile == true) {
-          colItem = 2;
-    }else{
-          colItem = 5;
+
+    if (isMobile == true) {
+        colItem = 2;
+    } else {
+        colItem = 5;
     }
 
     return (
@@ -24,8 +24,9 @@ export default function ProductHotMain({isMobile}) {
                     <ProductCardMain key={index}
                         title_item_product={items.productName}
                         price_item_product={items.PriceSAP}
-                        image_item_product={items.price_list.map((y)=>(y.picture))} />
-
+                        image_item_product={items.price_list.map((y) => (y.picture))}
+                        slug_item_product={items.product_desc.friendly_url}
+                    />
                 ))}
             </div>
             <div className="text-center pb-2">

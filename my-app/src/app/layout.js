@@ -29,11 +29,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${robotoMono.variable} antialiased`}
       >
-        <ResponsiveHeader />
-          <ReactQueryProvider>
-            <main>{children}</main>
-          </ReactQueryProvider>
-        <ResponsiveFooter />
+        <ReactQueryProvider>
+            <ResponsiveHeader />
+              <main>{children}</main>
+            <ResponsiveFooter />
+        </ReactQueryProvider>
       </body>
     </html>
   );

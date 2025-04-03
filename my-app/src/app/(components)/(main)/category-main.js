@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import Link from "next/link";
-export default function CategoryMain({isMobile}) {
+export default function CategoryMain({ isMobile }) {
     const { data: productCategoryMain, error, isLoading } = useQuery({
         queryKey: ["product-category-main-page"],
         queryFn: async () => {
@@ -16,11 +16,7 @@ export default function CategoryMain({isMobile}) {
 
     if (isLoading) return <p>Loading categories...</p>;
     if (error) return <p>Error loading categories.</p>;
-    //checksize
-    let colItem = 6;
-    if(isMobile == true) {
-         colItem = 2;
-    }
+
     //data icon
     let dataIcom = [
         // Laptop
@@ -76,13 +72,14 @@ export default function CategoryMain({isMobile}) {
             <path fill="#60A5FA" d="M0 96C0 60.7 28.7 32 64 32h512c35.3 0 64 28.7 64 64v224c0 35.3-28.7 64-64 64H384v64h80c17.7 0 32 14.3 32 32s-14.3 32-32 32H176c-17.7 0-32-14.3-32-32s14.3-32 32-32h80v-64H64c-35.3 0-64-28.7-64-64V96z" />
         </svg>,
     ];
+    //checksize
+    const gridClass = isMobile ? "grid-cols-2" : "grid-cols-6";
 
-    console.log(productCategoryMain);
 
     return (
         <div className="p-4">
             <h1 className="font-semibold text-red-500 text-lg mb-4">Danh mục sản phẩm</h1>
-            <div className={`grid grid-cols-${colItem}  gap-4`}>
+            <div className={`grid ${gridClass}  gap-4`}>
                 {productCategoryMain.data &&
                     productCategoryMain.data.map((category, index) => (
                         <div
@@ -91,7 +88,7 @@ export default function CategoryMain({isMobile}) {
                         >
                             <div className="text-2xl text-blue-700">{dataIcom[index]}</div>
                             <span className="text-gray-800 font-medium">
-                                <Link href={"category/"+category.category_desc.friendly_url}>
+                                <Link href={`${category.category_desc.friendly_url}-danh-muc`}>
                                     <h1 className="">{category.category_desc.cat_name} </h1>
                                 </Link>
                             </span>

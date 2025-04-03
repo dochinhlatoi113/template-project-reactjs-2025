@@ -1,7 +1,28 @@
 import "tailwindcss";
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-
+import { Menu, MenuButton, MenuHeading, MenuItem, MenuItems, MenuSection, MenuSeparator } from '@headlessui/react'
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+//api file
+import { API_CATEGORY_MENU } from "@/api/api-file";
 export default function Header() {
+    const { isPending, isError, data: dataMenu, error } = useQuery({
+        queryKey: ['menu'],
+        queryFn: async () => {
+            const response = await fetch(API_CATEGORY_MENU)
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            return response.json();
+        },
+    })
+    console.log(dataMenu)
+    if (isPending) {
+        return <span>Loading...</span>
+    }
+
+    if (isError) {
+        return <span>Error: {error.message}</span>
+    }
     return (
         <div>
             <div className="bg-[#1435c3] text-white py-1 shadow-md">
@@ -73,43 +94,43 @@ export default function Header() {
 
                                 <MenuItems
                                     transition
-                                    className="absolute right-0 z-10 mt-4 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                    className="absolute m-1px right-0 z-10 mt-4 w-56 origin-top-right  bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                                 >
                                     <div className="py-4">
-                                        <MenuItem>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                                            >
-                                                Account settings
-                                            </a>
-                                        </MenuItem>
-                                        <MenuItem>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                                            >
-                                                Support
-                                            </a>
-                                        </MenuItem>
-                                        <MenuItem>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                                            >
-                                                License
-                                            </a>
-                                        </MenuItem>
-                                        <form action="#" method="POST">
-                                            <MenuItem>
-                                                <button
-                                                    type="submit"
-                                                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                                                >
-                                                    Sign out
-                                                </button>
-                                            </MenuItem>
-                                        </form>
+                                        {dataMenu && dataMenu.data.map((item, index) => (
+                                            <div key={index}>
+                                                <MenuItem key={index}>
+                                                    <div className=" group flex items-center">
+                                                        <div className="bg-white px-4 py-2 text-sm text-gray-700 cursor-pointer font-semibold">
+                                                            <Link href={`${item.menu_desc.link}-danh-muc`}>
+                                                                {item.menu_desc.title}
+                                                            </Link>
+                                                        </div>
+                                                        <div className="absolute p-4 left-full top-0  h-[100%] bg-white  flex  w-[60vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
+                                                            {item.parenty?.map((r) => (
+                                                                <div
+                                                                    className="px-4 py-2 text-sm text-gray-700 cursor-pointer text-black  transition-all duration-200"
+                                                                    key={r.menu_id}
+                                                                >
+                                                                    <Link href={`${r.menu_desc.link}-danh-muc`}>
+                                                                        <span className=" hover:text-red-500 font-bold ">{r.menu_desc.title} </span>
+                                                                    </Link>
+                                                                    <div className="pt-2">
+                                                                        {r.parentx.map((x, i) => (
+                                                                            <div key={i} className="pt-2">
+                                                                                <Link href={`${x.menu_desc.link}-danh-muc`}>
+                                                                                    <span className=" hover:text-blue-500">{x.menu_desc.title}</span>
+                                                                                </Link>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </MenuItem>
+                                            </div>
+                                        ))}
                                     </div>
                                 </MenuItems>
                             </Menu>

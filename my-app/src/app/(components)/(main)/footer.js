@@ -5,19 +5,17 @@
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
 export default function ResponsiveFooter() {
     let isMobile = useCheckSize();
-    let colItem = 4;
-    if(isMobile == true) {
-         colItem = 2;
-    }
+    const gridClass = isMobile ? "grid-cols-2" : "grid-cols-4";
+
     return (
         <div className="main-footer p-4 bg-[#1435c3] text-white">
-            <div className={`container  grid grid-cols-${colItem} gap-4  mx-auto max-w-[1300px]`}>
+            <div className={`container  grid ${gridClass} gap-4  mx-auto max-w-[1300px]`}>
                 <div className="main-footer-customer">
                     <label>
                         Hỗ trợ Khách hàng
                     </label>
                     <div className="pt-2 text-[15px]">
-                        <p>Thành viên</p>
+                        <p>Thành viên</p> 
                         <p>Hướng dẫn mua hàng</p>
                         <p>Chính sách trả góp</p>
                         <p>Dịch vụ sửa chữa</p>

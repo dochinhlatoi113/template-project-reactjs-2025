@@ -20,13 +20,8 @@ export default function News({ isMobile }) {
     if (errorDataNews) return <p>Error: {errorDataNews.message}</p>;
 
     //check reponsive
-    let colItem = "";
+    const gridClass = isMobile ? "grid-cols-2" : "grid-cols-5";
 
-    if (isMobile == true) {
-        colItem = 2;
-    } else {
-        colItem = 4;
-    }
 
     return (
         <div>
@@ -40,7 +35,7 @@ export default function News({ isMobile }) {
             >
                 <span className="title-news">Báo chí nói gì về chúng tôi</span>
             </div>
-            <div className={`p-4 grid grid-cols-${colItem}  gap-4`}>
+            <div className={`p-4 grid ${gridClass}  gap-4`}>
                 {dataNews.news && dataNews.news.map((x, index) => (
                     <div key={index} className="border border-[#c0c0c8] grid place-items-center">
                         <img className="max-w-[90%] max-h-full" src={API_MEDIA_PICTURE + x.picture} />

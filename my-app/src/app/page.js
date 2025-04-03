@@ -85,7 +85,7 @@ export default function home() {
                   <MainProduct
                     title_category={items.category_desc.cat_name}
                     data_slug={items.category_desc.friendly_url}
-                    // data_link={items.link}
+                    data_link=""
                     data_product={items.product_child}
                   />
                 </div>

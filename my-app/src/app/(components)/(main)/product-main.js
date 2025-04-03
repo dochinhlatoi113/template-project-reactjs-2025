@@ -1,10 +1,8 @@
 'use client'
 import ProductCardMain from "./product-card-main";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function MainProduct({ title_category, data_product, data_link = null, data_slug = null }) {
-    const router = useRouter();
     return (
         <div>
             <div className="p-4 flex justify-between">
@@ -22,6 +20,7 @@ export default function MainProduct({ title_category, data_product, data_link = 
                                 price_item_product={item.PriceSAP}
                                 description_item_product = {item.TenHH}
                                 image_item_product={item.price_list.map((i)=>(i.picture))}
+                                slug_item_product = {item.product_desc.friendly_url}
                             />
                         </div>
                     ))}
