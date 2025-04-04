@@ -9,6 +9,7 @@ const API_CATEGORY_MENU = "https://api.vitinhnguyenkim.com.vn/api/member/categor
 //category page
 const API_CATEGORY_OPTION = "https://api.vitinhnguyenkim.com.vn/api/member/category-option?key="
 const API_CATEGORY_PAGE = "https://api.vitinhnguyenkim.com.vn/api/member/filter-category?keySlugCate="
+
 export  {
     API_CATEGORIES,
     API_PRODUCT_DETAIL,
