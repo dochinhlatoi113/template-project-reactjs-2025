@@ -16,6 +16,8 @@ export default function CategoryPage({ params }) {
     const [priceBarColor, setPriceBarColor] = useState('100%')
     const [catId, setCatId] = useState("");
     const [page, setPage] = useState(1)
+    const [sortPrice, setSortPrice] = useState('desc')
+
     const handleMinChange = (e) => {
         setZIndexLeft(1);
         setZIndexRight(0)
@@ -38,9 +40,9 @@ export default function CategoryPage({ params }) {
     //api
     //api category page
     const { data: dataCategoryPage, isLoading, error } = useQuery({
-        queryKey: ['slug-category', slug, page],
+        queryKey: ['slug-category', slug, page,sortPrice],
         queryFn: async () => {
-            const response = await fetch(API_CATEGORY_PAGE + slug + `&params={}&page=${page}&sort=desc`);
+            const response = await fetch(API_CATEGORY_PAGE + slug + `&params={}&page=${page}&sort=${sortPrice}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -76,7 +78,13 @@ export default function CategoryPage({ params }) {
     let myPagintion = (pageNumber) => {
         setPage(pageNumber)
     };
-    console.log(page)
+
+    // sort price
+    let mySortPrice = (valueSortPrice) => {
+        setSortPrice(valueSortPrice)
+    }
+
+
     return (
         <div className="container mx-auto max-w-[1300px] pt-[7%]  flex flex-col">
             <div className="flex items-end gap-x-2 justify-between">
@@ -147,10 +155,16 @@ export default function CategoryPage({ params }) {
 
                 {/* Nội dung chính */}
                 <div className="col-span-10 bg-white p-4 text-black">
-                    <div>
-                        filter
+                    <div className="flex gap-2 items-center">
+                        <label>Sắp xếp theo giá :</label>
+                        <button className="btn " onClick={()=>{mySortPrice('DESC')}}>
+                            Giá Tăng
+                        </button>
+                        <button className="btn " onClick={()=>{mySortPrice('ASC')}}>
+                            Giá Giảm
+                        </button>
                     </div>
-                    <div className={`text-black grid ${gridClass} gap-2 category-page-main-product`}>
+                    <div className={`text-black grid ${gridClass} pt-2 gap-2 category-page-main-product`}>
                         {dataCategoryPage && dataCategoryPage.products.map((items, index) => (
                             <div key={index} className="h-[100%]">
                                 <ProductCardMain
