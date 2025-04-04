@@ -5,4 +5,4 @@ export default function DetailProduct() {
             <h1 className="text-red-600">"hello product"</h1>
         </div>
     )
-}
+} 

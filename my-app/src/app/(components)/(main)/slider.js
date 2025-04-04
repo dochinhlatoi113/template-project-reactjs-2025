@@ -32,7 +32,7 @@ export default function Slider() {
             {/* Nút Previous */}
             <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black"
+                className="absolute top-1/2 left-4 transform -translate-y-1/2  text-white p-2 rounded-full hover:bg-black"
             >
                 &#9664;
             </button>
@@ -40,7 +40,7 @@ export default function Slider() {
             {/* Nút Next */}
             <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black"
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white p-2 rounded-full hover:bg-black"
             >
                 &#9654;
             </button>
