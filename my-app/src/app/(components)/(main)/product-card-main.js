@@ -2,7 +2,14 @@ import Link from "next/link";
 import useFormatPrice from "@/app/(heper)/format-price";
 
 import { IMAGE_FAILED, API_MEDIA_PICTURE } from "@/api/api-file";
-export default function ProductCardMain({ title_item_product, price_item_product, description_item_product, image_item_product, slug_item_product }) {
+export default function ProductCardMain({
+    title_item_product, 
+    price_item_product, 
+    description_item_product, 
+    image_item_product, 
+    slug_item_product,
+    brand_item_product
+}) {
     const formattedPrice = useFormatPrice(price_item_product);
     let imgSrc = IMAGE_FAILED
     if (image_item_product != "") {
@@ -23,7 +30,10 @@ export default function ProductCardMain({ title_item_product, price_item_product
                         {title_item_product}
                     </Link>
                 </h1>
-                <div className="badge badge-secondary">NEW</div>
+                <div className="flex items-center justify-between">
+                    <div className="badge badge-secondary">NEW</div>
+                    <div className="badge badge-primary">{brand_item_product ?? "updating"}</div>
+                </div>
                 <p className="description-product">{description_item_product ?? "updating..."}</p>
                 <div>
                     {formattedPrice}
