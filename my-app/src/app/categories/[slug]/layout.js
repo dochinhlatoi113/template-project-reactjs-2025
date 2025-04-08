@@ -25,6 +25,8 @@ export default function layout({ children, params }) {
     const [catParentName, setCatParentName] = useState()
     const [sortPrice, setSortPrice] = useState('desc')
     const [catParentId, setCatParentId] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+
     // sort price
     let mySortPrice = (valueSortPrice) => {
         setSortPrice(valueSortPrice)
@@ -83,6 +85,7 @@ export default function layout({ children, params }) {
             </div>
             <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category`}>
                 {/* Sidebar */}
+                {/* End Hamburger Button (Mobile only) */}
                 <div className="col-span-2 bg-white text-black p-4 side-bar">
                     <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
                 </div>
@@ -96,6 +99,26 @@ export default function layout({ children, params }) {
                             Giá Giảm
                         </button>
                     </div>
+                    {/* Hamburger Button (Mobile only) */}
+                    <div className="md:hidden p-4">
+                        <label>Bộ lọc:</label>
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-black border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                    {/*end Hamburger Button (Mobile only) */}
+
                     <div className="filter">
                         <label>Lọc</label>
                         <FilterOption catParentId={catParentId}></FilterOption>

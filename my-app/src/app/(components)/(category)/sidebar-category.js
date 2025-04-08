@@ -14,6 +14,8 @@ export default function SidebarCategory({ catParentId, catParentName }) {
                 <label>Thương hiệu</label>
                 <BrandCategory catParentId={catParentId} catParentName={catParentName}></BrandCategory>
             </div>
+
+            
         </div>
     )
 }
