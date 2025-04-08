@@ -1,7 +1,73 @@
+'use client'
+import Link from "next/link";
+import { use, useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+//api
+import { API_CATEGORY_PAGE, API_CATEGORY_OPTION } from "@/api/api-file";
+
+//component
 import RangePriceCategory from "@/app/(components)/(category)/range-price";
 import BrandCategory from "@/app/(components)/(category)/brand";
-import Link from "next/link";
-export default function layout({ children, dataCategoryPageFilter, dataCategoryPage, slug }) {
+import SidebarCategory from "@/app/(components)/(category)/sidebar-category";
+import CategoryPageProduct from "./page";
+//api 
+
+
+export default function layout({ children, params }) {
+
+    const unwrappedParams = use(params);
+    const [slug, setSlug] = useState(unwrappedParams.slug);
+
+    const [catId, setCatId] = useState("");
+    const [page, setPage] = useState(1)
+    const [sortPrice, setSortPrice] = useState('desc')
+
+
+    //api
+    //api category page
+    const { data: dataCategoryPage, isLoading, error } = useQuery({
+        queryKey: ['slug-category', slug, page, sortPrice],
+        queryFn: async () => {
+            const response = await fetch(API_CATEGORY_PAGE + slug + `&params={}&page=${page}&sort=${sortPrice}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        },
+    });
+    useEffect(() => {
+        if (dataCategoryPage) {
+            setCatId(dataCategoryPage.catname.cat_id)
+        }
+    }, [dataCategoryPage]);
+    //api category filter option
+
+    const { data: dataCategoryPageFilter, isLoadingFilter, errorFilter } = useQuery({
+        queryKey: ['slug-category-filter', catId],
+        queryFn: async () => {
+            const response = await fetch(API_CATEGORY_OPTION + catId);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        },
+    });
+
+    //pagination page 
+    const totalItem = dataCategoryPage?.totalProductForFilter
+    const itemInpage = 20
+    const totalPages = Math.ceil(totalItem / itemInpage);
+
+    let myPagintion = (pageNumber) => {
+        setPage(pageNumber)
+    };
+
+    // sort price
+    let mySortPrice = (valueSortPrice) => {
+        setSortPrice(valueSortPrice)
+    }
+
     return (
         <div className="container mx-auto max-w-[1300px] pt-[7%]  flex flex-col">
             <div className="flex items-end gap-x-2 justify-between">
@@ -19,24 +85,25 @@ export default function layout({ children, dataCategoryPageFilter, dataCategoryP
                         <span className="text-xl italic font-extrabold">
                             {dataCategoryPage?.totalProductForFilter}
                         </span>{" "}
-                        sản phẩm 
+                        sản phẩm
                     </span>
                 </div>
             </div>
             <div className="grid grid-cols-12 h-full gap-4 pt-4 flex-1">
                 {/* Sidebar */}
                 <div className="col-span-2 bg-white text-black p-4">
-                    {/** range price */}
-                    <RangePriceCategory></RangePriceCategory>
-                    {/** brand */}
-                    <div>
-                        <label>Thương hiệu</label>
-                        <BrandCategory dataBrand={dataCategoryPageFilter?.list} dataCategorySlug={slug}></BrandCategory>
-                    </div>
+                    <SidebarCategory></SidebarCategory>
                 </div>
 
                 <div className="col-span-10 bg-white p-4 text-black">
-                     {children}
+                    <CategoryPageProduct dataCategoryPage={dataCategoryPage}></CategoryPageProduct>
+                    <div className="join pt-4 grid grid-cols-30 gap-1">
+                        {Array.from({ length: totalPages }, (_, itemPaginate) => (
+                            <button key={itemPaginate} className={`${page == itemPaginate ? "bg-blue-500 text-white" : ""} join-item btn`} onClick={() => myPagintion(itemPaginate + 1)} >
+                                {itemPaginate + 1}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

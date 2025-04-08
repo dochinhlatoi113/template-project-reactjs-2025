@@ -3,18 +3,20 @@ import useFormatPrice from "@/app/(heper)/format-price";
 
 import { IMAGE_FAILED, API_MEDIA_PICTURE } from "@/api/api-file";
 export default function ProductCardMain({
-    title_item_product, 
-    price_item_product, 
-    description_item_product, 
-    image_item_product, 
+    title_item_product,
+    price_item_product,
+    description_item_product,
+    image_item_product,
     slug_item_product,
     brand_item_product
 }) {
-    const formattedPrice = useFormatPrice(price_item_product);
+    const formattedPrice = useFormatPrice(price_item_product)
+
     let imgSrc = IMAGE_FAILED
     if (image_item_product != "") {
         imgSrc = API_MEDIA_PICTURE + image_item_product;
     }
+
     return (
         <div className="card bg-base-100 w-full h-full object-contain shadow-sm">
             <div>
@@ -31,21 +33,34 @@ export default function ProductCardMain({
                     </Link>
                 </h1>
                 <div className="flex items-center justify-between">
-                    <div className="badge badge-secondary">NEW</div>
+
+                    {price_item_product == 0 && (
+                        <div className="badge badge-secondary">
+                            NEW
+                        </div>
+
+                    )}
                     <div className="badge badge-primary">{brand_item_product ?? "updating"}</div>
                 </div>
                 <p className="description-product">{description_item_product ?? "updating..."}</p>
-                <div>
-                    {formattedPrice}
-                </div>
-                <div className="grid grid-cols-2 gap-1 product-card-main-hot">
-                    <div className="card-actions">
-                        <button className="btn btn-accent text-white w-full text-xs">Buy Now</button>
+                <div>{formattedPrice}</div>
+
+                {price_item_product != 0 && (
+                    <div className="grid grid-cols-2 gap-1 product-card-main-hot">
+                        <div className="card-actions">
+                            <button className="btn btn-accent text-white w-full text-xs">Buy Now</button>
+                        </div>
+                        <div className="card-actions">
+                            <button className="btn btn-secondary text-white w-full">Add To Cart</button>
+                        </div>
                     </div>
+                )}
+
+                {price_item_product == 0 && (
                     <div className="card-actions">
-                        <button className="btn btn-secondary text-white w-full">Add To Cart</button>
+                        <button className="btn btn-warning text-white w-full text-xs">Liên hệ</button>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     )
