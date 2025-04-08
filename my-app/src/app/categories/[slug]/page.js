@@ -17,8 +17,7 @@ export default function CategoryPageProduct({ dataCategoryPageList }) {
 
   
     return (
-        <div className="">
-          
+        <div className="">       
             <div className={`text-black grid ${gridClass} pt-4 gap-2 category-page-main-product`}>
                 {dataCategoryPageList && dataCategoryPageList.products.map((items, index) => (
                     <div key={index} className="h-[100%]">

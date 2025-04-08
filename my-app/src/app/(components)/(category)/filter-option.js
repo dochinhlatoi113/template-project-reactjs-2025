@@ -11,7 +11,7 @@ export default function FilterOption({ catParentId }) {
     });
     console.log(cachedData)
     return (
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-5 gap-2 pt-8">
             {cachedData && cachedData.options.map((items, index) => (
                 <Menu as="div" key={index} className="relative inline-block text-left">
                     <div>
