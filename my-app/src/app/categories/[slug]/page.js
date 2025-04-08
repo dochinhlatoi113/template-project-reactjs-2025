@@ -8,26 +8,19 @@ import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import ProductCardMain from "@/app/(components)/(main)/product-card-main";
 
 
-export default function CategoryPageProduct({ dataCategoryPage  }) {
+export default function CategoryPageProduct({ dataCategoryPageList }) {
     
-   
+
     //check size
     let isMobile = useCheckSize();
     const gridClass = isMobile ? "grid-cols-2" : "grid-cols-5";
 
+  
     return (
         <div className="">
-            <div className="flex gap-2 items-center">
-                <label>Sắp xếp theo giá :</label>
-                <button className="btn " onClick={() => { mySortPrice('DESC') }}>
-                    Giá Tăng
-                </button>
-                <button className="btn " onClick={() => { mySortPrice('ASC') }}>
-                    Giá Giảm
-                </button>
-            </div>
-            <div className={`text-black grid ${gridClass} pt-2 gap-2 category-page-main-product`}>
-                {dataCategoryPage && dataCategoryPage.products.map((items, index) => (
+          
+            <div className={`text-black grid ${gridClass} pt-4 gap-2 category-page-main-product`}>
+                {dataCategoryPageList && dataCategoryPageList.products.map((items, index) => (
                     <div key={index} className="h-[100%]">
                         <ProductCardMain
                             title_item_product={items.productName}
@@ -40,7 +33,7 @@ export default function CategoryPageProduct({ dataCategoryPage  }) {
                     </div>
                 ))}
             </div>
-       
+
         </div>
     );
 }

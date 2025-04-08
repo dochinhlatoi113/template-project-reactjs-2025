@@ -8,9 +8,9 @@ import { API_CATEGORY_PAGE, API_CATEGORY_OPTION } from "@/api/api-file";
 
 //component
 import RangePriceCategory from "@/app/(components)/(category)/range-price";
-import BrandCategory from "@/app/(components)/(category)/brand";
 import SidebarCategory from "@/app/(components)/(category)/sidebar-category";
 import CategoryPageProduct from "./page";
+import FilterOption from "@/app/(components)/(category)/filter-option";
 //api 
 
 
@@ -20,10 +20,14 @@ export default function layout({ children, params }) {
     const [slug, setSlug] = useState(unwrappedParams.slug);
 
     const [catId, setCatId] = useState("");
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(0)
+    const [catParentName, setCatParentName] = useState()
     const [sortPrice, setSortPrice] = useState('desc')
-
-
+    const [catParentId, setCatParentId] = useState("");
+    // sort price
+    let mySortPrice = (valueSortPrice) => {
+        setSortPrice(valueSortPrice)
+    }
     //api
     //api category page
     const { data: dataCategoryPage, isLoading, error } = useQuery({
@@ -39,21 +43,10 @@ export default function layout({ children, params }) {
     useEffect(() => {
         if (dataCategoryPage) {
             setCatId(dataCategoryPage.catname.cat_id)
+            setCatParentName(dataCategoryPage.dataListParent[1].friendly_url)
+            setCatParentId(dataCategoryPage.dataListParent[1].cat_id)
         }
     }, [dataCategoryPage]);
-    //api category filter option
-
-    const { data: dataCategoryPageFilter, isLoadingFilter, errorFilter } = useQuery({
-        queryKey: ['slug-category-filter', catId],
-        queryFn: async () => {
-            const response = await fetch(API_CATEGORY_OPTION + catId);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        },
-    });
-
     //pagination page 
     const totalItem = dataCategoryPage?.totalProductForFilter
     const itemInpage = 20
@@ -62,12 +55,6 @@ export default function layout({ children, params }) {
     let myPagintion = (pageNumber) => {
         setPage(pageNumber)
     };
-
-    // sort price
-    let mySortPrice = (valueSortPrice) => {
-        setSortPrice(valueSortPrice)
-    }
-
     return (
         <div className="container mx-auto max-w-[1300px] pt-[7%]  flex flex-col">
             <div className="flex items-end gap-x-2 justify-between">
@@ -92,14 +79,26 @@ export default function layout({ children, params }) {
             <div className="grid grid-cols-12 h-full gap-4 pt-4 flex-1">
                 {/* Sidebar */}
                 <div className="col-span-2 bg-white text-black p-4">
-                    <SidebarCategory></SidebarCategory>
+                    <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
                 </div>
-
                 <div className="col-span-10 bg-white p-4 text-black">
-                    <CategoryPageProduct dataCategoryPage={dataCategoryPage}></CategoryPageProduct>
+                    <div className="flex gap-2 items-center">
+                        <label>Sắp xếp theo giá :</label>
+                        <button className="btn " onClick={() => { mySortPrice('DESC') }}>
+                            Giá Tăng
+                        </button>
+                        <button className="btn " onClick={() => { mySortPrice('ASC') }}>
+                            Giá Giảm
+                        </button>
+                    </div>
+                    <div className="">
+                        <label>Lọc</label>
+                        <FilterOption catParentId={catParentId}></FilterOption>
+                    </div>
+                    <CategoryPageProduct dataCategoryPageList={dataCategoryPage}></CategoryPageProduct>
                     <div className="join pt-4 grid grid-cols-30 gap-1">
                         {Array.from({ length: totalPages }, (_, itemPaginate) => (
-                            <button key={itemPaginate} className={`${page == itemPaginate ? "bg-blue-500 text-white" : ""} join-item btn`} onClick={() => myPagintion(itemPaginate + 1)} >
+                            <button key={itemPaginate} className={`${page == itemPaginate ? "bg-blue-500 text-white" : ""} join-item btn`} onClick={() => myPagintion(itemPaginate)} >
                                 {itemPaginate + 1}
                             </button>
                         ))}

@@ -43,8 +43,9 @@ export default function ProductCardMain({
                     <div className="badge badge-primary">{brand_item_product ?? "updating"}</div>
                 </div>
                 <p className="description-product">{description_item_product ?? "updating..."}</p>
-                <div>{formattedPrice}</div>
-
+                {price_item_product != 0 &&
+                    <div>{formattedPrice}</div>
+                }
                 {price_item_product != 0 && (
                     <div className="grid grid-cols-2 gap-1 product-card-main-hot">
                         <div className="card-actions">
