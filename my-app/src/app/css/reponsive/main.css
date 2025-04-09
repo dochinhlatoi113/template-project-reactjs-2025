@@ -142,28 +142,30 @@ product-main
   .side-bar {
     display: none;
   }
-  .filter{
+
+  .filter {
     display: none;
   }
- .item-box{
- height: 200px;
- overflow-x: auto;
- }
+
+  .item-box {
+    height: 200px;
+    overflow-x: auto;
+  }
 
   .btn-item-filter {
     white-space: nowrap;
-    flex: 0 0 auto; 
-  
-  } 
-  
- .filter-item-selected{
-  width: 100%;
- }
+    flex: 0 0 auto;
+
+  }
+
+  .filter-item-selected {
+    width: 100%;
+  }
 
   .title-main-category {
     flex-direction: column;
     align-items: start;
-    padding-left:10px;
+    padding-left: 10px;
   }
 
   /** footer*/

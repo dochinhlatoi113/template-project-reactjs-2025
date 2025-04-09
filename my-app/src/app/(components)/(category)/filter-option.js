@@ -15,7 +15,7 @@ export default function FilterOption({ catParentId }) {
 
     const containerClass = isMobile
         ? "grid grid-cols-2 gap-2 pt-2 overflow-y-auto"
-        : `grid grid-cols-6 gap-2 pt-2`;
+        : `grid grid-cols-5 gap-1 pt-2`;
     return (
         <div className={containerClass}>
             {cachedData && cachedData.options.map((items, index) => (
