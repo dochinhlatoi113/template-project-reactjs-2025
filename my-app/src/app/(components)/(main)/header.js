@@ -77,7 +77,9 @@ export default function Header() {
                 <nav>
                     <ul className="flex space-x-5">
                         <li className="flex items-center space-x-2 hover:text-gray-300">
-                            <img src="/logo.png" alt="Logo" className="w-12 h-12 bg-[#1435c3]"></img>
+                            <Link href="/">
+                                <img src="/logo.png" alt="Logo" className="w-12 h-12 bg-[#1435c3] cursor-pointer" />
+                            </Link>
                         </li>
                         <li className="flex items-center space-x-2 hover:text-gray-300">
                             <Menu as="div" className="relative inline-block text-left">

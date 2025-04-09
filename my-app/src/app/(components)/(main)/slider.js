@@ -25,7 +25,7 @@ export default function Slider() {
                 <img
                     src={images[currentIndex]}
                     alt={`Slide ${currentIndex + 1}`}
-                    className="w-full h-150 object-cover silder-main-image"
+                    className="w-full h-150 object-contain silder-main-image"
                 />
             </div>
 
