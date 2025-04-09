@@ -17,7 +17,7 @@ export default function BrandCategory({ catParentId, catParentName }) {
     
     return (
         <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 pt-4">
-            {listData && listData.list.map((items, index) => (
+            {listData && listData.list?.map((items, index) => (
                 items.brand_desc && (
                     <div key={index} className="bg-white shadow-md overflow-hidden hover:shadow-lg transition">
                         <Link

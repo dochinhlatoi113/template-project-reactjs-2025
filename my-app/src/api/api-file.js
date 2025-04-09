@@ -13,7 +13,7 @@ const API_CATEGORY_PAGE = "https://api.vitinhnguyenkim.com.vn/api/member/filter-
 export  {
     API_CATEGORIES,
     API_PRODUCT_DETAIL,
-    API_PRODUCT_HOT,
+    API_PRODUCT_HOT, 
     API_MEDIA_PICTURE,
     IMAGE_FAILED,
     API_CATEGORY_PRODUCT_MAIN_PAGE,

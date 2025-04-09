@@ -1,7 +1,8 @@
 'use client'
 import Link from "next/link";
-import { use, useState, useEffect } from "react";
+import { use, useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from 'next/navigation';
 
 //api
 import { API_CATEGORY_PAGE, API_CATEGORY_OPTION } from "@/api/api-file";
@@ -31,12 +32,55 @@ export default function layout({ children, params }) {
     let mySortPrice = (valueSortPrice) => {
         setSortPrice(valueSortPrice)
     }
+    //search param
+    const searchParamsHook = useSearchParams();
+    let searchParams = {};
+    if(searchParamsHook.size >=1) {
+        searchParams = [];
+        const searchParamsData = useMemo(() => {
+            return Object.fromEntries(searchParamsHook.entries());
+        }, [searchParamsHook]);
+        const { data: cachedData } = useQuery({
+            queryKey: ['brand-parent', catParentId],
+            queryFn: () => { },
+            enabled: false,
+        });
+    
+        let matchedOptions = [];
+        let valueSearchArray = [];
+        for (let key of Object.keys(searchParamsData)) {
+            const found = cachedData?.options.find((x) => x.slug === key);
+            const valueSearch = searchParamsData[key];
+            if (found) {
+                matchedOptions.push(found);
+                valueSearchArray.push(valueSearch)
+            }
+        }
+    
+       
+        valueSearchArray.map((i, index) => {
+            matchedOptions[index].propertiesValue.map((v) => {
+                if (v.slug === i) {
+                    searchParams.push({
+                        "id": v.id,
+                        "properties_id": v.properties_id,
+                        "name": v.name,
+                        "slug": v.slug,
+                        "categoryName": matchedOptions[index].slug
+                    })
+                }
+            })
+        });
+    } 
+    
     //api
     //api category page
+
     const { data: dataCategoryPage, isLoading, error } = useQuery({
-        queryKey: ['slug-category', slug, page, sortPrice],
+        queryKey: ['slug-category', slug, page, sortPrice, searchParams],
         queryFn: async () => {
-            const response = await fetch(API_CATEGORY_PAGE + slug + `&params={}&page=${page}&sort=${sortPrice}`);
+            const paramsEncoded = encodeURIComponent(JSON.stringify(searchParams));
+            const response = await fetch(API_CATEGORY_PAGE + slug + `&params=${paramsEncoded}&page=${page}&sort=${sortPrice}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -45,9 +89,9 @@ export default function layout({ children, params }) {
     });
     useEffect(() => {
         if (dataCategoryPage) {
-            setCatId(dataCategoryPage.catname.cat_id)
-            setCatParentName(dataCategoryPage.dataListParent[1].friendly_url)
-            setCatParentId(dataCategoryPage.dataListParent[1].cat_id)
+            setCatId(dataCategoryPage.catname?.cat_id)
+            setCatParentName(dataCategoryPage.dataListParent?.[1].friendly_url)
+            setCatParentId(dataCategoryPage.dataListParent?.[1].cat_id)
         }
     }, [dataCategoryPage]);
     //pagination page 
@@ -84,7 +128,7 @@ export default function layout({ children, params }) {
                 </div>
             </div>
             <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category overflow-hidden`}>
-            {/* Sidebar */}
+                {/* Sidebar */}
                 {/* End Hamburger Button (Mobile only) */}
                 <div className="col-span-2 bg-white text-black p-4 side-bar">
                     <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
