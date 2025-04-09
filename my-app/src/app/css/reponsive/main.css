@@ -1,7 +1,7 @@
 /* Mobile (dưới 768px) */
 @media (max-width: 767px) {
   button {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   /**
@@ -138,19 +138,27 @@ product-main
   /**
    sidebar
   */
+
   .side-bar {
     display: none;
   }
-
-  .filter-box {
-   width: 10px;
-   height: 10px;
-  }
-
-  /* .filter{
+  .filter{
     display: none;
   }
-  */
+ .item-box{
+ height: 200px;
+ overflow-x: auto;
+ }
+
+  .btn-item-filter {
+    white-space: nowrap;
+    flex: 0 0 auto; 
+  
+  } 
+  
+ .filter-item-selected{
+  width: 100%;
+ }
 
   .title-main-category {
     flex-direction: column;

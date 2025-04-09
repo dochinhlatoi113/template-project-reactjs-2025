@@ -12,15 +12,16 @@ export default function FilterOption({ catParentId }) {
 
     //checksize
     let isMobile = useCheckSize()
-    const gridClass = isMobile ? "grid-cols-2" : "grid-cols-6";
-    const paddingTop = isMobile ? "pt-2" : "pt-8";
-    return (
 
-        <div className={`grid ${gridClass} gap-2 ${paddingTop} `}>
+    const containerClass = isMobile
+        ? "grid grid-cols-2 gap-2 pt-2 overflow-y-auto"
+        : `grid grid-cols-6 gap-2 pt-2`;
+    return (
+        <div className={containerClass}>
             {cachedData && cachedData.options.map((items, index) => (
-                <Menu as="div" key={index} className="relative inline-block text-left">
+                <Menu as="div" key={index}  className="relative inline-block text-left">
                     <div>
-                        <MenuButton className="items-center inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
+                        <MenuButton className="btn-item-filter  items-center inline-flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
                             {items.title}
                             <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
                         </MenuButton>
@@ -28,7 +29,7 @@ export default function FilterOption({ catParentId }) {
 
                     <MenuItems
                         transition
-                        className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                        className="absolute right-0 z-10 mt-2 filter-item-selected w-56 origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                     >
                         <div className="py-1 max-h-[200px] overflow-y-auto">
                             {items.propertiesValue && items.propertiesValue.map((item, index) => (

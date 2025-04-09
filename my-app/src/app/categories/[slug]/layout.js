@@ -83,8 +83,8 @@ export default function layout({ children, params }) {
                     </span>
                 </div>
             </div>
-            <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category`}>
-                {/* Sidebar */}
+            <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category overflow-hidden`}>
+            {/* Sidebar */}
                 {/* End Hamburger Button (Mobile only) */}
                 <div className="col-span-2 bg-white text-black p-4 side-bar">
                     <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
@@ -99,18 +99,20 @@ export default function layout({ children, params }) {
                             Giá Giảm
                         </button>
                     </div>
-                    <div className="filter md:hidden">
-                        <label>Lọc</label>
-                        <FilterOption catParentId={catParentId}></FilterOption>
+                    <div className="">
+                        <label>Lọc :</label>
+                        <div className="item-box">
+                            <FilterOption catParentId={catParentId}></FilterOption>
+                        </div>
                     </div>
                     <CategoryPageProduct dataCategoryPageList={dataCategoryPage}></CategoryPageProduct>
                     <div className="join pt-4 flex gap-1 overflow-x-auto">
                         {Array.from({ length: totalPages }, (_, i) => i)
                             .filter((pageNum) => {
                                 return (
-                                    pageNum < 3|| 
-                                    pageNum > totalPages - 3 || 
-                                    pageNum === page || pageNum === page + 1 || pageNum === page + 2 
+                                    pageNum < 3 ||
+                                    pageNum > totalPages - 3 ||
+                                    pageNum === page || pageNum === page + 1 || pageNum === page + 2
                                 );
                             })
                             .reduce((acc, current, index, array) => {
