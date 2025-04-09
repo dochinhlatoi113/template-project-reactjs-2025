@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 //api file
 import { API_CATEGORY_MENU } from "@/api/api-file";
+
 export default function Header() {
     const { isPending, isError, data: dataMenu, error } = useQuery({
         queryKey: ['menu'],
@@ -76,7 +77,7 @@ export default function Header() {
                 <nav>
                     <ul className="flex space-x-5">
                         <li className="flex items-center space-x-2 hover:text-gray-300">
-                            <img src="logo.png" className="w-20 h-10"></img>
+                            <img src="/logo.png" alt="Logo" className="w-12 h-12 bg-[#1435c3]"></img>
                         </li>
                         <li className="flex items-center space-x-2 hover:text-gray-300">
                             <Menu as="div" className="relative inline-block text-left">

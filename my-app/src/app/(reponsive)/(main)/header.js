@@ -1,8 +1,9 @@
+
 export default function HeaderReponsive() {
     return (
         <div className="p-1 bg-[#1435c3] ">
             <div className=" flex items-center justify-between">
-                <img src="logo.png" className="w-20 h-15" ></img>
+                <img src="./logo.png" className="w-20 h-15" ></img>
                 <div className="flex items-center text-white">
                     <div className="pr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
