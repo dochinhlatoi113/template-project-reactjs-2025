@@ -99,38 +99,42 @@ export default function layout({ children, params }) {
                             Giá Giảm
                         </button>
                     </div>
-                    {/* Hamburger Button (Mobile only) */}
-                    <div className="md:hidden p-4">
-                        <label>Bộ lọc:</label>
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-black border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            <svg
-                                className="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-                    </div>
-                    {/*end Hamburger Button (Mobile only) */}
-
-                    <div className="filter">
+                    <div className="filter md:hidden">
                         <label>Lọc</label>
                         <FilterOption catParentId={catParentId}></FilterOption>
                     </div>
                     <CategoryPageProduct dataCategoryPageList={dataCategoryPage}></CategoryPageProduct>
-                    <div className="join pt-4 grid grid-cols-30 gap-1">
-                        {Array.from({ length: totalPages }, (_, itemPaginate) => (
-                            <button key={itemPaginate} className={`${page == itemPaginate ? "bg-blue-500 text-white" : ""} join-item btn`} onClick={() => myPagintion(itemPaginate)} >
-                                {itemPaginate + 1}
-                            </button>
-                        ))}
+                    <div className="join pt-4 flex gap-1 overflow-x-auto">
+                        {Array.from({ length: totalPages }, (_, i) => i)
+                            .filter((pageNum) => {
+                                return (
+                                    pageNum < 3|| 
+                                    pageNum > totalPages - 3 || 
+                                    pageNum === page || pageNum === page + 1 || pageNum === page + 2 
+                                );
+                            })
+                            .reduce((acc, current, index, array) => {
+                                if (index > 0 && current - array[index - 1] > 1) {
+                                    acc.push("ellipsis");
+                                }
+                                acc.push(current);
+                                return acc;
+                            }, [])
+                            .map((item, index) =>
+                                item === "ellipsis" ? (
+                                    <span key={`ellipsis-${index}`} className="join-item btn btn-disabled">...</span>
+                                ) : (
+                                    <button
+                                        key={item}
+                                        className={`join-item btn ${page === item ? "bg-blue-500 text-white" : ""}`}
+                                        onClick={() => myPagintion(item)}
+                                    >
+                                        {item + 1}
+                                    </button>
+                                )
+                            )}
                     </div>
+
                 </div>
             </div>
         </div>

@@ -142,11 +142,15 @@ product-main
     display: none;
   }
 
-  .filter {
-    display: none;
+  .filter-box {
+   width: 10px;
+   height: 10px;
   }
 
- 
+  /* .filter{
+    display: none;
+  }
+  */
 
   .title-main-category {
     flex-direction: column;

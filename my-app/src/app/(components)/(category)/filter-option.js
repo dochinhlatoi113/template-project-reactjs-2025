@@ -2,16 +2,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
+import useCheckSize from "@/app/(heper)/reponsive-check-size";
 export default function FilterOption({ catParentId }) {
     const { data: cachedData } = useQuery({
         queryKey: ['brand-parent', catParentId],
         queryFn: () => { },
         enabled: false,
     });
-    console.log(cachedData)
+
+    //checksize
+    let isMobile = useCheckSize()
+    const gridClass = isMobile ? "grid-cols-2" : "grid-cols-6";
+    const paddingTop = isMobile ? "pt-2" : "pt-8";
     return (
-        <div className="grid grid-cols-5 gap-2 pt-8">
+
+        <div className={`grid ${gridClass} gap-2 ${paddingTop} `}>
             {cachedData && cachedData.options.map((items, index) => (
                 <Menu as="div" key={index} className="relative inline-block text-left">
                     <div>
