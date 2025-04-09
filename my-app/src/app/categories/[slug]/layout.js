@@ -35,44 +35,45 @@ export default function layout({ children, params }) {
     //search param
     const searchParamsHook = useSearchParams();
     let searchParams = {};
-    if(searchParamsHook.size >=1) {
+    if (searchParamsHook.size >= 1) {
         searchParams = [];
-        const searchParamsData = useMemo(() => {
-            return Object.fromEntries(searchParamsHook.entries());
-        }, [searchParamsHook]);
-        const { data: cachedData } = useQuery({
-            queryKey: ['brand-parent', catParentId],
-            queryFn: () => { },
-            enabled: false,
-        });
-    
-        let matchedOptions = [];
-        let valueSearchArray = [];
-        for (let key of Object.keys(searchParamsData)) {
-            const found = cachedData?.options.find((x) => x.slug === key);
-            const valueSearch = searchParamsData[key];
-            if (found) {
-                matchedOptions.push(found);
-                valueSearchArray.push(valueSearch)
-            }
+    }
+    const searchParamsData = useMemo(() => {
+        return Object.fromEntries(searchParamsHook.entries());
+    }, [searchParamsHook]);
+    const { data: cachedData } = useQuery({
+        queryKey: ['brand-parent', catParentId],
+        queryFn: () => { },
+        enabled: false,
+    });
+
+    let matchedOptions = [];
+    let valueSearchArray = [];
+    for (let key of Object.keys(searchParamsData)) {
+        const found = cachedData?.options.find((x) => x.slug === key);
+        const valueSearch = searchParamsData[key];
+        if (found) {
+            matchedOptions.push(found);
+            valueSearchArray.push(valueSearch)
         }
-    
-       
-        valueSearchArray.map((i, index) => {
-            matchedOptions[index].propertiesValue.map((v) => {
-                if (v.slug === i) {
-                    searchParams.push({
-                        "id": v.id,
-                        "properties_id": v.properties_id,
-                        "name": v.name,
-                        "slug": v.slug,
-                        "categoryName": matchedOptions[index].slug
-                    })
-                }
-            })
-        });
-    } 
-    
+    }
+
+
+    valueSearchArray.map((i, index) => {
+        matchedOptions[index].propertiesValue.map((v) => {
+            if (v.slug === i) {
+                searchParams.push({
+                    "id": v.id,
+                    "properties_id": v.properties_id,
+                    "name": v.name,
+                    "slug": v.slug,
+                    "categoryName": matchedOptions[index].slug
+                })
+            }
+        })
+    });
+
+
     //api
     //api category page
 
@@ -98,7 +99,6 @@ export default function layout({ children, params }) {
     const totalItem = dataCategoryPage?.totalProductForFilter
     const itemInpage = 20
     const totalPages = Math.ceil(totalItem / itemInpage);
-
     let myPagintion = (pageNumber) => {
         setPage(pageNumber)
     };
@@ -118,13 +118,17 @@ export default function layout({ children, params }) {
                     {'>'} {slug}
                 </div>
                 <div>
-                    <span className="font-bold">
-                        Chúng tôi có hơn{" "}
-                        <span className="text-xl italic font-extrabold">
-                            {dataCategoryPage?.totalProductForFilter}
-                        </span>{" "}
-                        sản phẩm
-                    </span>
+                    {dataCategoryPage?.products?.length !== 0 ? (
+                        <span className="font-bold">
+                            Chúng tôi có hơn{" "}
+                            <span className="text-xl italic font-extrabold">
+                                {dataCategoryPage?.totalProductForFilter}
+                            </span>{" "}
+                            sản phẩm
+                        </span>
+                    ) : (
+                        <span className="text-gray-500 italic">Không có sản phẩm nào</span>
+                    )}
                 </div>
             </div>
             <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category overflow-hidden`}>
@@ -149,7 +153,11 @@ export default function layout({ children, params }) {
                             <FilterOption catParentId={catParentId}></FilterOption>
                         </div>
                     </div>
-                    <CategoryPageProduct dataCategoryPageList={dataCategoryPage}></CategoryPageProduct>
+                    {dataCategoryPage?.products?.length !== 0 ? (
+                        <CategoryPageProduct dataCategoryPageList={dataCategoryPage} />
+                    ) : (
+                        <div>Không có sản phẩm nào</div>
+                    )}
                     <div className="join pt-4 flex gap-1 overflow-x-auto">
                         {Array.from({ length: totalPages }, (_, i) => i)
                             .filter((pageNum) => {
