@@ -46,7 +46,6 @@ export default function layout({ children, params }) {
         queryFn: () => { },
         enabled: false,
     });
-
     let matchedOptions = [];
     let valueSearchArray = [];
     for (let key of Object.keys(searchParamsData)) {
@@ -58,7 +57,6 @@ export default function layout({ children, params }) {
         }
     }
 
-
     valueSearchArray.map((i, index) => {
         matchedOptions[index].propertiesValue.map((v) => {
             if (v.slug === i) {
@@ -67,13 +65,18 @@ export default function layout({ children, params }) {
                     "properties_id": v.properties_id,
                     "name": v.name,
                     "slug": v.slug,
-                    "categoryName": matchedOptions[index].slug
+                    "categoryName": matchedOptions[index].slug,
+                    "titleCategoryFilter": matchedOptions[index].title
                 })
             }
         })
     });
 
-
+    //remove search
+    const handleRemoveSearchParam = (indexToRemove) => {
+         searchParams = searchParams.filter((_, index) => index !== indexToRemove);
+    };
+    
     //api
     //api category page
 
@@ -147,8 +150,29 @@ export default function layout({ children, params }) {
                             Giá Giảm
                         </button>
                     </div>
-                    <div className="">
-                        <label>Lọc :</label>
+                    <div className="pt-4">
+                        <span className="font-bold">Lọc theo nhu cầu : </span>
+                        <div className="flex gap-2 text-sm pt-4">
+                            {searchParams && searchParams.length > 0 &&
+                                searchParams.map((dataSearch, index) => (
+                                    <button
+                                        key={index}
+                                        className="flex items-center bg-gray-200 text-gray-800 text-sm italic px-3 py-1 rounded-full mr-2 mb-2 hover:bg-gray-300"
+                                    >
+                                        <span className="mr-2">
+                                            {(dataSearch.titleCategoryFilter + " : " + dataSearch.name).toLowerCase()}
+                                        </span>
+                                        <span
+                                            className="text-red-500 hover:text-red-700 cursor-pointer"
+                                            onClick={() => handleRemoveSearchParam(index)} 
+                                        >
+                                            &times;
+                                        </span>
+                                    </button>
+                                ))
+                            }
+
+                        </div>
                         <div className="item-box">
                             <FilterOption catParentId={catParentId}></FilterOption>
                         </div>
