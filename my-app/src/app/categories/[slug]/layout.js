@@ -107,8 +107,8 @@ export default function layout({ children, params }) {
     const gridClass = isMobile ? "grid-cols-0" : "grid-cols-12";
     const paddingTop = isMobile ? 'pt-[30%]' : 'pt-[8%]';
     return (
-        <div className={`container mx-auto max-w-[1300px] ${paddingTop}  flex flex-col`}>
-            <div className="flex items-end gap-x-2 justify-between title-main-category">
+        <div className={`container mx-auto max-w-[1300px] ${paddingTop} pb-4 flex flex-col `}>
+            <div className="flex items-end gap-x-2 justify-between  title-main-category">
                 <div className="flex items-end gap-x-2 ">
                     <Link href="/">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
@@ -156,7 +156,7 @@ export default function layout({ children, params }) {
                     {dataCategoryPage?.products?.length !== 0 ? (
                         <CategoryPageProduct dataCategoryPageList={dataCategoryPage} />
                     ) : (
-                        <div>Không có sản phẩm nào</div>
+                        <div className="">Không có sản phẩm nào</div>
                     )}
                     <div className="join pt-4 flex gap-1 overflow-x-auto">
                         {Array.from({ length: totalPages }, (_, i) => i)

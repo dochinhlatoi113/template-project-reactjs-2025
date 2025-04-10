@@ -2,6 +2,7 @@ import Link from "next/link"
 import { useQuery } from "@tanstack/react-query"
 import { API_CATEGORY_OPTION } from "@/api/api-file";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedIndex } from "@/app/redux-toolkit/store/brandSlice";
@@ -21,12 +22,32 @@ export default function BrandCategory({ catParentId, catParentName }) {
     });
     // selected brand
     const router = useRouter();
-
     const dispatch = useDispatch();
     const selectedIndex = useSelector((state) => state.brand.selectedIndex);
-    function selectedIndexBrand(index) {
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const checkSelectedBrand = localStorage.getItem('selectedBrandIndex');
+            if (checkSelectedBrand !== null && !isNaN(checkSelectedBrand)) {
+                dispatch(setSelectedIndex(parseInt(checkSelectedBrand)));
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if (selectedIndex !== null) {
+                localStorage.setItem('selectedBrandIndex', selectedIndex.toString());
+            } else {
+                localStorage.removeItem('selectedBrandIndex');
+            }
+        }
+    }, [selectedIndex]);
+
+    const selectedIndexBrand = (index) => {
         dispatch(setSelectedIndex(index));
-    }
+    };
+
     const handleReset = () => {
         dispatch(setSelectedIndex(null));
         router.push(`/${catParentName}-danh-muc`);
