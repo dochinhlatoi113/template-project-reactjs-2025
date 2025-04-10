@@ -1,8 +1,8 @@
 import Link from "next/link"
 import { useQuery } from "@tanstack/react-query"
 import { API_CATEGORY_OPTION } from "@/api/api-file";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedIndex } from "@/app/redux-toolkit/store/brandSlice";
@@ -22,34 +22,17 @@ export default function BrandCategory({ catParentId, catParentName }) {
     });
     // selected brand
     const router = useRouter();
-    const dispatch = useDispatch();
-    const selectedIndex = useSelector((state) => state.brand.selectedIndex);
+    const params = useParams();
+    const slugCategory = params.slug;
+    const [selectedIndex, setSelectedIndex] = useState(slugCategory); 
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const checkSelectedBrand = localStorage.getItem('selectedBrandIndex');
-            if (checkSelectedBrand !== null && !isNaN(checkSelectedBrand)) {
-                dispatch(setSelectedIndex(parseInt(checkSelectedBrand)));
-            }
-        }
-    }, []);
+    function selectedIndexBrand(paramSlug) {
+        setSelectedIndex(paramSlug); 
+      }
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            if (selectedIndex !== null) {
-                localStorage.setItem('selectedBrandIndex', selectedIndex.toString());
-            } else {
-                localStorage.removeItem('selectedBrandIndex');
-            }
-        }
-    }, [selectedIndex]);
 
-    const selectedIndexBrand = (index) => {
-        dispatch(setSelectedIndex(index));
-    };
 
     const handleReset = () => {
-        dispatch(setSelectedIndex(null));
         router.push(`/${catParentName}-danh-muc`);
     };
     return (
@@ -58,8 +41,8 @@ export default function BrandCategory({ catParentId, catParentName }) {
                 {listData && listData.list?.map((items, index) => (
                     items.brand_desc && (
                         <div key={index}
-                            onClick={() => selectedIndexBrand(index)}
-                            className={`bg-white shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer border-2 ${selectedIndex === index ? 'border-red-500' : 'border-transparent'
+                            onClick={() => selectedIndexBrand(items.brand_desc.friendly_url)}
+                            className={`bg-white shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer border-2 ${selectedIndex == "laptop-"+items.brand_desc.friendly_url ? 'border-red-500' : 'border-transparent'
                                 }`}>
                             <Link
                                 href={
