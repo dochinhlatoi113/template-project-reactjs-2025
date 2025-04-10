@@ -7,7 +7,7 @@ export default function MainProduct({ title_category, data_product, data_link = 
         <div>
             <div className="p-4 flex justify-between">
                 <h1 className="font-semibold text-white">{title_category}</h1>
-                <Link href={`/${data_slug}`}>
+                <Link href={`/${data_slug}-danh-muc`}>
                     <h1 className="text-white">Xem thêm</h1>
                 </Link>
             </div>
