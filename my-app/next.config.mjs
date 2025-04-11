@@ -6,6 +6,10 @@ async rewrites() {
                 source: "/:slug-danh-muc",
                 destination: "/categories/:slug",
             },
+            {
+                source: "/:slug-san-pham",
+                destination: "/products/:slug",
+            },
         ];
     },
 };

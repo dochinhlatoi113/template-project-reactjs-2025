@@ -1,6 +1,6 @@
 
 import DetailProduct from "./page"
-export default function layoutrrrrrrrrrrrrrrrrrrrrrrrr({ children }) {
+export default function layout({ children }) {
     return (
         <DetailProduct>{children}</DetailProduct>
     );
