@@ -172,14 +172,14 @@ export default function layout({ children, params }) {
                     </div>
                     <div className="pt-4">
                         <span className="font-bold">Lọc theo nhu cầu : </span>
-                        <div className="flex gap-2 pt-4 overflow-x-auto whitespace-nowrap pb-2">
+                        <div className="filter-search flex gap-2 pt-4 overflow-x-auto whitespace-nowrap pb-2">
                             {searchParams && searchParams.length > 0 &&
                                 searchParams.map((dataSearch, index) => (
                                     <button
                                         key={index}
                                         className="shrink-0 flex items-center bg-gray-200 text-gray-800 italic px-3 py-1 rounded-full mr-2 hover:bg-gray-300"
                                     >
-                                        <span className="mr-2 text-base">
+                                        <span className="mr-2 text-base title-filter-search">
                                             {(dataSearch.titleCategoryFilter + " : " + dataSearch.name).toLowerCase()}
                                         </span>
                                         <span

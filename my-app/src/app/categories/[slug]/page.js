@@ -26,7 +26,7 @@ export default function CategoryPageProduct({ dataCategoryPageList }) {
                             price_item_product={items.PriceSAP}
                             image_item_product={items.price_list.map((y) => (y.picture))}
                             slug_item_product={items.product_desc.friendly_url}
-                            brand_item_product={items.brand_desc ? items.brand_desc.title : 'No Brand'}
+                            brand_item_product={items.brand_desc ? items.brand_desc.title : 'Updating...'}
                             description_item_product={items.product_desc.title}
                         />
                     </div>

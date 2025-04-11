@@ -32,7 +32,7 @@ export default function ProductCardMain({
                     </Link>
                 </h1>
                 <div className="flex items-center justify-between">
-                    {price_item_product == 0 && (
+                    {price_item_product != 0 && (
                         <div className="badge badge-secondary">
                             NEW
                         </div>
