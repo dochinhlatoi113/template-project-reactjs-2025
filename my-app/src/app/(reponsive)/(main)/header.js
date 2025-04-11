@@ -1,19 +1,97 @@
 
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+
+import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+import { API_CATEGORY_MENU } from "@/api/api-file"
 export default function HeaderReponsive() {
+    const { data: cachedDataMenu } = useQuery({
+        queryKey: ['menu'],
+        queryFn: () => { },
+        enabled: false,
+    });
+
     return (
         <div className="p-1 bg-[#1435c3] ">
             <div className=" flex items-center justify-between">
                 <img src="./logo.png" className="w-20 h-15" ></img>
                 <div className="flex items-center text-white">
                     <div className="pr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
-                            <path fillRule="evenodd" d="M10 3c-4.31 0-8 3.033-8 7 0 2.024.978 3.825 2.499 5.085a3.478 3.478 0 0 1-.522 1.756.75.75 0 0 0 .584 1.143 5.976 5.976 0 0 0 3.936-1.108c.487.082.99.124 1.503.124 4.31 0 8-3.033 8-7s-3.69-7-8-7Zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-2-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" clipRule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5">
-                            <path fillRule="evenodd" d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z" clipRule="evenodd" />
-                        </svg>
+                        <Menu as="div" className="relative inline-block text-left">
+                            <div>
+                                <MenuButton className=" inline-flex 
+                                    items-center w-full justify-center gap-x-1.5 rounded-md bg-white
+                                     px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50">
+                                    <span className="text-[#82869E]">Menu</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-[#82869E]">
+                                        <path fillRule="evenodd" d="M6 4.75A.75.75 0 0 1 6.75 4h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 4.75ZM6 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 10Zm0 5.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H6.75a.75.75 0 0 1-.75-.75ZM1.99 4.75a1 1 0 0 1 1-1H3a1 1 0 0 1 1 1v.01a1 1 0 0 1-1 1h-.01a1 1 0 0 1-1-1v-.01ZM1.99 15.25a1 1 0 0 1 1-1H3a1 1 0 0 1 1 1v.01a1 1 0 0 1-1 1h-.01a1 1 0 0 1-1-1v-.01ZM1.99 10a1 1 0 0 1 1-1H3a1 1 0 0 1 1 1v.01a1 1 0 0 1-1 1h-.01a1 1 0 0 1-1-1V10Z" clipRule="evenodd" />
+                                    </svg>
+                                </MenuButton>
+                            </div>
+
+                            <MenuItems
+                                transition
+                                className="absolute m-1px right-0 z-10 mt-4 w-56 origin-top-right  bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                            >
+                                <div className="py-4">
+                                    {cachedDataMenu && cachedDataMenu.data.map((item, index) => (
+                                        <div key={index}>
+                                            <Menu as="div" className="relative inline-block text-left">
+                                                <div>
+                                                    <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50">
+                                                        Options
+                                                        <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
+                                                    </MenuButton>
+                                                </div>
+
+                                                <MenuItems
+                                                    transition
+                                                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                                >
+                                                    <div className="py-1">
+                                                        <MenuItem>
+                                                            <a
+                                                                href="#"
+                                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                                                            >
+                                                                Account settings
+                                                            </a>
+                                                        </MenuItem>
+                                                        <MenuItem>
+                                                            <a
+                                                                href="#"
+                                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                                                            >
+                                                                Support
+                                                            </a>
+                                                        </MenuItem>
+                                                        <MenuItem>
+                                                            <a
+                                                                href="#"
+                                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                                                            >
+                                                                License
+                                                            </a>
+                                                        </MenuItem>
+                                                        <form action="#" method="POST">
+                                                            <MenuItem>
+                                                                <button
+                                                                    type="submit"
+                                                                    className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                                                                >
+                                                                    Sign out
+                                                                </button>
+                                                            </MenuItem>
+                                                        </form>
+                                                    </div>
+                                                </MenuItems>
+                                            </Menu>
+                                        </div>
+                                    ))}
+                                </div>
+                            </MenuItems>
+                        </Menu>
                     </div>
                 </div>
             </div>
@@ -41,3 +119,15 @@ export default function HeaderReponsive() {
         </div>
     )
 }
+
+// {item.parenty?.map((r) => (
+//     <div className="pt-2">
+//         {r.parentx.map((x, i) => (
+//             <div key={i} className="pt-2">
+//                 <Link href={`${x.menu_desc.link}-danh-muc`}>
+//                     <span className=" hover:text-blue-500">{x.menu_desc.title}</span>
+//                 </Link>
+//             </div>
+//         ))}
+//     </div>
+// ))}
