@@ -9,9 +9,7 @@ import ProductCardMain from "@/app/(components)/(main)/product-card-main";
 
 
 export default function CategoryPageProduct({ dataCategoryPageList }) {
-    
-    console.log(dataCategoryPageList)
-    //check size
+        //check size
     let isMobile = useCheckSize();
     const gridClass = isMobile ? "grid-cols-2" : "grid-cols-5";
 
