@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { use, useState, useEffect, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 //api
 import { API_CATEGORY_PAGE, API_CATEGORY_OPTION } from "@/api/api-file";
@@ -27,56 +27,76 @@ export default function layout({ children, params }) {
     const [sortPrice, setSortPrice] = useState('desc')
     const [catParentId, setCatParentId] = useState("");
     const [isOpen, setIsOpen] = useState(false);
-
-    // sort price
-    let mySortPrice = (valueSortPrice) => {
-        setSortPrice(valueSortPrice)
-    }
-    //search param
+    const [searchParams, setSearchParams] = useState([]);
     const searchParamsHook = useSearchParams();
-    let searchParams = {};
-    if (searchParamsHook.size >= 1) {
-        searchParams = [];
-    }
     const searchParamsData = useMemo(() => {
         return Object.fromEntries(searchParamsHook.entries());
     }, [searchParamsHook]);
+
     const { data: cachedData } = useQuery({
         queryKey: ['brand-parent', catParentId],
         queryFn: () => { },
         enabled: false,
     });
-    let matchedOptions = [];
-    let valueSearchArray = [];
-    for (let key of Object.keys(searchParamsData)) {
-        const found = cachedData?.options.find((x) => x.slug === key);
-        const valueSearch = searchParamsData[key];
-        if (found) {
-            matchedOptions.push(found);
-            valueSearchArray.push(valueSearch)
-        }
-    }
 
-    valueSearchArray.map((i, index) => {
-        matchedOptions[index].propertiesValue.map((v) => {
-            if (v.slug === i) {
-                searchParams.push({
-                    "id": v.id,
-                    "properties_id": v.properties_id,
-                    "name": v.name,
-                    "slug": v.slug,
-                    "categoryName": matchedOptions[index].slug,
-                    "titleCategoryFilter": matchedOptions[index].title
-                })
+    useEffect(() => {
+        if (!cachedData || Object.keys(searchParamsData).length < 1) return;
+
+        const matchedOptions = [];
+        const valueSearchArray = [];
+
+        for (let key of Object.keys(searchParamsData)) {
+            const found = cachedData?.options.find((x) => x.slug === key);
+            const valueSearch = searchParamsData[key];
+            if (found) {
+                matchedOptions.push(found);
+                valueSearchArray.push(valueSearch);
             }
-        })
-    });
+        }
+
+        const newParams = [];
+
+        valueSearchArray.forEach((i, index) => {
+            matchedOptions[index].propertiesValue.forEach((v) => {
+                if (v.slug === i) {
+                    newParams.push({
+                        id: v.id,
+                        properties_id: v.properties_id,
+                        name: v.name,
+                        slug: v.slug,
+                        categoryName: matchedOptions[index].slug,
+                        titleCategoryFilter: matchedOptions[index].title
+                    });
+                }
+            });
+        });
+
+        setSearchParams(newParams);
+    }, [searchParamsData, cachedData]);
 
     //remove search
-    const handleRemoveSearchParam = (indexToRemove) => {
-         searchParams = searchParams.filter((_, index) => index !== indexToRemove);
-    };
+    const router = useRouter()
+    const handleRemoveSearchParam = (slugToRemove) => {
+        const updated = searchParams.filter(item => item.slug !== slugToRemove);
+        let newUrl = "";
+        for (let index = 0; index < updated.length; index++) {
+            const item = updated[index];
+            if (item.slug.trim() !== "") {
+                newUrl += `${item.categoryName}=${item.slug}&`;
+            }
+        }
+            if (newUrl.endsWith("&")) {
+            newUrl = newUrl.slice(0, -1);
+        }
     
+        setSearchParams(updated);
+        router.push(`?${newUrl}`);
+    };
+
+    // sort price
+    let mySortPrice = (valueSortPrice) => {
+        setSortPrice(valueSortPrice)
+    }
     //api
     //api category page
 
@@ -152,19 +172,19 @@ export default function layout({ children, params }) {
                     </div>
                     <div className="pt-4">
                         <span className="font-bold">Lọc theo nhu cầu : </span>
-                        <div className="flex gap-2 text-sm pt-4">
+                        <div className="flex gap-2 pt-4 overflow-x-auto whitespace-nowrap pb-2">
                             {searchParams && searchParams.length > 0 &&
                                 searchParams.map((dataSearch, index) => (
                                     <button
                                         key={index}
-                                        className="flex items-center bg-gray-200 text-gray-800 text-sm italic px-3 py-1 rounded-full mr-2 mb-2 hover:bg-gray-300"
+                                        className="shrink-0 flex items-center bg-gray-200 text-gray-800 italic px-3 py-1 rounded-full mr-2 hover:bg-gray-300"
                                     >
-                                        <span className="mr-2">
+                                        <span className="mr-2 text-base">
                                             {(dataSearch.titleCategoryFilter + " : " + dataSearch.name).toLowerCase()}
                                         </span>
                                         <span
-                                            className="text-red-500 hover:text-red-700 cursor-pointer"
-                                            onClick={() => handleRemoveSearchParam(index)} 
+                                            className="text-red-500 hover:text-red-700 text-xl cursor-pointer"
+                                            onClick={() => handleRemoveSearchParam(dataSearch.slug)}
                                         >
                                             &times;
                                         </span>
