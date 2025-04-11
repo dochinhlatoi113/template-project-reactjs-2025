@@ -200,7 +200,7 @@ export default function layout({ children, params }) {
                     {dataCategoryPage?.products?.length !== 0 ? (
                         <CategoryPageProduct dataCategoryPageList={dataCategoryPage} />
                     ) : (
-                        <div className="">Không có sản phẩm nào</div>
+                        <div className="none-data-product">Không có sản phẩm nào</div>
                     )}
                     <div className="join pt-4 flex gap-1 overflow-x-auto">
                         {Array.from({ length: totalPages }, (_, i) => i)
