@@ -5,7 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedIndex } from "@/app/redux-toolkit/store/brandSlice";
 //api file
 import { API_MEDIA_PICTURE } from "@/api/api-file"
 export default function BrandCategory({ catParentId, catParentName }) {
@@ -29,8 +28,7 @@ export default function BrandCategory({ catParentId, catParentName }) {
     function selectedIndexBrand(paramSlug) {
         setSelectedIndex(paramSlug); 
       }
-
-
+    
 
     const handleReset = () => {
         router.push(`/${catParentName}-danh-muc`);

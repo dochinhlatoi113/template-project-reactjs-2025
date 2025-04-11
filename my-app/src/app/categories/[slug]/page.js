@@ -10,7 +10,7 @@ import ProductCardMain from "@/app/(components)/(main)/product-card-main";
 
 export default function CategoryPageProduct({ dataCategoryPageList }) {
     
-
+    console.log(dataCategoryPageList)
     //check size
     let isMobile = useCheckSize();
     const gridClass = isMobile ? "grid-cols-2" : "grid-cols-5";
@@ -22,7 +22,7 @@ export default function CategoryPageProduct({ dataCategoryPageList }) {
                 {dataCategoryPageList && dataCategoryPageList.products?.map((items, index) => (
                     <div key={index} className="h-[100%]">
                         <ProductCardMain
-                            title_item_product={items.productName}
+                            title_item_product={items.product_desc.title}
                             price_item_product={items.PriceSAP}
                             image_item_product={items.price_list.map((y) => (y.picture))}
                             slug_item_product={items.product_desc.friendly_url}
