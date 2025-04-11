@@ -173,6 +173,9 @@ product-main
   .title-filter-search{
     font-size: 12px;
   }
+  .none-data-product{
+    height:100vh;
+    }
   /** footer*/
   .main-footer-info {
     display: none;
