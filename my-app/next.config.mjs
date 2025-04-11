@@ -7,7 +7,7 @@ async rewrites() {
                 destination: "/categories/:slug",
             },
             {
-                source: "/:slug-san-pham",
+                source: "/:slug",
                 destination: "/products/:slug",
             },
         ];
