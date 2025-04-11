@@ -174,7 +174,7 @@ product-main
     font-size: 12px;
   }
   .none-data-product{
-    height:100vh;
+    min-height:100vh;
     }
   /** footer*/
   .main-footer-info {
