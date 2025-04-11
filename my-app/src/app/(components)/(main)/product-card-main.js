@@ -20,7 +20,7 @@ export default function ProductCardMain({
         <div className="card bg-base-100 w-full h-full object-contain shadow-sm">
             <div>
 
-                <Link href={slug_item_product !== "" ? `${slug_item_product}-san-pham` : "#"}>
+                <Link href={slug_item_product !== "" ? `${slug_item_product}` : "#"}>
                     <img className="pt-5 transition-transform duration-300 object-contain hover:scale-105 rounded-lg w-[80%] m-auto image-product-main h-[200px]"
                         src={imgSrc}
                         alt={title_item_product ?? 'no-image'} />
@@ -28,7 +28,7 @@ export default function ProductCardMain({
             </div>
             <div className="card-body">
                 <h1 className="card-title text-[100%] line-clamp-2">
-                    <Link href={slug_item_product !== "" ? `${slug_item_product}-san-pham` : "#"}>
+                    <Link href={slug_item_product !== "" ? `${slug_item_product}` : "#"}>
                         {title_item_product ?? "no"}
                     </Link>
                 </h1>
