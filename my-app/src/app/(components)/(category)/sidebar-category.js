@@ -8,11 +8,15 @@ export default function SidebarCategory({ catParentId, catParentName }) {
     return (
         <div className="">
             {/** range price */}
-            <RangePriceCategory></RangePriceCategory>
+            <div className="range-price-sizebar">
+                <RangePriceCategory></RangePriceCategory>
+            </div>
             {/** brand */}
             <div>
                 <label>Thương hiệu</label>
-                <BrandCategory catParentId={catParentId} catParentName={catParentName}></BrandCategory>
+                <div className="main-brand-sidebar">
+                    <BrandCategory catParentId={catParentId} catParentName={catParentName}></BrandCategory>
+                </div>
             </div>
         </div>
     )

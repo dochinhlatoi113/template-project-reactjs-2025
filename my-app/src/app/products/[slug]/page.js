@@ -30,7 +30,7 @@ export default function DetailProduct() {
     if (isLoadingProductDetail) return "loading..."
     //checksize mobile
     const gridClass = IsMobile ? "grid-cols-0" : "grid-cols-12";
-    const paddingTop = IsMobile ? 'pt-[30%]' : 'pt-[8%]';
+    const paddingTop = IsMobile ? 'pt-[30%]' : 'pt-[10%]';
     return (
         <div className={`container mx-auto max-w-[1300px] ${paddingTop} pb-4 grid grid-cols-[60%_30%] gap-[20px]`}>
             <div className="left-product-detail">

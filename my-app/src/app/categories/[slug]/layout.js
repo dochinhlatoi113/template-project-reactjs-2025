@@ -13,6 +13,7 @@ import SidebarCategory from "@/app/(components)/(category)/sidebar-category";
 import CategoryPageProduct from "./page";
 import FilterOption from "@/app/(components)/(category)/filter-option";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
+import BrandCategory from "@/app/(components)/(category)/brand";
 //api 
 
 
@@ -85,10 +86,10 @@ export default function layout({ children, params }) {
                 newUrl += `${item.categoryName}=${item.slug}&`;
             }
         }
-            if (newUrl.endsWith("&")) {
+        if (newUrl.endsWith("&")) {
             newUrl = newUrl.slice(0, -1);
         }
-    
+
         setSearchParams(updated);
         router.push(`?${newUrl}`);
     };
@@ -156,8 +157,7 @@ export default function layout({ children, params }) {
             </div>
             <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category overflow-hidden`}>
                 {/* Sidebar */}
-                {/* End Hamburger Button (Mobile only) */}
-                <div className="col-span-2 bg-white text-black p-4 side-bar">
+                <div className={` col-span-2 bg-white text-black p-4 side-bar-desktop`}>
                     <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
                 </div>
                 <div className="col-span-10 bg-white p-4 text-black ">
@@ -172,6 +172,9 @@ export default function layout({ children, params }) {
                     </div>
                     <div className="pt-4">
                         <span className="font-bold">Lọc theo nhu cầu : </span>
+                        <div className={`col-span-10 bg-white text-black side-bar-mobile`}>
+                            <BrandCategory catParentId={catParentId} catParentName={catParentName}></BrandCategory>
+                        </div>
                         <div className="filter-search flex gap-2 pt-4 overflow-x-auto whitespace-nowrap pb-2">
                             {searchParams && searchParams.length > 0 &&
                                 searchParams.map((dataSearch, index) => (

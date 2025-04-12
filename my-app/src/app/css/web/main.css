@@ -31,6 +31,10 @@ svg{
     color: #82869E;
 }
 
+.side-bar-mobile {
+  display: none;
+}
+
 
   /** pricing price bar */
   /* .sliders_control {
