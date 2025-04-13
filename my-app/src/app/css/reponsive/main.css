@@ -163,10 +163,10 @@ product-main
     display: none;
   }
 
-  .item-box {
+  /* .item-box {
     height: 200px;
     overflow-x: auto;
-  }
+  } */
 
   .btn-item-filter {
     white-space: nowrap;

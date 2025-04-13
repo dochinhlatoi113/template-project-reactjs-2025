@@ -128,7 +128,7 @@ export default function layout({ children, params }) {
     };
     //checksize
     let isMobile = useCheckSize()
-    const gridClass = isMobile ? "grid-cols-0" : "grid-cols-12";
+    const gridClass = isMobile ? "col-span-12" : "col-span-10";
     const paddingTop = isMobile ? 'pt-[30%]' : 'pt-[8%]';
     return (
         <div className={`container mx-auto max-w-[1300px] ${paddingTop} pb-4 flex flex-col `}>
@@ -155,12 +155,13 @@ export default function layout({ children, params }) {
                     )}
                 </div>
             </div>
-            <div className={`grid ${gridClass} h-full gap-4 pt-4 flex-1 main-product-category overflow-hidden`}>
+            <div className={`grid grid-cols-12 h-full gap-4 pt-4 flex-1 main-product-category overflow-hidden`}>
                 {/* Sidebar */}
-                <div className={` col-span-2 bg-white text-black p-4 side-bar-desktop`}>
+                <div className={`col-span-2 bg-white text-black p-4 side-bar-desktop`}>
                     <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
                 </div>
-                <div className="col-span-10 bg-white p-4 text-black ">
+
+                <div className={`${gridClass}  bg-white p-4 text-black`}>
                     <div className="flex gap-2 items-center silder-price">
                         <label>Sắp xếp theo giá :</label>
                         <button className="btn " onClick={() => { mySortPrice('DESC') }}>
@@ -172,7 +173,7 @@ export default function layout({ children, params }) {
                     </div>
                     <div className="pt-4">
                         <span className="font-bold">Lọc theo nhu cầu : </span>
-                        <div className={`col-span-10 bg-white text-black side-bar-mobile`}>
+                        <div className={`bg-white text-black  side-bar-mobile`}>
                             <BrandCategory catParentId={catParentId} catParentName={catParentName}></BrandCategory>
                         </div>
                         <div className="filter-search flex gap-2 pt-4 overflow-x-auto whitespace-nowrap pb-2">
