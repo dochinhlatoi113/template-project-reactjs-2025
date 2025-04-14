@@ -17,7 +17,7 @@ export default function ProductCardMain({
     }
 
     return (
-        <div className="card bg-base-100 w-full h-full object-contain shadow-sm">
+        <div className="card bg-base-100 h-full object-contain shadow-sm border border-gray-200">
             <div>
 
                 <Link href={slug_item_product !== "" ? `${slug_item_product}` : "#"}>

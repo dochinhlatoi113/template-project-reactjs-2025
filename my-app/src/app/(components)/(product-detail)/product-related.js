@@ -21,21 +21,25 @@ export default function ProductRelated({ params }) {
                 </label>
             </div>
             <div className="overflow-x-auto pb-2 pt-2">
-                <div className="flex gap-4 ">
-                    {
-                        dataProductRelated?.relatedProduct.map((item, index) => (
-                            <div key={index} className="min-w-[220px]">
-                                <ProductCardMain
-                                    title_item_product={item.productName}
-                                    price_item_product={item.price}
-                                    description_item_product={""}
-                                    image_item_product={item.picture}
-                                    slug_item_product={item.friendlyUrl}
-                                    brand_item_product={item.brandName}
-                                />
-                            </div>
-                        ))
-                    }
+                <div className="flex gap-4 w-[250px]">
+                    <div className="flex overflow-x-auto">
+                        {dataProductRelated?.relatedProduct && dataProductRelated.relatedProduct.length > 0 ? (
+                            dataProductRelated.relatedProduct.map((item, index) => (
+                                <div key={index} className="min-w-[220px]">
+                                    <ProductCardMain
+                                        title_item_product={item.productName}
+                                        price_item_product={item.price}
+                                        description_item_product={""}
+                                        image_item_product={item.picture}
+                                        slug_item_product={item.friendlyUrl}
+                                        brand_item_product={item.brandName}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-gray-500 italic">Không có sản phẩm liên quan.</p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div >

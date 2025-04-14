@@ -10,6 +10,7 @@ import SilderProductDetail from "@/app/(components)/(product-detail)/slider-prod
 import ViewProductDetail from "@/app/(components)/(product-detail)/viewd-product-detail";
 import InfoProductDetail from "@/app/(components)/(product-detail)/infomation-product-detail";
 import ProductRelated from "@/app/(components)/(product-detail)/product-related";
+import TechnicalProductDetail from "@/app/(components)/(product-detail)/technical-product-detail";
 //api
 import { API_PRODUCT_DETAIL } from "@/api/api-file";
 export default function DetailProduct() {
@@ -43,6 +44,9 @@ export default function DetailProduct() {
                 <div className="left-product-detail">
                     <div className="">
                         <SilderProductDetail dataDetailAlbum={productDetail?.productDetail.listPrice} ></SilderProductDetail>
+                    </div>
+                    <div className="pt-2">
+                        <TechnicalProductDetail slugProductdDetail={slugProductDetail}></TechnicalProductDetail>
                     </div>
                     <div className="pt-2">
                         <InfoProductDetail slugProductdDetail={slugProductDetail}></InfoProductDetail>
