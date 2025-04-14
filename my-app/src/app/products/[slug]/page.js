@@ -9,6 +9,7 @@ import SidebarProductDetail from "@/app/(components)/(product-detail)/sidebar-pr
 import SilderProductDetail from "@/app/(components)/(product-detail)/slider-product-detail";
 import ViewProductDetail from "@/app/(components)/(product-detail)/viewd-product-detail";
 import InfoProductDetail from "@/app/(components)/(product-detail)/infomation-product-detail";
+import ProductRelated from "@/app/(components)/(product-detail)/product-related";
 //api
 import { API_PRODUCT_DETAIL } from "@/api/api-file";
 export default function DetailProduct() {
@@ -31,7 +32,6 @@ export default function DetailProduct() {
     if (isLoadingProductDetail) return "loading..."
     //checksize mobile
     const paddingTop = IsMobile ? 'pt-[30%]' : 'pt-[8%]';
-
     return (
         <div className={` container mx-auto max-w-[1300px] ${paddingTop} pb-4`}>
             <div className="pb-2">
@@ -45,7 +45,10 @@ export default function DetailProduct() {
                         <SilderProductDetail dataDetailAlbum={productDetail?.productDetail.listPrice} ></SilderProductDetail>
                     </div>
                     <div className="pt-2">
-                        <InfoProductDetail slugProductdDetail = {slugProductDetail}></InfoProductDetail>
+                        <InfoProductDetail slugProductdDetail={slugProductDetail}></InfoProductDetail>
+                    </div>
+                    <div className="pt-2">
+                        <ProductRelated params={slugProductDetail}></ProductRelated>
                     </div>
                     <div className="pt-2">
                         <ViewProductDetail></ViewProductDetail>
