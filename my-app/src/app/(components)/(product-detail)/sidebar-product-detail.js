@@ -1,5 +1,5 @@
 import BannerSaleOff from "../(main)/banner-sale-off"
-
+import Commitment from "./commitment-product-detail"
 export default function SidebarProductDetail(params) {
     console.log(params)
     return (
@@ -33,6 +33,7 @@ export default function SidebarProductDetail(params) {
                                 </span>
                                 Phiếu mua hàng mua Đồng hồ thông minh, Tai nghe, Loa di động, Loa vi tính có giá niêm yết từ 2.000.000đ trở lên (trừ Apple) trị giá 200.000đ
                             </p>
+                            <p className="text-sm text-red-500"> (*) Gọi đặt mua 093.093 0933 (8:00 - 21:30)</p>
                             <hr className="border-gray-300"></hr>
                             <div className="action-btn flex justify-between ">
                                 <button className=" text-white btn  btn-accent w-[30%]">mua ngay</button>
@@ -44,6 +45,9 @@ export default function SidebarProductDetail(params) {
                             <label></label>
                         </div>
                     </div>
+                </div>
+                <div className="p-2">
+                   <Commitment></Commitment>
                 </div>
             </div>
         </div>

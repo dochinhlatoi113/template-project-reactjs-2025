@@ -73,7 +73,6 @@ export default function ProductCardMain({
                         </div>
                     </div>
                 )}
-
                 {price_item_product == 0 && (
                     <div className="card-actions">
                         <button className="btn btn-warning text-white w-full text-xs">Liên hệ</button>
