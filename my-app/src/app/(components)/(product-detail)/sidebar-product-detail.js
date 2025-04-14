@@ -1,5 +1,6 @@
 import BannerSaleOff from "../(main)/banner-sale-off"
 import Commitment from "./commitment-product-detail"
+import PriceProductDetail from "./price-product-detail"
 export default function SidebarProductDetail(params) {
     console.log(params)
     return (
@@ -8,6 +9,9 @@ export default function SidebarProductDetail(params) {
                 <BannerSaleOff dataBanner="../banner/banner-mobile-product-left.png"></BannerSaleOff>
             </div>
             <div className="bg-[#f75b00]">
+            <div className="p-2">
+                   <PriceProductDetail></PriceProductDetail>
+                </div>
                 <div className="p-2">
                     <div className="border rounded-sm border-gray-300 bg-white">
                         <div className="product-detail-promotion space-y-2 p-2">
