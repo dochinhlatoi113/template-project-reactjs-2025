@@ -2,7 +2,6 @@ import BannerSaleOff from "../(main)/banner-sale-off"
 import Commitment from "./commitment-product-detail"
 import PriceProductDetail from "./price-product-detail"
 export default function SidebarProductDetail(params) {
-    console.log(params)
     return (
         <div className="border-[20px] border-white rounded-lg">
             <div className="banner-product-detail">

@@ -11,7 +11,6 @@ export default function HeaderReponsive() {
         queryFn: () => { },
         enabled: false,
     });
-    console.log(cachedDataMenu)
     return (
         <div className="p-1 bg-[#1435c3] ">
             <div className=" flex items-center justify-between">
