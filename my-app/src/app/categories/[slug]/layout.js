@@ -11,7 +11,8 @@ import { API_CATEGORY_PAGE, API_CATEGORY_OPTION } from "@/api/api-file";
 import RangePriceCategory from "@/app/(components)/(category)/range-price";
 import SidebarCategory from "@/app/(components)/(category)/sidebar-category";
 import CategoryPageProduct from "./page";
-import FilterOption from "@/app/(components)/(category)/filter-option";
+import FilterOptionDesktop from "@/app/(components)/(category)/filter-option-desktop";
+import FilterOptionMobile from "@/app/(components)/(category)/filter-option-mobile";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import BrandCategory from "@/app/(components)/(category)/brand";
 //api 
@@ -98,6 +99,7 @@ export default function layout({ children, params }) {
     let mySortPrice = (valueSortPrice) => {
         setSortPrice(valueSortPrice)
     }
+
     //api
     //api category page
 
@@ -130,6 +132,9 @@ export default function layout({ children, params }) {
     let isMobile = useCheckSize()
     const gridClass = isMobile ? "col-span-12" : "col-span-10";
     const paddingTop = isMobile ? 'pt-[30%]' : 'pt-[8%]';
+    const filterOption = isMobile
+        ? <FilterOptionMobile catParentId={catParentId} />
+        : <FilterOptionDesktop catParentId={catParentId} />;
     return (
         <div className={`container mx-auto max-w-[1300px] ${paddingTop} pb-4 flex flex-col `}>
             <div className="flex items-end gap-x-2 justify-between  title-main-category">
@@ -198,7 +203,7 @@ export default function layout({ children, params }) {
 
                         </div>
                         <div className="item-box">
-                            <FilterOption catParentId={catParentId}></FilterOption>
+                            {filterOption}
                         </div>
                     </div>
                     {dataCategoryPage?.products?.length !== 0 ? (

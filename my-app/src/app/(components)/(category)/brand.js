@@ -37,7 +37,7 @@ export default function BrandCategory({ catParentId, catParentName }) {
 
     // checksize mobile
     const isMobile = useCheckSize()
-    let flexClass = isMobile ? "flex gap-4 overflow-x-scroll whitespace-nowrap w-full" : "grid grid-cols-2 gap-4";
+    let flexClass = isMobile ? "flex gap-4 overflow-x-auto whitespace-nowrap w-full pb-2" : "grid grid-cols-2 gap-4";
     return (
         <>
             <div className={`${flexClass} gap-4 pt-4`}>
@@ -49,18 +49,14 @@ export default function BrandCategory({ catParentId, catParentName }) {
                                 flexShrink: 0,
                             }}
                             onClick={() => selectedIndexBrand(items.brand_desc.friendly_url)}
-                            className={`bg-white shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer border-2 ${selectedIndex == "laptop-" + items.brand_desc.friendly_url ? 'border-red-500' : 'border-transparent'
+                            className={` ${selectedIndex == "laptop-" + items.brand_desc.friendly_url ? 'border-red-500' : 'border-transparent'
                                 }`}>
                             <Link
                                 href={
                                     `${catParentName}-${items.brand_desc.friendly_url}-danh-muc`
                                 }
                             >
-                                <img
-                                    className="w-full h-full aspect-[4/3] object-contain transition-transform duration-300 ease-in-out hover:scale-105"
-                                    src={`${API_MEDIA_PICTURE}${items.picture}`}
-                                    alt={items.brand_desc.friendly_title}
-                                />
+                                <button className="btn w-full">{items.brand_desc.title}</button>
                             </Link>
                         </div>
                     )
