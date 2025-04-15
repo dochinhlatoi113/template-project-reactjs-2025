@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import { use, useState, useEffect, useMemo } from "react";
+import { use, useState, useEffect, useMemo, act } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -24,13 +24,14 @@ export default function layout({ children, params }) {
     const [slug, setSlug] = useState(unwrappedParams.slug);
 
     const [catId, setCatId] = useState("");
+    const [active, setActive] = useState(0)
     const [page, setPage] = useState(0)
     const [catParentName, setCatParentName] = useState()
-    const [sortPrice, setSortPrice] = useState('desc')
+    const [sortPrice, setSortPrice] = useState('')
     const [catParentId, setCatParentId] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
     const [searchParams, setSearchParams] = useState([]);
     const searchParamsHook = useSearchParams();
+
     const searchParamsData = useMemo(() => {
         return Object.fromEntries(searchParamsHook.entries());
     }, [searchParamsHook]);
@@ -58,6 +59,14 @@ export default function layout({ children, params }) {
 
         const newParams = [];
 
+        if(sortPrice != "") {
+            newParams.push({
+                titleCategoryFilter : "sort",
+                name : sortPrice.toLocaleLowerCase(),
+                slug: sortPrice.toLocaleLowerCase(),
+                categoryName:"sort"
+            })
+        } 
         valueSearchArray.forEach((i, index) => {
             matchedOptions[index].propertiesValue.forEach((v) => {
                 if (v.slug === i) {
@@ -75,11 +84,18 @@ export default function layout({ children, params }) {
 
         setSearchParams(newParams);
     }, [searchParamsData, cachedData]);
-
+   
     //remove search
     const router = useRouter()
     const handleRemoveSearchParam = (slugToRemove) => {
         const updated = searchParams.filter(item => item.slug !== slugToRemove);
+        const hasSort = updated.some(item => item.slug === 'asc' || item.slug === 'desc');
+    
+        if (!hasSort) {
+            setSortPrice("");
+            setActive("");
+        }
+    
         let newUrl = "";
         for (let index = 0; index < updated.length; index++) {
             const item = updated[index];
@@ -90,14 +106,28 @@ export default function layout({ children, params }) {
         if (newUrl.endsWith("&")) {
             newUrl = newUrl.slice(0, -1);
         }
-
-        setSearchParams(updated);
-        router.push(`?${newUrl}`);
+    
+        if (updated.length === 0) {
+            setSearchParams({});
+            setSortPrice("");
+            setActive("");
+            router.push(`?`);
+        } else {
+            setSearchParams(updated);
+            router.push(`?${newUrl}`);
+        }
     };
+    
 
     // sort price
-    let mySortPrice = (valueSortPrice) => {
+    let mySortPrice = (valueSortPrice, activeId) => {
         setSortPrice(valueSortPrice)
+        setActive(activeId)
+        const params = new URLSearchParams(searchParamsHook.toString());
+        params.set('sort', valueSortPrice);
+        setSortPrice(valueSortPrice);
+        setActive(activeId);
+        router.push(`?${params.toString()}`);
     }
 
     //api
@@ -135,6 +165,9 @@ export default function layout({ children, params }) {
     const filterOption = isMobile
         ? <FilterOptionMobile catParentId={catParentId} />
         : <FilterOptionDesktop catParentId={catParentId} />;
+
+    //check active btn sort price
+
     return (
         <div className={`container mx-auto max-w-[1300px] ${paddingTop} pb-4 flex flex-col `}>
             <div className="flex items-end gap-x-2 justify-between  title-main-category">
@@ -169,11 +202,16 @@ export default function layout({ children, params }) {
                 <div className={`${gridClass}  bg-white p-4 text-black`}>
                     <div className="flex gap-2 items-center silder-price">
                         <label>Sắp xếp theo giá :</label>
-                        <button className="btn " onClick={() => { mySortPrice('DESC') }}>
-                            Giá Tăng
-                        </button>
-                        <button className="btn " onClick={() => { mySortPrice('ASC') }}>
+                        <button
+                            className={`btn ${active === 1 ? 'bg-blue-500 text-white ' : 'bg-gray-100 text-gray-700'}`}
+                            onClick={() => mySortPrice('DESC', 1)}
+                        >
                             Giá Giảm
+                        </button>
+                        <button 
+                            className={`btn ${active === 2 ? 'bg-blue-500 text-white ' : 'bg-gray-100 text-gray-700'}`}
+                            onClick={() => { mySortPrice('ASC', 2) }}>
+                            Giá Tăng
                         </button>
                     </div>
                     <div className="pt-4">

@@ -196,8 +196,8 @@ product-main
     min-height: 100vh;
   }
   /************************product-detail************************/
-  .mobie-sidebar-product-detai{
-    display: flex;
+  .mobile-sidebar-product-detail{
+    display: inline;
   }
   .right-sidebar-product-detail{
     display: none;

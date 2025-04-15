@@ -7,13 +7,12 @@ import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function FilterOptionDesktop({ catParentId }) {
+export default function FilterOptionDesktop({ catParentId , sortPrice}) {
     const { data: cachedData } = useQuery({
         queryKey: ['brand-parent', catParentId],
         queryFn: () => { },
         enabled: false,
     });
-
     const slugParentCategory = useParams();
     const isMobile = useCheckSize();
 
@@ -22,7 +21,6 @@ export default function FilterOptionDesktop({ catParentId }) {
     const containerClass = isMobile
         ? "grid grid-cols-2 gap-2 pt-2 overflow-y-auto"
         : `grid grid-cols-5 gap-1 pt-2`;
-    // const checklayoutMobile = isMobile ? ""
     return (
         <div className={containerClass}>
             {cachedData && cachedData.options?.map((items, index) => (
@@ -42,9 +40,7 @@ export default function FilterOptionDesktop({ catParentId }) {
                             {items.propertiesValue?.map((item, subIndex) => {
                                 const currentParams = new URLSearchParams(searchParamsHook.toString());
                                 currentParams.set(items.slug, item.slug);
-
                                 const href = `/${slugParentCategory.slug}-danh-muc?${currentParams.toString()}`;
-
                                 return (
                                     <MenuItem key={subIndex}>
                                         <Link

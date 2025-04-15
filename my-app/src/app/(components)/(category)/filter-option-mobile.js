@@ -7,7 +7,7 @@ import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function FilterOptionMobile({ catParentId }) {
+export default function FilterOptionMobile({ catParentId, sortPrice }) {
     const { data: cachedData } = useQuery({
         queryKey: ['brand-parent', catParentId],
         queryFn: () => { },
