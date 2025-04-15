@@ -11,6 +11,7 @@ import ViewProductDetail from "@/app/(components)/(product-detail)/viewd-product
 import InfoProductDetail from "@/app/(components)/(product-detail)/infomation-product-detail";
 import ProductRelated from "@/app/(components)/(product-detail)/product-related";
 import TechnicalProductDetail from "@/app/(components)/(product-detail)/technical-product-detail";
+import CommentProductDetail from "@/app/(components)/(product-detail)/comment-product-detail";
 //api
 import { API_PRODUCT_DETAIL } from "@/api/api-file";
 export default function DetailProduct() {
@@ -61,6 +62,9 @@ export default function DetailProduct() {
                     </div>
                     <div className="pt-2">
                         <ViewProductDetail></ViewProductDetail>
+                    </div>
+                    <div className="pt-2">
+                        <CommentProductDetail></CommentProductDetail>
                     </div>
                 </div>
                 <div className="right-sidebar-product-detail">
