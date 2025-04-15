@@ -34,7 +34,9 @@ svg{
 .side-bar-mobile {
   display: none;
 }
-
+.mobie-sidebar-product-detail{
+  display: none;
+}
 
   /** pricing price bar */
   /* .sliders_control {

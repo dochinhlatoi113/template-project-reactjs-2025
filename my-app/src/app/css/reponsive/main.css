@@ -195,7 +195,13 @@ product-main
   .none-data-product {
     min-height: 100vh;
   }
-
+  /************************product-detail************************/
+  .mobie-sidebar-product-detai{
+    display: flex;
+  }
+  .right-sidebar-product-detail{
+    display: none;
+  }
   /** footer*/
   .main-footer-info {
     display: none;

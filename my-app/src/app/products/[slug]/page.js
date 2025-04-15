@@ -33,17 +33,22 @@ export default function DetailProduct() {
     if (isLoadingProductDetail) return "loading..."
     //checksize mobile
     const paddingTop = IsMobile ? 'pt-[30%]' : 'pt-[8%]';
+    const gridClass = IsMobile ? '' : 'grid grid-cols-2';
+
     return (
-        <div className={` container mx-auto max-w-[1300px] ${paddingTop} pb-4`}>
+        <div className={` container mx-auto max-w-[1300px] ${paddingTop} p-4`}>
             <div className="pb-2">
                 <label className="text-[18px] font-bold">
                     {productDetail?.productDetail.productName}
                 </label>
             </div>
-            <div className={` grid grid-cols-2 gap-[20px]`}>
+            <div className={`  ${gridClass} gap-[20px]`}>
                 <div className="left-product-detail">
                     <div className="">
                         <SilderProductDetail dataDetailAlbum={productDetail?.productDetail.listPrice} ></SilderProductDetail>
+                    </div>
+                    <div className="pt-2 mobile-sidebar-product-detail">
+                        <SidebarProductDetail params={productDetail}></SidebarProductDetail>
                     </div>
                     <div className="pt-2">
                         <TechnicalProductDetail params={slugProductDetail}></TechnicalProductDetail>
