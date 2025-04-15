@@ -17,10 +17,12 @@ export default function TechnicalProductDetail({ params }) {
   // const formatHtml = FormatHtml(dataProductDetailTech?.technology)
   return (
     <div className="border-[20px] border-white bg-white rounded-lg">
-      <Accordion>
+      <Accordion collapseAll theme={{
+       
+      }}>
         <AccordionPanel >
-          <AccordionTitle className="h-[10px]">
-            <label className=" bg-gray-100 text-base font-semibold text-gray-700">
+          <AccordionTitle className="h-[10px] custom-bg-expanded p-4">
+            <label className="text-base font-semibold text-gray-700">
               Thông số kỹ thuật
             </label>
           </AccordionTitle>
@@ -31,7 +33,7 @@ export default function TechnicalProductDetail({ params }) {
                   {dataProductDetailTech.technology.map((item, i) => (
                     <div key={i} className="flex px-4 py-2 text-sm">
                       <div className="w-1/3 font-medium text-gray-600">
-                        <FormatHtml data={item.catOption} /> 
+                        <FormatHtml data={item.catOption} />
                       </div>
                       <div className="w-2/3 text-gray-800 pl-4">
                         <FormatHtml data={item.nameCatOption} />
