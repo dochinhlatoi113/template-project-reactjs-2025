@@ -14,9 +14,7 @@ export default function HeaderReponsive() {
     return (
         <div className="p-1 bg-[#1435c3] ">
             <div className=" flex items-center justify-between">
-                <Link href="/">
-                    <img src="./logo.png" className="w-20 h-15" ></img>
-                </Link>
+                <img src="./logo.png" className="w-20 h-15" ></img>
                 <div className="flex items-center text-white">
                     <div className="pr-4">
                         <Menu as="div" className="relative inline-block text-left">
@@ -38,11 +36,12 @@ export default function HeaderReponsive() {
                                 <div className="py-4  max-h-[100vh] overflow-y-auto">
                                     {cachedDataMenu && cachedDataMenu.data?.map((item, index) => (
                                         <div key={index} className='text-black p-2  '>
-                                            <Link href={`${item.menu_desc.link}-danh-muc`}>
-                                                <div className='flex items-center gap-2'>
-                                                    <img className="w-5" src={`${API_MEDIA_PICTURE + item.menu_icon}`}></img> {item.menu_desc.title}
+                                            <MenuItem as={Link} href={`${item.menu_desc.link}-danh-muc`}>
+                                                <div className='flex items-center gap-2 px-2 py-1 text-black hover:bg-gray-100'>
+                                                    <img className="w-5" src={`${API_MEDIA_PICTURE + item.menu_icon}`} />
+                                                    {item.menu_desc.title}
                                                 </div>
-                                            </Link>
+                                            </MenuItem>
                                         </div>
                                     ))}
                                 </div>

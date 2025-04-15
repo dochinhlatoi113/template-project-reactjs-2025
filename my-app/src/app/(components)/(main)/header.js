@@ -104,9 +104,9 @@ export default function Header() {
                                                 <MenuItem key={index}>
                                                     <div className=" group flex items-center">
                                                         <div className="bg-white px-4 py-2 text-sm text-gray-700 cursor-pointer font-semibold">
-                                                            <Link href={`${item.menu_desc.link}-danh-muc`}>
+                                                            <MenuItem as={Link} href={`${item.menu_desc.link}-danh-muc`}>
                                                                 {item.menu_desc.title}
-                                                            </Link>
+                                                            </MenuItem>
                                                         </div>
                                                         <div className="absolute p-4 left-full top-0  h-[100%] bg-white  flex  w-[60vw] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
                                                             {item.parenty?.map((r) => (
