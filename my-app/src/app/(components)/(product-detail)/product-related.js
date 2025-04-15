@@ -4,7 +4,6 @@ import { API_RELATED_PRODUCT_DETAIL } from "@/api/api-file";
 import ProductCardMain from "../(main)/product-card-main";
 
 export default function ProductRelated({ params }) {
-    console.log(API_RELATED_PRODUCT_DETAIL + params);
 
     const { data: dataProductRelated, isError, isLoading } = useQuery({
         queryKey: ['slugProductRelated', params],
@@ -14,7 +13,6 @@ export default function ProductRelated({ params }) {
         },
     });
 
-    console.log(dataProductRelated);
 
     return (
         <div className="border-[20px] border-white bg-white rounded-lg">

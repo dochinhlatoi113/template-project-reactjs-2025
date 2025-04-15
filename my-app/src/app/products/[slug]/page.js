@@ -46,7 +46,7 @@ export default function DetailProduct() {
                         <SilderProductDetail dataDetailAlbum={productDetail?.productDetail.listPrice} ></SilderProductDetail>
                     </div>
                     <div className="pt-2">
-                        <TechnicalProductDetail slugProductdDetail={slugProductDetail}></TechnicalProductDetail>
+                        <TechnicalProductDetail params={slugProductDetail}></TechnicalProductDetail>
                     </div>
                     <div className="pt-2">
                         <InfoProductDetail slugProductdDetail={slugProductDetail}></InfoProductDetail>
