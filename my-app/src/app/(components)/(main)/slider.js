@@ -1,5 +1,7 @@
 'use client'
 import { useState } from "react";
+import { Carousel } from "flowbite-react";
+
 
 const images = [
     "https://lh3.googleusercontent.com/XzEGUfZGwNS9A4Yymq0Gf-fgbZylEv3lw_GJoV4t-fVnL6_aRLFsdUfHNn12YLBH48n-iUX0wFOQY6adZnCGzsIQVv8aTgc=w1920-rw",
@@ -20,42 +22,16 @@ export default function Slider() {
     };
 
     return (
-        <div className="w-full h-150 silder-main-box">
-            <div className="overflow-hidden shadow-lg silder-main">
-                <img
-                    src={images[currentIndex]}
-                    alt={`Slide ${currentIndex + 1}`}
-                    className="w-full h-150 object-contain silder-main-image"
-                />
-            </div>
-
-            {/* Nút Previous */}
-            <button
-                onClick={prevSlide}
-                className="absolute top-1/2 left-4 transform -translate-y-1/2  text-white p-2 rounded-full hover:bg-black"
-            >
-                &#9664;
-            </button>
-
-            {/* Nút Next */}
-            <button
-                onClick={nextSlide}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white p-2 rounded-full hover:bg-black"
-            >
-                &#9654;
-            </button>
-
-            {/* Dots
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                {images.map((_, index) => (
-                    <div
-                        key={index}
-                        className={`w-3 h-3 rounded-full cursor-pointer ${index === currentIndex ? "bg-blue-500" : "bg-gray-300"
-                            }`}
-                        onClick={() => setCurrentIndex(index)}
-                    ></div>
+        <div className="silder-main h-150">
+            <Carousel>
+                {images.map((i, index) => (
+                    <img
+                        src={i}
+                        alt={`Slide ${index}`}
+                        className="w-full object-cover silder-main-image"
+                    />
                 ))}
-            </div> */}
+            </Carousel>
         </div>
     );
 }

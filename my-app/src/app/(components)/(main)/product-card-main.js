@@ -32,13 +32,13 @@ export default function ProductCardMain({
                         {title_item_product ?? "no"}
                     </Link>
                 </h1>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 justify-between">
                     {price_item_product != 0 && (
                         <div className="badge badge-secondary">
                             NEW
                         </div>
                     )}
-                    <div className="badge badge-primary">{brand_item_product ?? "updating"}</div>
+                    <div className="badge mobile-updated badge-primary">{brand_item_product ?? "updating"}</div>
                 </div>
                 <div className="relative group">
                     <p className="description-product">

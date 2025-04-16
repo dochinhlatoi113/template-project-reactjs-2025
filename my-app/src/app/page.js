@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { Carousel } from "flowbite-react";
 import Image from "next/image";
 import Slider from "./(components)/(main)/slider";
 import HotDeal from "./(components)/(main)/hot-deals";
@@ -29,7 +29,7 @@ export default function home() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return  response.json();
+      return response.json();
     },
   });
 
@@ -62,7 +62,7 @@ export default function home() {
           <HotDeal isMobile={isMobile} productList={productHotList} />
         </div>
         <div className="mt-6 main-category bg-white ">
-            <CategoryMain isMobile = {isMobile}></CategoryMain>
+          <CategoryMain isMobile={isMobile}></CategoryMain>
         </div>
         <div>
           <div className="mt-6 main-banner-sale-off">
@@ -77,9 +77,19 @@ export default function home() {
             productCategoryMain &&
             productCategoryMain.data?.map((items, index) => (
               <div key={items.cat_id} >
-                <div className={`grid grid-cols-2 gap-4 h-[100%]  main-banner-product-left-right`}>
+                {/* <div className={`grid grid-cols-2 gap-4 h-[100%]  main-banner-product-left-right`}>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
                   <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
+                </div> */}
+                <div className="grid pt-4 pb-4 grid-cols-2 gap-4  h-[100%]  main-banner-product-left-right">
+                  <Carousel>
+                    <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
+                    <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
+                  </Carousel>
+                  <Carousel>
+                    <BannerSaleOff dataBanner={"banner/banner-mobile-product-right.png"}></BannerSaleOff>
+                    <BannerSaleOff dataBanner={"banner/banner-mobile-product-left.png"}></BannerSaleOff>
+                  </Carousel>
                 </div>
                 <div style={{ backgroundColor: `${colors[index % colors.length]}` }}>
                   <MainProduct
@@ -94,7 +104,7 @@ export default function home() {
           }
         </div>
         <div className="mt-6 main-news bg-[#ffffff]">
-            <News isMobile={isMobile}></News>
+          <News isMobile={isMobile}></News>
         </div>
       </div>
     </div>

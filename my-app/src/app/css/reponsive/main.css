@@ -9,6 +9,12 @@
   */
   .main-slider {
     padding-top: 88px;
+    height: 200px;
+    object-fit: cover;
+
+  }
+  .silder-main-image{
+    border-radius: 0% !important;
   }
 
   /**
@@ -102,8 +108,7 @@ product-main
   }
 
   .main-banner-product-left-right {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px;
   }
 
   .banner-sale-off-hot {
@@ -125,7 +130,7 @@ product-main
   .card-title {
     font-size: 100%;
   }
-
+ 
   /**
     news
   */
