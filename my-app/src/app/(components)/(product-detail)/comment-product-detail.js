@@ -21,7 +21,7 @@ export default function CommentProductDetail() {
                     </Label>
                     <FileInput id="file" />
                 </div>
-                <Button type="submit" className="bg-blue-500">Submit</Button>
+                <Button type="submit" className="bg-blue-500 text-[20px]">Submit</Button>
             </form>
         </div>
     )

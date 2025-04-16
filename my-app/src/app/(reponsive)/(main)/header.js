@@ -14,7 +14,9 @@ export default function HeaderReponsive() {
     return (
         <div className="p-1 bg-[#1435c3] ">
             <div className=" flex items-center justify-between">
-                <img src="./logo.png" className="w-20 h-15" ></img>
+                <Link href="/">
+                    <img src="./logo.png" className="w-20 h-15" ></img>
+                </Link>
                 <div className="flex items-center text-white">
                     <div className="pr-4">
                         <Menu as="div" className="relative inline-block text-left">
