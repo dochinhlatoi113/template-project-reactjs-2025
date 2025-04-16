@@ -1,5 +1,6 @@
 import Link from "next/link";
 import useFormatPrice from "@/app/(heper)/format-price";
+import BtnAction from "./btn-action";
 
 import { IMAGE_FAILED, API_MEDIA_PICTURE } from "@/api/api-file";
 export default function ProductCardMain({
@@ -59,19 +60,7 @@ export default function ProductCardMain({
                     <div>{formattedPrice}</div>
                 }
                 {price_item_product != 0 && (
-                    <div>
-                        <div className="grid grid-cols-2 gap-1 product-card-main-hot">
-                            <div className="card-actions">
-                                <button className="btn btn-accent text-white w-full text-xs">mua ngay</button>
-                            </div>
-                            <div className="card-actions">
-                                <button className="btn btn-secondary text-white w-full">thêm giỏ hàng</button>
-                            </div>
-                        </div>
-                        <div className="card-actions pt-2">
-                            <button className="btn btn-info text-white w-full">so sánh</button>
-                        </div>
-                    </div>
+                   <BtnAction></BtnAction>
                 )}
                 {price_item_product == 0 && (
                     <div className="card-actions">

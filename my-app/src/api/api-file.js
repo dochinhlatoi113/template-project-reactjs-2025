@@ -13,6 +13,9 @@ const API_PRODUCT_DESCRIPTION = "https://api.vitinhnguyenkim.com.vn/api/member/g
 const API_RELATED_PRODUCT_DETAIL = "https://api.vitinhnguyenkim.com.vn/api/member/relate-product?key="
 const API_PRODUCT_DETAIL_TECHNOLOGY = "https://api.vitinhnguyenkim.com.vn/api/member/get-product-technology/"
 const  API_POST_RELATED = "https://api.vitinhnguyenkim.com.vn/api/member/post-relate?key="
+//compare 
+const API_CATEGORY_LIST = "https://api.vitinhnguyenkim.com.vn/api/member/category-list/"
+const API_COMPARE_PRODUCT = "https://api.vitinhnguyenkim.com.vn/api/member/compare-product-search?key="
 export  {
     API_PRODUCT_DETAIL,
     API_PRODUCT_HOT, 
@@ -26,5 +29,7 @@ export  {
     API_PRODUCT_DESCRIPTION,
     API_RELATED_PRODUCT_DETAIL,
     API_PRODUCT_DETAIL_TECHNOLOGY,
-    API_POST_RELATED
+    API_POST_RELATED,
+    API_CATEGORY_LIST,
+    API_COMPARE_PRODUCT
 };

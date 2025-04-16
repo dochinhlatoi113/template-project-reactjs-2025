@@ -1,6 +1,7 @@
 import BannerSaleOff from "../(main)/banner-sale-off"
 import Commitment from "./commitment-product-detail"
 import PriceProductDetail from "./price-product-detail"
+import BtnAction from "../(main)/btn-action"
 export default function SidebarProductDetail(params) {
     return (
         <div className="border-[20px] border-white rounded-lg">
@@ -38,10 +39,11 @@ export default function SidebarProductDetail(params) {
                             </p>
                             <p className="text-sm text-red-500"> (*) Gọi đặt mua 093.093 0933 (8:00 - 21:30)</p>
                             <hr className="border-gray-300"></hr>
-                            <div className="action-btn flex justify-between ">
-                                <button className=" text-white btn  btn-accent w-[30%]">mua ngay</button>
+                            <div className="">
+                                {/* <button className=" text-white btn  btn-accent w-[30%]">mua ngay</button>
                                 <button className=" text-white btn btn-secondary w-[30%]">thêm giỏ hàng</button>
-                                <button className=" text-white btn btn-info w-[30%]">so sánh</button>
+                                <button className=" text-white btn btn-info w-[30%]">so sánh</button> */}
+                                <BtnAction></BtnAction>
                             </div>
                         </div>
                         <div className="infomation-product-detail">
