@@ -26,6 +26,7 @@ export default function ProductHotMain({ isMobile }) {
                         price_item_product={items.PriceSAP}
                         image_item_product={items.price_list.map((y) => (y.picture))}
                         slug_item_product={items.product_desc.friendly_url}
+                        category_item_product = {items.price_list.map((cateId)=>(cateId.cat_id))}
                     />
                 ))}
             </div>

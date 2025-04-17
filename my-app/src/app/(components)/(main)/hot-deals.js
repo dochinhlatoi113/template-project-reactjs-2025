@@ -13,7 +13,6 @@ export default function HotDeal({ isMobile, productList }) {
     const [discountPrice, setDiscountPrice] = useState(null);
     const [dataCategory, setDataCategory] = useState([]);
     const [activeTabChangeData, setActiveTabChangeData] = useState(202);
-
     let isDiscounted = true;
     useEffect(() => {
         setIsMounted(true);
@@ -32,7 +31,7 @@ export default function HotDeal({ isMobile, productList }) {
         if (productList.length > 0 && items.cat_id == activeTabChangeData) {
             imageElements.push(items);
         }
-    })
+    })  
     dataCategoryList = dataCategoryList.reduce((acc, item) => {
         if (!acc.some(cat => cat.id_category === item.id_category)) {
             acc.push(item);
@@ -99,6 +98,7 @@ export default function HotDeal({ isMobile, productList }) {
                                             price_item_product={items.PriceSAP}
                                             image_item_product={items.price_list.map((y)=>(y.picture))}
                                             slug_item_product = {items.product_desc.friendly_url}
+                                            category_item_product = {items.price_list.map((cateId)=>(cateId.cat_id))}
                                         />
                                     </div>
                                 </div>

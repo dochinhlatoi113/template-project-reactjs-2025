@@ -9,14 +9,14 @@ export default function ProductCardMain({
     description_item_product,
     image_item_product,
     slug_item_product,
-    brand_item_product
+    brand_item_product,
+    category_item_product
 }) {
     const formattedPrice = useFormatPrice(price_item_product)
     let imgSrc = IMAGE_FAILED
     if (image_item_product != "") {
         imgSrc = API_MEDIA_PICTURE + image_item_product;
     }
-
     return (
         <div className="card bg-base-100 h-full object-contain shadow-sm border border-gray-200">
             <div>
@@ -60,7 +60,13 @@ export default function ProductCardMain({
                     <div>{formattedPrice}</div>
                 }
                 {price_item_product != 0 && (
-                   <BtnAction></BtnAction>
+                    <BtnAction dataProduct={{
+                        title: title_item_product,
+                        price: price_item_product,
+                        image: image_item_product,
+                        slug: slug_item_product,
+                        categoryId : category_item_product
+                    }}></BtnAction>
                 )}
                 {price_item_product == 0 && (
                     <div className="card-actions">
