@@ -3,7 +3,9 @@ html {
   padding-right: 0 !important;
   overflow: auto !important;
 }
-
+.__variable_d65c78{
+  padding-right: 0 !important;
+}
 
 h1{
     font-size: 17px;
@@ -34,9 +36,11 @@ svg{
 .side-bar-mobile {
   display: none;
 }
+/**product-detail */
 .mobile-sidebar-product-detail{
   display: none;
 }
+
 .custom-bg-expanded{
   background-color: #F3F4F6; 
 }
