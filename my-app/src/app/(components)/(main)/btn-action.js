@@ -46,14 +46,14 @@ export default function BtnAction({ dataProduct }) {
         <div>
             <div className="grid grid-cols-2 gap-1 product-card-main-hot">
                 <div className="card-actions">
-                    <button className="btn btn-accent text-white w-full text-xs">mua ngay</button>
+                    <button className="btn btn-accent text-white w-full !text-[17px]">mua ngay</button>
                 </div>
                 <div className="card-actions">
-                    <button className="btn btn-secondary text-white w-full">thêm giỏ hàng</button>
+                    <button className="btn btn-secondary text-white w-full !text-[17px]">thêm giỏ hàng</button>
                 </div>
             </div>
             <div className="card-actions pt-2">
-                <button onClick={() => CompareData(true)} className="btn btn-info text-white w-full">so sánh</button>
+                <button onClick={() => CompareData(true)} className="btn btn-info text-white w-full !text-[17px]">so sánh</button>
             </div>
             <div className="">
                 <Modal theme={customTheme.modal} dismissible show={openModal} onClose={() => CompareData(false)}
