@@ -65,7 +65,7 @@ export default function ProductCardMain({
                         price: price_item_product,
                         image: image_item_product,
                         slug: slug_item_product,
-                        categoryId : category_item_product
+                        categoryId : category_item_product 
                     }}></BtnAction>
                 )}
                 {price_item_product == 0 && (

@@ -2,15 +2,17 @@ import BannerSaleOff from "../(main)/banner-sale-off"
 import Commitment from "./commitment-product-detail"
 import PriceProductDetail from "./price-product-detail"
 import BtnAction from "../(main)/btn-action"
+import useFormatPrice from "@/app/(heper)/format-price"
 export default function SidebarProductDetail(params) {
+    let formatPrice = useFormatPrice(params.params.productDetail.priceSAP)
     return (
         <div className="border-[20px] border-white rounded-lg">
             <div className="banner-product-detail">
                 <BannerSaleOff dataBanner="../banner/banner-mobile-product-left.png"></BannerSaleOff>
             </div>
             <div className="bg-[#f75b00]">
-            <div className="p-2">
-                   <PriceProductDetail></PriceProductDetail>
+                <div className="p-2">
+                    <PriceProductDetail></PriceProductDetail>
                 </div>
                 <div className="p-2">
                     <div className="border rounded-sm border-gray-300 bg-white">
@@ -43,7 +45,16 @@ export default function SidebarProductDetail(params) {
                                 {/* <button className=" text-white btn  btn-accent w-[30%]">mua ngay</button>
                                 <button className=" text-white btn btn-secondary w-[30%]">thêm giỏ hàng</button>
                                 <button className=" text-white btn btn-info w-[30%]">so sánh</button> */}
-                                <BtnAction></BtnAction>
+                                <BtnAction dataProduct={
+                                    {
+                                        title: params.params.productDetail.productName,
+                                        price: formatPrice,
+                                        image: params.params.productDetail.pictureForDetailProduct,
+                                        slug: params.params.productDetail.friendlyUrl,
+                                        categoryId: params.params.productDetail.cat_id
+                                    }
+                                }>
+                                </BtnAction>
                             </div>
                         </div>
                         <div className="infomation-product-detail">
@@ -52,9 +63,9 @@ export default function SidebarProductDetail(params) {
                     </div>
                 </div>
                 <div className="p-2">
-                   <Commitment></Commitment>
+                    <Commitment></Commitment>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

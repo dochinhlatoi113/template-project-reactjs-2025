@@ -3,21 +3,18 @@ import { Button, Label, Modal, ModalBody, Select } from "flowbite-react";
 import { API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
 import useFormatPrice from "@/app/(heper)/format-price";
 import { useQuery } from "@tanstack/react-query";
-import { DataInteractive } from "@headlessui/react";
 export default function BtnAction({ dataProduct }) {
     const [openModal, setOpenModal] = useState(false);
-
-    let catId = dataProduct.categoryId
-    
+    let catId = dataProduct?.categoryId
     const {
         data: categoryList,
         error: errorCategoryList,
         isLoading: isLoadingCategoryList,
         refetch
     } = useQuery({
-        queryKey: ["category-list", catId[0]],
+        queryKey: ["category-list", catId?.[0]],
         queryFn: async () => {
-            const response = await fetch(`${API_CATEGORY_LIST}/${catId[0]}`);
+            const response = await fetch(`${API_CATEGORY_LIST}/${catId?.[0]}`);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -28,7 +25,6 @@ export default function BtnAction({ dataProduct }) {
     const CompareData = async (param) => {
         setOpenModal(param);
         const { data } = await refetch();
-        console.log(data[0])
     };
     //format price
     const formatPrice = useFormatPrice(dataProduct.price)
@@ -47,6 +43,9 @@ export default function BtnAction({ dataProduct }) {
             </div>
             <Modal dismissible show={openModal} onClose={() => CompareData(false)}>
                 <ModalBody>
+                    <button onClick={() => CompareData(false)} className="text-red-500">
+                        (X)
+                    </button>
                     <div className="grid grid-cols-2 text-center">
                         <div>
                             <img className="pt-5 transition-transform duration-300 object-contain hover:scale-105 rounded-lg w-[80%] m-auto image-product-main h-[200px]"
@@ -58,14 +57,14 @@ export default function BtnAction({ dataProduct }) {
                         <div className="flex gap-2 ">
                             <div className="w-full">
                                 <div className="mb-2  text-start">
-                                    <Label htmlFor="countries ">Chọn thương hiệu</Label>
+                                    <Label htmlFor="brand ">Chọn thương hiệu</Label>
                                 </div>
-                                <Select id="countries">
+                                <Select id="brand">
                                     {categoryList?.[0]?.listBrand?.map((brand, index) => (
                                         <option key={index} value={brand.id}>
                                             {brand.title}
                                         </option>
-                                        
+
                                     ))}
 
                                 </Select>
@@ -75,7 +74,14 @@ export default function BtnAction({ dataProduct }) {
                                     <Label htmlFor="countries ">Chon mức giá</Label>
                                 </div>
                                 <Select id="countries" >
-                                    <option>United States</option>
+                                    <option className="brand-option" value="1">dưới 1 triệu</option>
+                                    <option className="brand-option" value="2">từ 1 triệu đến 5 triệu</option>
+                                    <option className="brand-option" value="3">từ 5 triệu đến 7 triệu</option>
+                                    <option className="brand-option" value="4">từ 7 triệu đến 10 triệu</option>
+                                    <option className="brand-option" value="5">từ 10 triệu đến 15 triệu</option>
+                                    <option className="brand-option" value="6">từ 15 triệu đến 20 triệu</option>
+                                    <option className="brand-option" value="7">từ 20 triệu đến 50 triệu</option>
+                                    <option className="brand-option" value="8">từ 50 triệu trở lên</option>
                                 </Select>
                             </div>
                         </div>
