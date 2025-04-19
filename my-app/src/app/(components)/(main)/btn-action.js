@@ -38,7 +38,7 @@ export default function BtnAction({ dataProduct }) {
     const customTheme = {
         modal: {
             content: {
-                inner: "relative flex max-h-[90dvh] flex-col rounded-lg bg-white shadow dark:bg-gray-700"
+                inner: "relative flex max-h-[150dvh] flex-col rounded-lg bg-white shadow dark:bg-gray-700"
             },
         },
     };
