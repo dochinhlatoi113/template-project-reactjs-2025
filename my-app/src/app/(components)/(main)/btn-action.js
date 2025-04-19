@@ -37,11 +37,11 @@ export default function BtnAction({ dataProduct }) {
     // custom theme modal
     const customTheme = {
         modal: {
-          content: {
-            base: "relative flex max-h-[90%] w-[80vw] flex-col rounded-lg bg-white shadow dark:bg-red-700",
-          },
+            content: {
+                base: "relative flex max-h-[90%] w-[80vw] flex-col rounded-lg bg-white shadow dark:bg-red-700",
+            },
         },
-      };
+    };
     return (
         <div>
             <div className="grid grid-cols-2 gap-1 product-card-main-hot">
@@ -56,7 +56,7 @@ export default function BtnAction({ dataProduct }) {
                 <button onClick={() => CompareData(true)} className="btn btn-info text-white w-full">so sánh</button>
             </div>
             <div className="">
-                <Modal  theme={customTheme.modal }  dismissible show={openModal} onClose={() => CompareData(false)}
+                <Modal theme={customTheme.modal} dismissible show={openModal} onClose={() => CompareData(false)}
                 >
                     <ModalBody>
                         <button onClick={() => CompareData(false)} className="text-red-500">
@@ -89,21 +89,21 @@ export default function BtnAction({ dataProduct }) {
 
                                     </Select>
                                 </div>
-                                <div className=" w-full mx-[1%]">
+                                <div className=" w-full">
                                     <div className="mb-2 text-start">
-                                        <Label htmlFor="price-range-select ">Chon mức giá</Label>
+                                        <Label htmlFor="price-range-select ">Chon  mức giá </Label>
                                     </div>
-                                    <Select id="price-range-select"
-                                    >
-                                        <option className="brand-option" value="1">dưới 1 triệu</option>
-                                        <option className="brand-option" value="2">1 triệu đến 5 triệu</option>
-                                        <option className="brand-option" value="3">từ 5 triệu đến 7 triệu</option>
-                                        <option className="brand-option" value="4">từ 7 triệu đến 10 triệu</option>
-                                        <option className="brand-option" value="5">từ 10 triệu đến 15 triệu</option>
-                                        <option className="brand-option" value="6">từ 15 triệu đến 20 triệu</option>
-                                        <option className="brand-option" value="7">từ 20 triệu đến 50 triệu</option>
-                                        <option className="brand-option" value="8">từ 50 triệu trở lên</option>
-                                    </Select>
+                                        <Select className="pt-[22%]" id="price-range-select"
+                                        >
+                                            <option className="brand-option" value="1">dưới 1 triệu</option>
+                                            <option className="brand-option" value="2">1 triệu đến 5 triệu</option>
+                                            <option className="brand-option" value="3">từ 5 triệu đến 7 triệu</option>
+                                            <option className="brand-option" value="4">từ 7 triệu đến 10 triệu</option>
+                                            <option className="brand-option" value="5">từ 10 triệu đến 15 triệu</option>
+                                            <option className="brand-option" value="6">từ 15 triệu đến 20 triệu</option>
+                                            <option className="brand-option" value="7">từ 20 triệu đến 50 triệu</option>
+                                            <option className="brand-option" value="8">từ 50 triệu trở lên</option>
+                                        </Select>
                                 </div>
                             </div>
                         </div>
