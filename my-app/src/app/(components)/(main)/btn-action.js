@@ -38,7 +38,7 @@ export default function BtnAction({ dataProduct }) {
     const customTheme = {
         modal: {
             content: {
-                base: "relative flex max-h-[90%] w-[80vw] flex-col rounded-lg bg-white shadow dark:bg-red-700",
+                inner: "relative flex max-h-[90dvh] flex-col rounded-lg bg-white shadow dark:bg-gray-700"
             },
         },
     };
@@ -93,7 +93,7 @@ export default function BtnAction({ dataProduct }) {
                                     <div className="mb-2 text-start">
                                         <Label htmlFor="price-range-select ">Chon  mức giá </Label>
                                     </div>
-                                        <Select className="pt-[22%]" id="price-range-select"
+                                        <Select className="" id="price-range-select"
                                         >
                                             <option className="brand-option" value="1">dưới 1 triệu</option>
                                             <option className="brand-option" value="2">1 triệu đến 5 triệu</option>
