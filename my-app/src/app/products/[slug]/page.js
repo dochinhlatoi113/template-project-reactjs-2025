@@ -37,15 +37,15 @@ export default function DetailProduct() {
     const gridClass = IsMobile ? '' : 'grid grid-cols-2';
 
     return (
-        <div className={` container mx-auto max-w-[1300px] ${paddingTop} p-4`}>
-            <div className="pb-2">
+        <div className={` container mx-auto max-w-[1300px] ${paddingTop}`}>
+            <div className="p-2">
                 <label className="text-[18px] font-bold">
                     {productDetail?.productDetail.productName}
                 </label>
             </div>
             <div className={`  ${gridClass} gap-[20px]`}>
-                <div className="left-product-detail">
-                    <div className="">
+                <div className="left-product-detail  ">
+                    <div className="left-product-detail-mobile">
                         <SilderProductDetail dataDetailAlbum={productDetail?.productDetail.listPrice} ></SilderProductDetail>
                     </div>
                     <div className="pt-2 mobile-sidebar-product-detail">

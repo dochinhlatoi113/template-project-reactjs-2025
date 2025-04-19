@@ -39,6 +39,7 @@ svg{
 /**product-detail */
 .mobile-sidebar-product-detail{
   display: none;
+  margin-top: 10px;
 }
 
 .custom-bg-expanded{
