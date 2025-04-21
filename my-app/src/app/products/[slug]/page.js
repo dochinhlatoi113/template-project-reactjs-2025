@@ -33,7 +33,6 @@ export default function DetailProduct() {
     if (errorProductDetail) return "error"
     if (isLoadingProductDetail) return "loading..."
     //checksize mobile
-    let calHeightTitle ="" ;
     const paddingTop = IsMobile ? 'pt-[120px]' : 'pt-[130px]';
     const gridClass = IsMobile ? '' : 'grid grid-cols-2';
 

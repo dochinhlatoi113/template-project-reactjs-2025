@@ -79,12 +79,11 @@ export default function BtnAction({ dataProduct }) {
                                     <div className="mb-2  text-start">
                                         <Label htmlFor="brand ">Chọn thương hiệu</Label>
                                     </div>
-                                    <Select id="brand">
+                                    <Select id="brand" >
                                         {categoryList?.[0]?.listBrand?.map((brand, index) => (
                                             <option key={index} value={brand.id}>
                                                 {brand.title}
                                             </option>
-
                                         ))}
 
                                     </Select>
@@ -95,7 +94,7 @@ export default function BtnAction({ dataProduct }) {
                                     </div>
                                         <Select className="" id="price-range-select"
                                         >
-                                            <option className="brand-option" value="1">dưới 1 triệu</option>
+                                            <option className="brand-option " value="1">dưới 1 triệu</option>
                                             <option className="brand-option" value="2">1 triệu đến 5 triệu</option>
                                             <option className="brand-option" value="3">từ 5 triệu đến 7 triệu</option>
                                             <option className="brand-option" value="4">từ 7 triệu đến 10 triệu</option>
