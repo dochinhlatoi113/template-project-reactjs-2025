@@ -51,7 +51,10 @@ product-main
     flex-direction: column;
     display: flex;
   }
-
+  .mobile-updated {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
   .main-product-hot {
     width: 100%;
     height: 10%;
