@@ -48,7 +48,11 @@ export default function ResponsiveFooter() {
                         Bản đồ
                     </label>
                     <div className="pt-2 text-[15px]">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7837.249733654211!2d106.83264019412061!3d10.839993244673515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175210e15d9e959%3A0x728602f20480400a!2sChung%20c%C6%B0%20Vinhomes%20Grand%20Park%20Qu%E1%BA%ADn%209!5e0!3m2!1svi!2s!4v1743581932190!5m2!1svi!2s" width="300"  allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7837.249733654211!2d106.83264019412061!3d10.839993244673515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175210e15d9e959%3A0x728602f20480400a!2sChung%20c%C6%B0%20Vinhomes%20Grand%20Park%20Qu%E1%BA%ADn%209!5e0!3m2!1svi!2s!4v1743581932190!5m2!1svi!2s"
+                         width="100%" 
+                        allowFullScreen="" 
+                        loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

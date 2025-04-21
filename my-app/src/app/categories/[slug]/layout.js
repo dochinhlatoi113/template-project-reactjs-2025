@@ -161,7 +161,7 @@ export default function layout({ children, params }) {
     //checksize
     let isMobile = useCheckSize()
     const gridClass = isMobile ? "col-span-12" : "col-span-10";
-    const paddingTop = isMobile ? 'pt-[30%]' : 'pt-[8%]';
+    const paddingTop = isMobile ? 'pt-[120px]' : 'pt-[130px]';
     const filterOption = isMobile
         ? <FilterOptionMobile catParentId={catParentId} />
         : <FilterOptionDesktop catParentId={catParentId} />;
@@ -199,7 +199,7 @@ export default function layout({ children, params }) {
                     <SidebarCategory catParentId={catParentId} catParentName={catParentName}></SidebarCategory>
                 </div>
 
-                <div className={`${gridClass}  bg-white p-4 text-black`}>
+                <div className={`${gridClass}  bg-white p-4 text-black reponsive-layout-category`}>
                     <div className="flex gap-2 items-center silder-price">
                         <label>Sắp xếp theo giá :</label>
                         <button

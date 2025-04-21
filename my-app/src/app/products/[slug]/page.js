@@ -34,11 +34,11 @@ export default function DetailProduct() {
     if (isLoadingProductDetail) return "loading..."
     //checksize mobile
     let calHeightTitle ="" ;
-    const paddingTop = IsMobile ? 'pt-[30%]' : 'pt-[30%]';
+    const paddingTop = IsMobile ? 'pt-[120px]' : 'pt-[130px]';
     const gridClass = IsMobile ? '' : 'grid grid-cols-2';
 
     return (
-        <div className={` container mx-auto max-w-[1300px] ${paddingTop}`}>
+        <div className={` container mx-auto max-w-[1300px] ${paddingTop} responsize-product-detail-padding`}>
             <div className="p-2">
                 <label className="text-[18px] font-bold">
                     {productDetail?.productDetail.productName}

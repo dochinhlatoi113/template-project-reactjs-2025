@@ -220,5 +220,21 @@ product-main
   }
 }
 
-/* Tablet (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {}
+
+
+
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .side-bar-desktop{
+    display: none;
+  }
+  .reponsive-layout-category{
+    grid-column: span 12 / span 12;
+  }
+  .side-bar-mobile{
+    display: inline;
+  }
+
+}
+
+

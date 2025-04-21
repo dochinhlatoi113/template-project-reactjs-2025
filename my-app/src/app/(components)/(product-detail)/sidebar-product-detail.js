@@ -42,9 +42,6 @@ export default function SidebarProductDetail(params) {
                             <p className="text-sm text-red-500"> (*) Gọi đặt mua 093.093 0933 (8:00 - 21:30)</p>
                             <hr className="border-gray-300"></hr>
                             <div className="">
-                                {/* <button className=" text-white btn  btn-accent w-[30%]">mua ngay</button>
-                                <button className=" text-white btn btn-secondary w-[30%]">thêm giỏ hàng</button>
-                                <button className=" text-white btn btn-info w-[30%]">so sánh</button> */}
                                 <BtnAction dataProduct={
                                     {
                                         title: params.params.productDetail.productName,
