@@ -4,6 +4,10 @@ import { API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
 import useFormatPrice from "@/app/(heper)/format-price";
 import { useQuery } from "@tanstack/react-query";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
+
+//component
+import TblCompareData from "./table-compare-data";
+
 export default function BtnAction({ dataProduct }) {
     const [openModal, setOpenModal] = useState(false);
     let catId = dataProduct?.categoryId
