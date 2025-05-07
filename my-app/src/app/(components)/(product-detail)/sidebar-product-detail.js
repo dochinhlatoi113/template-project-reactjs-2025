@@ -2,9 +2,9 @@ import BannerSaleOff from "../(main)/banner-sale-off"
 import Commitment from "./commitment-product-detail"
 import PriceProductDetail from "./price-product-detail"
 import BtnAction from "../(main)/btn-action"
-import useFormatPrice from "@/app/(heper)/format-price"
+import formatPrice from "@/app/(heper)/format-price"
 export default function SidebarProductDetail(params) {
-    let formatPrice = useFormatPrice(params.params.productDetail.priceSAP)
+    let formatPrices = formatPrice(params.params.productDetail.priceSAP)
     return (
         <div className="border-[20px] border-white rounded-lg">
             <div className="banner-product-detail">
@@ -45,7 +45,7 @@ export default function SidebarProductDetail(params) {
                                 <BtnAction dataProduct={
                                     {
                                         title: params.params.productDetail.productName,
-                                        price: formatPrice,
+                                        price: formatPrices,
                                         image: params.params.productDetail.pictureForDetailProduct,
                                         slug: params.params.productDetail.friendlyUrl,
                                         categoryId: params.params.productDetail.cat_id

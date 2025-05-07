@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useFormatPrice(priceOrigin) {
+export default function formatPrice(priceOrigin) {
     const [formattedPrice, setFormattedPrice] = useState("");
 
     useEffect(() => {

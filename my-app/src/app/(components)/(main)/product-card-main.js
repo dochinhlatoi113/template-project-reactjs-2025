@@ -1,5 +1,5 @@
 import Link from "next/link";
-import useFormatPrice from "@/app/(heper)/format-price";
+import formatPrice from "@/app/(heper)/format-price";
 import BtnAction from "./btn-action";
 
 import { IMAGE_FAILED, API_MEDIA_PICTURE } from "@/api/api-file";
@@ -12,7 +12,7 @@ export default function ProductCardMain({
     brand_item_product,
     category_item_product
 }) {
-    const formattedPrice = useFormatPrice(price_item_product)
+    const formattedPrice = formatPrice(price_item_product)
     let imgSrc = IMAGE_FAILED
     if (image_item_product != "") {
         imgSrc = API_MEDIA_PICTURE + image_item_product;
