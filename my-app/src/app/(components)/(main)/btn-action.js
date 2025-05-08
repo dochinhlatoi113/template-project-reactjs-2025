@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import Link from "next/link";
 //API
-import { API_COMPARE_PRODUCT,API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
+import { API_COMPARE_PRODUCT, API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
 
 export default function BtnAction({ dataProduct }) {
     const [openModal, setOpenModal] = useState(false);
@@ -40,7 +40,7 @@ export default function BtnAction({ dataProduct }) {
     //checksize
     const checkSizeMobile = useCheckSize();
     let isMobile = checkSizeMobile ? "" : "grid grid-cols-2"
-
+    let isHeight = checkSizeMobile ? "max-h-[20%]" : "max-h-[300px]"
     // custom theme modal
     const customTheme = {
         modal: {
@@ -161,7 +161,7 @@ export default function BtnAction({ dataProduct }) {
                                         {compareDataResult && (
                                             <>
                                                 <div>Có {compareDataResult.length} sản phẩm phù hợp</div>
-                                                <div className="w-[100%] p-2 max-h-[300px] overflow-y-auto space-y-4">
+                                                <div className={`w-full p-2 ${isHeight} overflow-y-auto space-y-4`}>
                                                     {compareDataResult?.map((item, index) => (
                                                         <div
                                                             key={index}
