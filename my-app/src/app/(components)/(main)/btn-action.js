@@ -40,7 +40,7 @@ export default function BtnAction({ dataProduct }) {
     //checksize
     const checkSizeMobile = useCheckSize();
     let isMobile = checkSizeMobile ? "" : "grid grid-cols-2"
-    let isHeight = checkSizeMobile ? "max-h-[20%]" : "max-h-[300px]"
+    let isHeight = checkSizeMobile ? "max-h-[100px]" : "max-h-[300px]"
     // custom theme modal
     const customTheme = {
         modal: {
