@@ -22,6 +22,7 @@ export default function MainProduct({ title_category, data_product, data_link = 
                                 image_item_product={item.price_list.map((i)=>(i.picture))}
                                 slug_item_product = {item.product_desc.friendly_url}
                                 category_item_product = {item.price_list.map((cateId)=>(cateId.cat_id))}
+                                id_product= {item.product_encry_key}
                             />
                         </div>
                     ))}

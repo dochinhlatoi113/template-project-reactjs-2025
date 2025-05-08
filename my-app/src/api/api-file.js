@@ -16,7 +16,7 @@ const  API_POST_RELATED = "https://api.vitinhnguyenkim.com.vn/api/member/post-re
 //compare 
 const API_CATEGORY_LIST = "https://api.vitinhnguyenkim.com.vn/api/member/category-list"
 const API_COMPARE_PRODUCT_SEARCH = "https://api.vitinhnguyenkim.com.vn/api/member/compare-product-search?key="
-const API_COMPARE_PRODUCT = "https://api.vitinhnguyenkim.com.vn/api/member/compare-product-search?key="
+const API_COMPARE_PRODUCT = "https://api.vitinhnguyenkim.com.vn/api/member/compare-products?"
 
 export  {
     API_PRODUCT_DETAIL,

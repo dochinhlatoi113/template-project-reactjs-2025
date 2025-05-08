@@ -1,19 +1,24 @@
+'use client'
 import { useState, useEffect } from "react";
 import { Button, Label, Modal, ModalBody, Select } from "flowbite-react";
 import formatPrice from "@/app/(heper)/format-price";
 import { useQuery } from "@tanstack/react-query";
 import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 //API
 import { API_COMPARE_PRODUCT, API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
-
+//component
+import TblCompareData from "@/app/compare-data-product/page";
 export default function BtnAction({ dataProduct }) {
+    const router = useRouter();
     const [openModal, setOpenModal] = useState(false);
     const [flag, setFlag] = useState(false);
     const [brand, setBrand] = useState(null);
     const [priceCompare, setPriceCompare] = useState(null);
     const [selectItem, setSelectItem] = useState(null);
     let catId = dataProduct?.categoryId
+
     const {
         data: categoryList,
         error: errorCategoryList,
@@ -33,7 +38,7 @@ export default function BtnAction({ dataProduct }) {
     const CompareData = async (param) => {
         setOpenModal(param);
         const { data } = await refetch();
-        if(param == false){
+        if (param == false) {
             setSelectItem(null)
             setPriceCompare(null)
         }
@@ -91,8 +96,21 @@ export default function BtnAction({ dataProduct }) {
     // set selected item compare
     const selectedItemProduct = (value) => {
         setSelectItem(value)
-        console.log(value)
     }
+    //navigate page result compare
+    const param1 = selectItem;
+    const param2 = dataProduct.idProduct;
+
+    const handleCompareClick = () => {
+        if (!param1 || !param2) {
+          
+          alert("Vui lòng chọn item để so sánh.");
+          return;
+        }
+      
+        router.push(`/compare-data-product?key1=${param1}&key2=${param2}`);
+      };
+      
     return (
         <div>
             <div className="grid grid-cols-2 gap-1 product-card-main-hot">
@@ -203,16 +221,21 @@ export default function BtnAction({ dataProduct }) {
                                 )}
                             </div>
                         </div>
-                        <div className="pt-3">
-                            {flag === true && (
-                                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 transition-colors !text-[15px]">
-                                    So sánh
-                                </Button>
-                            )}
+                        <div className="pt-2">
+                            {flag === true &&
+                                compareDataResult &&
+                                Object.keys(compareDataResult).length !== 0 && (
+                                    <Button
+                                        onClick={handleCompareClick}
+                                        className="w-full bg-blue-600 text-white hover:bg-blue-700 transition-colors !text-[15px]"
+                                    >
+                                        So sánh
+                                    </Button>
+                                )}
                         </div>
                     </ModalBody>
                 </Modal>
             </div>
-        </div>
+        </div >
     )
 }

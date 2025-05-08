@@ -10,7 +10,8 @@ export default function ProductCardMain({
     image_item_product,
     slug_item_product,
     brand_item_product,
-    category_item_product
+    category_item_product,
+    id_product
 }) {
     const formattedPrice = formatPrice(price_item_product)
     let imgSrc = IMAGE_FAILED
@@ -65,7 +66,8 @@ export default function ProductCardMain({
                         price: price_item_product,
                         image: image_item_product,
                         slug: slug_item_product,
-                        categoryId : category_item_product 
+                        categoryId : category_item_product, 
+                        idProduct:id_product
                     }}></BtnAction>
                 )}
                 {price_item_product == 0 && (
