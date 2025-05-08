@@ -33,6 +33,10 @@ export default function BtnAction({ dataProduct }) {
     const CompareData = async (param) => {
         setOpenModal(param);
         const { data } = await refetch();
+        if(param == false){
+            setSelectItem(null)
+            setPriceCompare(null)
+        }
     };
     //format price
     const formatPrices = formatPrice(dataProduct.price)
