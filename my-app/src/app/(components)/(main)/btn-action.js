@@ -164,9 +164,9 @@ export default function BtnAction({ dataProduct }) {
                                     <div className="pt-2">
                                         {compareDataResult && (
                                             <>
-                                                <div>Có {compareDataResult.length} sản phẩm phù hợp</div>
+                                                <div>Có {compareDataResult.length || 0} sản phẩm phù hợp</div>
                                                 <div className={`w-full p-2 ${isHeight} overflow-y-auto space-y-4`}>
-                                                    {compareDataResult?.map((item, index) => (
+                                                    {compareDataResult?.map?.((item, index) => (
                                                         <div
                                                             key={index}
                                                             onClick={() => selectedItemProduct(item.productId)}
