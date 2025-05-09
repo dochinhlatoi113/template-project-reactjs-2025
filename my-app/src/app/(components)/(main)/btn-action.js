@@ -102,10 +102,10 @@ export default function BtnAction({ dataProduct }) {
     const param2 = dataProduct.idProduct;
 
     const handleCompareClick = () => {
-        if (!param1 || !param2) {
+        // if (!param1 || !param2) {
           
-          alert("Vui lòng chọn item để so sánh.");
-        }
+        //   alert("Vui lòng chọn item để so sánh.");
+        // }
       
         router.push(`/compare-data-product?key1=${param1}&key2=${param2}`);
       };
