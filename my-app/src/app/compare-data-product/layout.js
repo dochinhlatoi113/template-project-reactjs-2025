@@ -1,7 +1,6 @@
 'use client'
-import TblCompareData from "@/app/compare-data-product/page"
 import useCheckSize from "../(heper)/reponsive-check-size";
-export default function layout({ children, params }) {
+export default function layout({ children }) {
     let isMobile = useCheckSize()
     const paddingTop = isMobile ? 'pt-[120px]' : 'pt-[130px]';
     return (
