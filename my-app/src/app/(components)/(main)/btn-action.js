@@ -183,7 +183,7 @@ export default function BtnAction({ dataProduct }) {
                                         {compareDataResult && (
                                             <>
                                                 <div>Có {compareDataResult.length || 0} sản phẩm phù hợp</div>
-                                                <div className={`w-full p-2 max-h-[10px] overflow-y-auto space-y-4`}>
+                                                <div className={`w-full p-2 ${isHeight} overflow-y-auto space-y-4`}>
                                                     {compareDataResult?.map?.((item, index) => (
                                                         <div
                                                             key={index}
