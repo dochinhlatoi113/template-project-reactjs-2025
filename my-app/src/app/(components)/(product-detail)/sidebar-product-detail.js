@@ -48,7 +48,8 @@ export default function SidebarProductDetail(params) {
                                         price: formatPrices,
                                         image: params.params.productDetail.pictureForDetailProduct,
                                         slug: params.params.productDetail.friendlyUrl,
-                                        categoryId: params.params.productDetail.cat_id
+                                        categoryId: params.params.productDetail.cat_id,
+                                        idProduct : params.params.productDetail.productId
                                     }
                                 }>
                                 </BtnAction>

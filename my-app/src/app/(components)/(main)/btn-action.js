@@ -7,7 +7,7 @@ import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 //API
-import { API_COMPARE_PRODUCT, API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
+import {  API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
 //component
 import TblCompareData from "@/app/compare-data-product/page";
 export default function BtnAction({ dataProduct }) {
@@ -18,7 +18,6 @@ export default function BtnAction({ dataProduct }) {
     const [priceCompare, setPriceCompare] = useState(null);
     const [selectItem, setSelectItem] = useState(null);
     let catId = dataProduct?.categoryId
-
     const {
         data: categoryList,
         error: errorCategoryList,
@@ -99,14 +98,14 @@ export default function BtnAction({ dataProduct }) {
     }
     //navigate page result compare
     const param1 = selectItem;
-    const param2 = dataProduct.idProduct;
-
+    const param2 = dataProduct.idProduct; 
     const handleCompareClick = () => {
-        // if (!param1 || !param2) {
-          
-        //   alert("Vui lòng chọn item để so sánh.");
-        // }
-      
+
+        if (!param1 || !param2) {
+           alert("Vui lòng chọn item để so sánh.");
+           return
+        }
+        
         router.push(`/compare-data-product?key1=${param1}&key2=${param2}`);
       };
       

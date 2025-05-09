@@ -58,7 +58,7 @@ export default function DetailProduct() {
                         <InfoProductDetail slugProductdDetail={slugProductDetail}></InfoProductDetail>
                     </div>
                     <div className="pt-2">
-                        <ProductRelated params={slugProductDetail}></ProductRelated>
+                        <ProductRelated params={slugProductDetail} catId={productDetail.productDetail.cat_id} ></ProductRelated>
                     </div>
                     <div className="pt-2">
                         <ViewProductDetail></ViewProductDetail>

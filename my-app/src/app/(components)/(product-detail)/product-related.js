@@ -3,8 +3,8 @@ import { API_RELATED_PRODUCT_DETAIL } from "@/api/api-file";
 // component
 import ProductCardMain from "../(main)/product-card-main";
 
-export default function ProductRelated({ params }) {
-
+export default function ProductRelated({ params,catId  }) {
+    
     const { data: dataProductRelated, isError, isLoading } = useQuery({
         queryKey: ['slugProductRelated', params],
         queryFn: async () => {
@@ -12,8 +12,6 @@ export default function ProductRelated({ params }) {
             return response.json();
         },
     });
-
-
     return (
         <div className="border-[20px] border-white bg-white rounded-lg">
             <div className="bg-gray-100 border border-gray-300 rounded-md px-4 py-2 mb-4">
@@ -34,6 +32,8 @@ export default function ProductRelated({ params }) {
                                         image_item_product={item.picture}
                                         slug_item_product={item.friendlyUrl}
                                         brand_item_product={item.brandName}
+                                        category_item_product = {catId}
+                                        id_product={item.productId}
                                     />
                                 </div>
                             </div>

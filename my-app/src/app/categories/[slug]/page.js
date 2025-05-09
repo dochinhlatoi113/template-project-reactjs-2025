@@ -25,6 +25,7 @@ export default function CategoryPageProduct({ dataCategoryPageList }) {
                             brand_item_product={items.brand_desc ? items.brand_desc.title : 'Updating...'}
                             description_item_product={items.product_desc.title}
                             category_item_product = {items.price_list.map((y) => (y.cat_id))}
+                            id_product = {items.productId}
                         />
                     </div>
                 ))}
