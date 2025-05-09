@@ -26,46 +26,51 @@ export default function TblCompareData() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Đã xảy ra lỗi.</div>;
 
-  const allCatNames = Array.from(
-    new Set(
-      compareDataProduct?.data.flatMap(product =>
-        product.dataTechnology.map(tech => tech.catName)
-      )
-    )
-  );
-
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full border text-sm text-left">
-        <thead>
+      <table className="min-w-full text-sm border border-gray-200 shadow rounded-md">
+        <thead className="bg-gray-100 text-gray-800 font-semibold">
           <tr>
-            <th className="border px-4 py-2 font-semibold bg-gray-100">Thuộc tính</th>
+            <th className="w-[200px] px-4 py-2 border">Thuộc tính</th>
             {compareDataProduct?.data.map((_, index) => (
-              <th key={index} className="border px-4 py-2 bg-gray-100">Sản phẩm {index + 1}</th>
+              <th key={index} className="px-4 py-2 border text-center">Sản phẩm {index + 1}</th>
             ))}
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td className="border px-4 py-2 font-semibold">Tên sản phẩm</td>
+
+        <tbody className="text-gray-700">
+          <tr className="hover:bg-gray-50">
+            <td className="px-4 py-2 font-medium border">Tên sản phẩm</td>
             {compareDataProduct?.data.map((item, index) => (
-              <td key={index} className="border px-4 py-2">{item.productName}</td>
+              <td key={index} className="px-4 py-2 text-center border">{item.productName}</td>
             ))}
           </tr>
-          <tr>
-            <td className="border px-4 py-2 font-semibold">Giá</td>
+
+          <tr className="hover:bg-gray-50">
+            <td className="px-4 py-2 font-medium border">Giá</td>
             {compareDataProduct?.data.map((item, index) => (
-              <td key={index} className="border px-4 py-2">{item.price}</td>
+              <td key={index} className="px-4 py-2 text-center border">
+                {item.price > 0 ? `${item.price.toLocaleString()} ₫` : "liên hệ"}
+              </td>
             ))}
           </tr>
-          {allCatNames.map((catName, i) => (
-            <tr key={i}>
-              <td className="border px-4 py-2 font-semibold">{catName}</td>
-              {compareDataProduct?.data.map((product, j) => {
-                const match = product.dataTechnology.find(tech => tech.catName === catName);
+
+          {Array.from(
+            new Set(
+              compareDataProduct?.data.flatMap(item =>
+                item.dataTechnology.map(tech => tech.catOption)
+              )
+            )
+          ).map((catOption, i) => (
+            <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+              <td className="px-4 py-2 font-medium border">{catOption}</td>
+              {compareDataProduct?.data.map((product, index) => {
+                const found = product.dataTechnology.find(t => t.catOption === catOption);
+                const rawValue = found?.nameCatOption || "-";
+                const cleanText = rawValue.replace(/<[^>]+>/g, "").trim();
                 return (
-                  <td key={j} className="border px-4 py-2">
-                    {match?.catOption || "-"}
+                  <td key={index} className="px-4 py-2 text-center border">
+                    {cleanText || "-"}
                   </td>
                 );
               })}
@@ -75,4 +80,7 @@ export default function TblCompareData() {
       </table>
     </div>
   );
+
+
+
 }
