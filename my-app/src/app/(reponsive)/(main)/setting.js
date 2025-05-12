@@ -11,7 +11,7 @@ export default function Setting() {
   };
 
   return (
-    <div className="fixed bottom-[45%] right-[1%] z-50">
+    <div className="fixed bottom-[20%] right-[1%] z-50">
       <Button onClick={handleOnOffSetting}> 
         <svg
           xmlns="http://www.w3.org/2000/svg"
