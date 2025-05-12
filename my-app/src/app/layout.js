@@ -11,6 +11,8 @@ import ResponsiveHeader from "./(components)/(main)/header-main";
 import ResponsiveFooter from "./(components)/(main)/footer";
 import ReactQueryProvider from "./ReactQueryProvider";
 import ReduxToolKitProvider from "./ReduxToolKitProvider";
+import Setting from "./(reponsive)/(main)/setting";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -31,6 +33,7 @@ export default function RootLayout({ children }) {
           <ReduxToolKitProvider>
             <ResponsiveHeader />
             <main>{children}</main>
+            <Setting></Setting>
             <ResponsiveFooter />
           </ReduxToolKitProvider>
         </ReactQueryProvider>
