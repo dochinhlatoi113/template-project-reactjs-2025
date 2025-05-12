@@ -11,8 +11,8 @@ export default function Setting() {
     };
 
     return (
-        <div className="fixed bottom-[1%] right-[1%] z-50">
-            <div className="flex">
+        <div className="fixed bottom-0 left-0 w-full bg-red-500 ">
+            <div className="flex items-center justify-between p-2">
                 <Button onClick={handleOnOffSetting}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

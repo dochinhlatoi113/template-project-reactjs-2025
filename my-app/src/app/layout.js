@@ -12,7 +12,6 @@ import ResponsiveFooter from "./(components)/(main)/footer";
 import ReactQueryProvider from "./ReactQueryProvider";
 import ReduxToolKitProvider from "./ReduxToolKitProvider";
 import Setting from "./(reponsive)/(main)/setting";
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -34,7 +33,7 @@ export default function RootLayout({ children }) {
             <ResponsiveHeader />
             <main>{children}</main>
             <ResponsiveFooter />
-            <Setting></Setting>
+            <Setting className="fnc-mobile"></Setting>
           </ReduxToolKitProvider>
         </ReactQueryProvider>
       </body>
