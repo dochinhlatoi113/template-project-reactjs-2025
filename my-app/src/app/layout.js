@@ -33,7 +33,9 @@ export default function RootLayout({ children }) {
             <ResponsiveHeader />
             <main>{children}</main>
             <ResponsiveFooter />
-            <Setting className="fnc-mobile"></Setting>
+            <div style={{ paddingTop: "50px" }}>
+              <Setting />
+            </div>
           </ReduxToolKitProvider>
         </ReactQueryProvider>
       </body>

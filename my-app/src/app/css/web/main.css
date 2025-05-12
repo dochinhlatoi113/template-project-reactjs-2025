@@ -45,6 +45,11 @@ svg{
 .custom-bg-expanded{
   background-color: #F3F4F6; 
 }
+
+/**footer*/
+.fnc-mobile{
+  display:none;
+}
   /** pricing price bar */
   /* .sliders_control {
     position: relative;
