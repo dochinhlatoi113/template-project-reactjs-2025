@@ -7,6 +7,7 @@ import { API_CATEGORY_MENU } from "@/api/api-file";
 
 import CartIcon from "./cartIcon";
 import HeaderNavItem from "./headerNavItem";
+import ItemLoginAndNotify from "./ItemLoginAndNotify";
 export default function Header() {
     //show count items in cart
 
@@ -37,7 +38,7 @@ export default function Header() {
                     {/*menu behind*/}
                     <nav>
                         <ul className="flex space-x-14 ">
-                         <HeaderNavItem></HeaderNavItem>
+                            <HeaderNavItem></HeaderNavItem>
                         </ul>
                     </nav>
                 </div>
@@ -130,22 +131,8 @@ export default function Header() {
                                 />
                             </div>
                         </li>
-                        <li className="flex items-center space-x-2 hover:text-gray-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 m-auto text-[#82869E]">
-                                <path fillRule="evenodd" d="M3.597 7.348a3 3 0 0 0 0 5.304 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75 3 3 0 0 0 0-5.305 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75Zm9.933.182a.75.75 0 0 0-1.06-1.06l-6 6a.75.75 0 1 0 1.06 1.06l6-6Zm.47 5.22a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM7.25 8.5a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5Z" clipRule="evenodd" />
-                            </svg>
-                            <div className="flex flex-col">
-                                <a href="#" className="text-[#82869E]">Login</a>
-                                <a href="#" className="text-[#82869E]">Register</a>
-                            </div>
-                        </li>
-                        <li className="flex items-center space-x-2 hover:text-gray-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 m-auto text-[#82869E]">
-                                <path d="M4.214 3.227a.75.75 0 0 0-1.156-.955 8.97 8.97 0 0 0-1.856 3.825.75.75 0 0 0 1.466.316 7.47 7.47 0 0 1 1.546-3.186ZM16.942 2.272a.75.75 0 0 0-1.157.955 7.47 7.47 0 0 1 1.547 3.186.75.75 0 0 0 1.466-.316 8.971 8.971 0 0 0-1.856-3.825Z" />
-                                <path fillRule="evenodd" d="M10 2a6 6 0 0 0-6 6c0 1.887-.454 3.665-1.257 5.234a.75.75 0 0 0 .515 1.076 32.91 32.91 0 0 0 3.256.508 3.5 3.5 0 0 0 6.972 0 32.903 32.903 0 0 0 3.256-.508.75.75 0 0 0 .515-1.076A11.448 11.448 0 0 1 16 8a6 6 0 0 0-6-6Zm0 14.5a2 2 0 0 1-1.95-1.557 33.54 33.54 0 0 0 3.9 0A2 2 0 0 1 10 16.5Z" clipRule="evenodd" />
-                            </svg>
-                        </li>
-                        <CartIcon></CartIcon>
+                        <ItemLoginAndNotify></ItemLoginAndNotify>
+                        <CartIcon className="text-black"></CartIcon>
                     </ul>
                 </nav>
             </div>
