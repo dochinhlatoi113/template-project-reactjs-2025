@@ -40,7 +40,7 @@ export default function ProductCardMain({
                             NEW
                         </div>
                     )}
-                    <div className="badge mobile-updated badge-primary">{brand_item_product ?? "updating"}</div>
+                    <div className="mobile-updated">{brand_item_product ?? "updating"}</div>
                 </div>
                 <div className="relative group">
                     <p className="description-product">
@@ -57,17 +57,19 @@ export default function ProductCardMain({
                         </div>
                     )}
                 </div>
-                {price_item_product != 0 &&
+                {price_item_product !== 0 ? (
                     <div>{formattedPrice}</div>
-                }
+                ) : (
+                    "liên hệ"
+                )}
                 {price_item_product != 0 && (
                     <BtnAction dataProduct={{
                         title: title_item_product,
                         price: price_item_product,
                         image: image_item_product,
                         slug: slug_item_product,
-                        categoryId : category_item_product, 
-                        idProduct:id_product
+                        categoryId: category_item_product,
+                        idProduct: id_product
                     }}></BtnAction>
                 )}
                 {price_item_product == 0 && (

@@ -33,8 +33,8 @@ export default function RootLayout({ children }) {
           <ReduxToolKitProvider>
             <ResponsiveHeader />
             <main>{children}</main>
-            <Setting></Setting>
             <ResponsiveFooter />
+            <Setting></Setting>
           </ReduxToolKitProvider>
         </ReactQueryProvider>
       </body>
