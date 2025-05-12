@@ -7,9 +7,14 @@ import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 //API
-import {  API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
+import { API_COMPARE_PRODUCT_SEARCH, API_MEDIA_PICTURE, API_CATEGORY_LIST } from "@/api/api-file";
 //component
 import TblCompareData from "@/app/compare-data-product/page";
+//redux
+import { addToCart } from "@/app/redux-toolkit/cartSlice";
+import { useDispatch } from 'react-redux';
+
+
 export default function BtnAction({ dataProduct }) {
     const router = useRouter();
     const [openModal, setOpenModal] = useState(false);
@@ -17,6 +22,8 @@ export default function BtnAction({ dataProduct }) {
     const [brand, setBrand] = useState(null);
     const [priceCompare, setPriceCompare] = useState(null);
     const [selectItem, setSelectItem] = useState(null);
+    const [idProductAddToCart, setIdProduct] = useState(dataProduct.idProduct)
+
     let catId = dataProduct?.categoryId
     const {
         data: categoryList,
@@ -98,17 +105,22 @@ export default function BtnAction({ dataProduct }) {
     }
     //navigate page result compare
     const param1 = selectItem;
-    const param2 = dataProduct.idProduct; 
+    const param2 = dataProduct.idProduct;
     const handleCompareClick = () => {
 
         if (!param1 || !param2) {
-           alert("Vui lòng chọn item để so sánh.");
-           return
+            alert("Vui lòng chọn item để so sánh.");
+            return
         }
-        
+
         router.push(`/compare-data-product?key1=${param1}&key2=${param2}`);
-      };
-      
+    };
+    // add to cart
+    const dispatch = useDispatch();
+    const handleAddToCart = () => {
+        dispatch(addToCart(dataProduct));
+    };
+
     return (
         <div>
             <div className="grid grid-cols-2 gap-1 product-card-main-hot">
@@ -116,7 +128,8 @@ export default function BtnAction({ dataProduct }) {
                     <button className="btn btn-accent text-white w-full !text-[100%]">mua ngay</button>
                 </div>
                 <div className="card-actions">
-                    <button className="btn btn-secondary text-white w-full !text-[80%]">thêm giỏ hàng</button>
+                    <button className="btn btn-secondary text-white w-full !text-[80%]" onClick={() => handleAddToCart()}
+                    >thêm giỏ hàng</button>
                 </div>
             </div>
             <div className="card-actions pt-2">
@@ -144,7 +157,7 @@ export default function BtnAction({ dataProduct }) {
                             <div>
                                 <div className="flex gap-2 w-full">
                                     <div className="w-full h-full">
-                                        <div className="mb-2  text-start">
+                                        <div className="mb-2 text-start">
                                             <Label htmlFor="brand ">Chọn thương hiệu</Label>
                                         </div>
                                         <Select
@@ -160,7 +173,7 @@ export default function BtnAction({ dataProduct }) {
                                     </div>
                                     <div className=" w-full">
                                         <div className="mb-2 text-start">
-                                            <Label htmlFor="price-range-select ">Chon  mức giá </Label>
+                                            <Label htmlFor="price-range-select ">Chon mức giá </Label>
                                         </div>
                                         <Select className="" id="price-range-select" onChange={(e) => priceCompareFnc(e.target.value)}
                                         >

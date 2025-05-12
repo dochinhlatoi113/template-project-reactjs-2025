@@ -33,13 +33,14 @@ export default function HeaderReponsive() {
 
                             <MenuItems
                                 transition
-                                className="absolute m-1px right-0 z-10 mt-4 w-56 origin-top-right  bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                className="absolute m-1px right-0 z-10 mt-4 w-56 origin-top-right bg-white ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                style={{ maxHeight: '200px', overflowY: 'auto' }}  
                             >
-                                <div className="py-4  max-h-[100vh] overflow-y-auto">
+                                <div className="py-4">
                                     {cachedDataMenu && cachedDataMenu.data?.map((item, index) => (
-                                        <div key={index} className='text-black p-2  '>
+                                        <div key={index} className="text-black p-2">
                                             <MenuItem as={Link} href={`${item.menu_desc.link}-danh-muc`}>
-                                                <div className='flex items-center gap-2 px-2 py-1 text-black hover:bg-gray-100'>
+                                                <div className="flex items-center gap-2 px-2 py-1 text-black hover:bg-gray-100">
                                                     <img className="w-5" src={`${API_MEDIA_PICTURE + item.menu_icon}`} />
                                                     {item.menu_desc.title}
                                                 </div>
@@ -48,6 +49,7 @@ export default function HeaderReponsive() {
                                     ))}
                                 </div>
                             </MenuItems>
+
                         </Menu>
                     </div>
                 </div>

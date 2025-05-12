@@ -3,8 +3,12 @@
 import { API_COMPARE_PRODUCT } from "@/api/api-file";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from 'next/navigation';
-
+import Link from "next/link";
+import { useRouter } from 'next/navigation';
+import { API_MEDIA_PICTURE } from "@/api/api-file";
 export default function TblCompareData() {
+  const router = useRouter();
+
   const searchParams = useSearchParams();
   const param1 = searchParams.get('key1');
   const param2 = searchParams.get('key2');
@@ -27,7 +31,12 @@ export default function TblCompareData() {
   if (error) return <div>Đã xảy ra lỗi.</div>;
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto p-4">
+      <div>
+        <button onClick={() => router.back()} className="!text-sm">
+          Quay lại
+        </button>
+      </div>
       <table className="min-w-full text-sm border border-gray-200 shadow rounded-md">
         <thead className="bg-gray-100 text-gray-800 font-semibold">
           <tr>
@@ -39,6 +48,19 @@ export default function TblCompareData() {
         </thead>
 
         <tbody className="text-gray-700">
+
+          <tr className="hover:bg-gray-50">
+            <td className="px-4 py-2 font-medium border">Ảnh sản phẩm</td>
+            {compareDataProduct?.data.map((item, index) => (
+              <td key={index} className="px-4 py-2 text-center border">
+                <img
+                  src={item.picture !== "" ? API_MEDIA_PICTURE + item.picture : "/no-image-src.png"}
+                  className="w-[100px] h-[100px] m-auto"
+                />
+              </td>
+            ))}
+          </tr>
+
           <tr className="hover:bg-gray-50">
             <td className="px-4 py-2 font-medium border">Tên sản phẩm</td>
             {compareDataProduct?.data.map((item, index) => (
@@ -51,6 +73,15 @@ export default function TblCompareData() {
             {compareDataProduct?.data.map((item, index) => (
               <td key={index} className="px-4 py-2 text-center border">
                 {item.price > 0 ? `${item.price.toLocaleString()} ₫` : "liên hệ"}
+              </td>
+            ))}
+          </tr>
+
+          <tr className="hover:bg-gray-50">
+            <td className="px-4 py-2 font-medium border">Hãng</td>
+            {compareDataProduct?.data.map((item, index) => (
+              <td key={index} className="px-4 py-2 text-center border">
+                {item.productBrand}
               </td>
             ))}
           </tr>
