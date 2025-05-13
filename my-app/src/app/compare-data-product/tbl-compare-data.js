@@ -72,7 +72,7 @@ export default function TblCompareData() {
             <td className="px-4 py-2 font-medium border">Giá</td>
             {compareDataProduct?.data.map((item, index) => (
               <td key={index} className="px-4 py-2 text-center border">
-                {item.price > 0 ? `${item.price.toLocaleString()} ₫` : "liên hệ"}
+                {item.price > 0 ? `${item.price.toLocaleString()}` : "liên hệ"}
               </td>
             ))}
           </tr>

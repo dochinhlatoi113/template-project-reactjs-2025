@@ -132,7 +132,7 @@ export default function Header() {
                             </div>
                         </li>
                         <ItemLoginAndNotify></ItemLoginAndNotify>
-                        <CartIcon className="text-black"></CartIcon>
+                        <CartIcon></CartIcon>
                     </ul>
                 </nav>
             </div>

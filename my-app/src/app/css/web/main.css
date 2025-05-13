@@ -45,7 +45,10 @@ svg{
 .custom-bg-expanded{
   background-color: #F3F4F6; 
 }
-
+/**cart page */
+.title-cart-page-desktop{
+  display: none;
+}
 /**footer*/
 .fnc-mobile{
   display:none;

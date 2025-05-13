@@ -15,11 +15,11 @@ const cartSlice = createSlice({
             const existingProduct = state.items.find(item => item.idProduct === product.idProduct);
             if (existingProduct) {
                 existingProduct.quantity += 1;
-             
+
             } else {
                 const newProduct = { ...product, quantity: 1 };
                 state.items.push(newProduct);
-              
+
             }
             console.log('✅ Giỏ hàng sau cập nhật:', current(state.items));
         },
@@ -29,8 +29,11 @@ const cartSlice = createSlice({
         clearCart: (state) => {
             state.items = [];
         },
+        removeZeroPriceItems(state) {
+            state.items = state.items.filter(item => Number(item.price) > 0);
+        },
     },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart , removeZeroPriceItems} = cartSlice.actions;
 export default cartSlice.reducer;
