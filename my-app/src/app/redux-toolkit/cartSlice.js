@@ -21,10 +21,11 @@ const cartSlice = createSlice({
                 state.items.push(newProduct);
 
             }
-            console.log('✅ Giỏ hàng sau cập nhật:', current(state.items));
         },
         removeFromCart: (state, action) => {
-            state.items = state.items.filter(item => item.id !== action.payload);
+            state.items = state.items.filter(item => {
+                return item.idProduct !== action.payload.idProduct;
+            });
         },
         clearCart: (state) => {
             state.items = [];
@@ -35,5 +36,5 @@ const cartSlice = createSlice({
     },
 });
 
-export const { addToCart, removeFromCart, clearCart , removeZeroPriceItems} = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart, removeZeroPriceItems } = cartSlice.actions;
 export default cartSlice.reducer;
