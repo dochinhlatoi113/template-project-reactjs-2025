@@ -8,11 +8,11 @@ import useCheckSize from "../(heper)/reponsive-check-size";
 import { useState, useEffect } from "react";
 import { Checkbox, Label } from "flowbite-react";
 import { Button } from "flowbite-react";
+
 export default function Page() {
     const [inputValue, setInputValue] = useState({});
     const [inputValuePromotionCode, setValuePromotionCode] = useState(0);
-    const [selectedItems, setSelectedItems] = useState({});
-    const [selectedItem, setSelectedItem] = useState([]);
+    const [selectedStatus, setSelectedStatus] = useState({}); 
 
     const [checkAll, setCheckAll] = useState(false);
     const [totalCheckAll, setTotalCheckAll] = useState(0);
@@ -24,17 +24,16 @@ export default function Page() {
 
     const handleDelete = (item, inputValue, index) => {
         // dispatch(removeFromCart(item));
-        const dataQuantity = (inputValue[index]) ?? item.quantity
-        let  minusPrice ;
-            minusPrice = totalCheckAll - (item.price * dataQuantity)
-            if(minusPrice < 0) {
-                setTotalCheckAll(0);
-            }else{
-                setTotalCheckAll(minusPrice);
-            }
-            setCheckAll(checkAll);
-           };
-  
+        const dataQuantity = (inputValue[index]) ?? item.quantity;
+        let minusPrice;
+        minusPrice = totalCheckAll - (item.price * dataQuantity);
+        if (minusPrice < 0) {
+            setTotalCheckAll(0);
+        } else {
+            setTotalCheckAll(minusPrice);
+        }
+        setCheckAll(checkAll);
+    };
 
     //check selected all
     const handleSelectAllItem = () => {
@@ -50,29 +49,26 @@ export default function Page() {
             }
             updatedSelections[index] = newCheckAll;
         });
-        setSelectedItems(updatedSelections);
-        setTotalCheckAll(totalItems)
+        setSelectedStatus(updatedSelections); 
+        setTotalCheckAll(totalItems);
     };
-
 
     const handleSelectItem = (index, inputValue, item) => {
         const updated = {
-            ...selectedItems,
-            [index]: !selectedItems[index],
+            ...selectedStatus, 
+            [index]: !selectedStatus[index],
         };
-    
+
         const allChecked = cartItems.length > 0 && cartItems.every((_, i) => updated[i]);
-        setSelectedItems(updated);
+        setSelectedStatus(updated); 
         setCheckAll(allChecked);
-    
         recalculateTotal(inputValue, updated);
     };
-    
 
-    const recalculateTotal = (newInputValue = inputValue, newSelectedItems = selectedItems) => {
+    const recalculateTotal = (newInputValue = inputValue, newSelectedStatus = selectedStatus) => { 
         let total = 0;
         cartItems.forEach((item, index) => {
-            if (newSelectedItems[index]) {
+            if (newSelectedStatus[index]) {
                 const quantity = parseFloat(newInputValue[index]) || item.quantity;
                 total += quantity * item.price;
             }
@@ -81,7 +77,7 @@ export default function Page() {
     };
 
     //check size 
-    const isMobile = useCheckSize()
+    const isMobile = useCheckSize();
 
     const gridClass = isMobile ? "" : "grid grid-cols-2 gap-4";
 
@@ -107,8 +103,8 @@ export default function Page() {
                                         <div className="flex items-center gap-2">
                                             <Checkbox
                                                 id={`item-${index}`}
-                                                checked={!!selectedItems[index]}
-                                                onChange={() => handleSelectItem(index,inputValue, item )}
+                                                checked={!!selectedStatus[index]} 
+                                                onChange={() => handleSelectItem(index, inputValue, item)}
                                             />
                                         </div>
                                         <img
@@ -200,7 +196,6 @@ export default function Page() {
                                             </span>
                                         </div>
                                     </div>
-
                                 </div>
                             ))}
                         </div>
@@ -262,7 +257,5 @@ export default function Page() {
                 <div className="text-center text-gray-500 text-lg py-12">🛒 Giỏ hàng trống</div>
             )}
         </div>
-
     );
 }
-
