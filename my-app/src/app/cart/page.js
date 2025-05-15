@@ -5,13 +5,15 @@ import { API_MEDIA_PICTURE } from "@/api/api-file";
 import { removeFromCart } from "../redux-toolkit/cartSlice";
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import useCheckSize from "../(heper)/reponsive-check-size";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Checkbox, Label } from "flowbite-react";
 import { Button } from "flowbite-react";
 export default function Page() {
     const [inputValue, setInputValue] = useState({});
     const [inputValuePromotionCode, setValuePromotionCode] = useState(0);
     const [selectedItems, setSelectedItems] = useState({});
+    const [selectedItem, setSelectedItem] = useState([]);
+
     const [checkAll, setCheckAll] = useState(false);
     const [totalCheckAll, setTotalCheckAll] = useState(0);
     //remove item
@@ -21,16 +23,18 @@ export default function Page() {
     });
 
     const handleDelete = (item, inputValue, index) => {
-        dispatch(removeFromCart(item));
+        // dispatch(removeFromCart(item));
         const dataQuantity = (inputValue[index]) ?? item.quantity
-        if (checkAll === true) {
-            const minusPrice = totalCheckAll - (item.price * dataQuantity)
-            setTotalCheckAll(minusPrice);
+        let  minusPrice ;
+            minusPrice = totalCheckAll - (item.price * dataQuantity)
+            if(minusPrice < 0) {
+                setTotalCheckAll(0);
+            }else{
+                setTotalCheckAll(minusPrice);
+            }
             setCheckAll(checkAll);
-        }
-
-
-    };
+           };
+  
 
     //check selected all
     const handleSelectAllItem = () => {
@@ -50,16 +54,20 @@ export default function Page() {
         setTotalCheckAll(totalItems)
     };
 
-    const handleSelectItem = (index) => {
+
+    const handleSelectItem = (index, inputValue, item) => {
         const updated = {
             ...selectedItems,
             [index]: !selectedItems[index],
         };
-
-        setSelectedItems(updated);
+    
         const allChecked = cartItems.length > 0 && cartItems.every((_, i) => updated[i]);
+        setSelectedItems(updated);
         setCheckAll(allChecked);
+    
+        recalculateTotal(inputValue, updated);
     };
+    
 
     const recalculateTotal = (newInputValue = inputValue, newSelectedItems = selectedItems) => {
         let total = 0;
@@ -100,7 +108,7 @@ export default function Page() {
                                             <Checkbox
                                                 id={`item-${index}`}
                                                 checked={!!selectedItems[index]}
-                                                onChange={() => handleSelectItem(index)}
+                                                onChange={() => handleSelectItem(index,inputValue, item )}
                                             />
                                         </div>
                                         <img
