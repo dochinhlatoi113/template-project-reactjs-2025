@@ -22,13 +22,14 @@ export default function Page() {
 
     const handleDelete = (item, inputValue, index) => {
         dispatch(removeFromCart(item));
+        const dataQuantity = (inputValue[index]) ?? item.quantity
         if (checkAll === true) {
-            const dataQuantity =  (inputValue[index]) ?? item.quantity
-            const minusPrice = totalCheckAll - (item.price  * dataQuantity)
-            console.log(totalCheckAll,minusPrice,item.price,dataQuantity,item)
+            const minusPrice = totalCheckAll - (item.price * dataQuantity)
             setTotalCheckAll(minusPrice);
             setCheckAll(checkAll);
         }
+
+
     };
 
     //check selected all
@@ -111,7 +112,7 @@ export default function Page() {
                                             <label className="text-base font-semibold text-gray-800">{item.title}</label>
                                         </div>
                                         <button
-                                            onClick={() => handleDelete(item,inputValue,index)}
+                                            onClick={() => handleDelete(item, inputValue, index)}
                                             className="text-gray-400 hover:text-red-500 transition"
                                         >
                                             <XMarkIcon className="w-5 h-5" />
