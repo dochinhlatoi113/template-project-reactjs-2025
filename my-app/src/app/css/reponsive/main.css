@@ -18,6 +18,9 @@
     border-radius: 0% !important;
   }
 /**cart page*/
+.title-cart-item-mobile{
+  font-size: 10px !important;
+}
 .title-cart-page{
   display: none;
 }

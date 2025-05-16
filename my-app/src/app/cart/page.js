@@ -108,12 +108,12 @@ export default function Page() {
                                             />
                                         </div>
                                         <img
-                                            className="w-[100px] h-[100px] object-cover "
+                                            className="w-[100px] h-[100px] object-cover title-cart-item-mobile"
                                             src={item?.image !== "" ? API_MEDIA_PICTURE + item?.image : "/no-image-src.png"}
                                             alt={item.title}
                                         />
                                         <div className="flex-1">
-                                            <label className="text-base font-semibold text-gray-800">{item.title}</label>
+                                            <label className="text-base font-semibold text-gray-800 title-cart-item-mobile">{item.title}</label>
                                         </div>
                                         <button
                                             onClick={() => handleDelete(item, inputValue, index)}
@@ -122,7 +122,7 @@ export default function Page() {
                                             <XMarkIcon className="w-5 h-5" />
                                         </button>
                                     </div>
-                                    <div className="grid grid-cols-3 gap-6 mt-6 items-center">
+                                    <div className="flex justify-between gap-6 mt-6 items-center">
                                         <div className="flex flex-col gap-2">
                                             <span className="text-gray-500 text-sm font-medium">Số lượng</span>
                                             <div className="flex items-center rounded-full border border-gray-300 px-2 py-1 w-fit bg-white shadow-sm">
@@ -176,9 +176,8 @@ export default function Page() {
                                                 </button>
                                             </div>
                                         </div>
-
-                                        <div className="flex flex-col gap-1">
-                                            <span className="text-gray-500 text-sm font-medium">Đơn giá</span>
+                                        <div className="flex flex-col gap-1 title-cart-page">
+                                            <span className="text-gray-500 text-sm font-medium ">Đơn giá</span>
                                             <span className="text-base font-semibold text-gray-800">
                                                 {item.price.toLocaleString("vi-VN", {
                                                     style: "currency",
@@ -186,7 +185,7 @@ export default function Page() {
                                                 })}
                                             </span>
                                         </div>
-                                        <div className="flex flex-col gap-1">
+                                        <div className="flex flex-col gap-1 ">
                                             <span className="text-gray-500 text-sm font-medium">Thành tiền</span>
                                             <span className="text-base font-semibold text-red-500">
                                                 {(item.price * (parseFloat(inputValue[index]) || item.quantity)).toLocaleString("vi-VN", {
