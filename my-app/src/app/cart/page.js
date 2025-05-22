@@ -23,7 +23,7 @@ export default function Page() {
     });
 
     const handleDelete = (item, inputValue, index) => {
-        // dispatch(removeFromCart(item));
+        dispatch(removeFromCart(item));
         const dataQuantity = (inputValue[index]) ?? item.quantity;
         let minusPrice;
         minusPrice = totalCheckAll - (item.price * dataQuantity);
