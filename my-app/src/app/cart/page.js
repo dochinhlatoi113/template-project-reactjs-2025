@@ -84,7 +84,7 @@ export default function Page() {
 
     return (
         <div>
-            <div className={`${gridClass} p-6 bg-white rounded-lg shadow-md`}>
+            <div className={`${gridClass} p-6 bg-white `}>
                 {cartItems.length > 0 && (
                     <>
                         <div>
