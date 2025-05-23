@@ -1,16 +1,11 @@
 'use client';
-// hook
-import { useParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
-// component
-import useCheckSize from "@/app/(heper)/reponsive-check-size";
 import { useState } from "react";
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
+import useCheckSize from "@/app/(heper)/reponsive-check-size";
 
 export default function Login() {
     const IsMobile = useCheckSize();
-    const paddingTop = IsMobile ? 'pt-[120px]' : 'pt-[130px]';
-    const gridClass = IsMobile ? '' : 'grid grid-cols-2';
+    const paddingTop = IsMobile ? 'pt-[100px]' : 'pt-[120px]';
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,12 +16,17 @@ export default function Login() {
     };
 
     return (
-        <div className={` container mx-auto max-w-[1300px] ${paddingTop} responsize-product-detail-padding `}>
-            <h1 className="text-center">Xin chào bạn </h1>
-            <div className={`${gridClass} `}>
-                <Card className="w-full max-w-md mx-auto ">
-                    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-                        <h2 className="text-xl font-bold text-center">Đăng nhập</h2>
+        <div className={`container mx-auto max-w-[1200px] px-4 ${paddingTop}`}>
+
+            <div className="">
+                <h1 className="text-4xl md:text-5xl font-bold text-center text-indigo-600 tracking-wide drop-shadow-lg mb-10 pt-2">
+                    Xin chào bạn
+                </h1>
+
+                <Card className="w-full max-w-md mx-auto shadow-xl rounded-2xl p-6">
+                    <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+                        <h2 className="text-2xl font-semibold text-center text-gray-800">Đăng nhập</h2>
+
                         <div>
                             <Label htmlFor="email" value="Email" />
                             <TextInput
@@ -56,12 +56,14 @@ export default function Login() {
                             <Label htmlFor="remember">Ghi nhớ đăng nhập</Label>
                         </div>
 
-                        <Button type="submit">Đăng nhập</Button>
+                        <Button
+                            type="submit"
+                            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:opacity-90 transition-all"
+                        >
+                            Đăng nhập
+                        </Button>
                     </form>
                 </Card>
-                <div>
-                    <img src="https://cdn.tgdd.vn/2022/10/banner/TGDD-540x270.png"></img>
-                </div>
             </div>
         </div>
     );
