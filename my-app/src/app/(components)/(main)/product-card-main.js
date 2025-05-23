@@ -40,7 +40,6 @@ export default function ProductCardMain({
                             NEW
                         </div>
                     )}
-                    <div className="mobile-updated">{brand_item_product ?? "updating"}</div>
                 </div>
                 <div className="relative group">
                     <p className="description-product">

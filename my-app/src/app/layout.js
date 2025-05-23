@@ -25,19 +25,19 @@ const robotoMono = Roboto({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${robotoMono.variable} antialiased`}
-      >
-        <ReactQueryProvider>
-          <ReduxToolKitProvider>
-            <ResponsiveHeader />
-            <main>{children}</main>
-            <ResponsiveFooter />
-            <div style={{ paddingTop: "50px" }}>
-              <Setting />
-            </div>
-          </ReduxToolKitProvider>
-        </ReactQueryProvider>
+      <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
+        <div className="flex flex-col min-h-screen">
+          <ReactQueryProvider>
+            <ReduxToolKitProvider>
+              <ResponsiveHeader />
+              <main className="flex-grow">{children}</main>
+              <ResponsiveFooter />
+              <div style={{ paddingTop: "0px" }}>
+                <Setting />
+              </div>
+            </ReduxToolKitProvider>
+          </ReactQueryProvider>
+        </div>
       </body>
     </html>
   );

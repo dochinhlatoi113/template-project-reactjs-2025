@@ -8,7 +8,7 @@ import useCheckSize from "../(heper)/reponsive-check-size";
 import { useState, useEffect } from "react";
 import { Checkbox, Label } from "flowbite-react";
 import { Button } from "flowbite-react";
-
+import Link from "next/link";
 export default function Page() {
     const [inputValue, setInputValue] = useState({});
     const [inputValuePromotionCode, setValuePromotionCode] = useState(0);
@@ -259,7 +259,9 @@ export default function Page() {
             <div className="empty-car bg-white ">
                 <div className="p-10">
                     <img className="m-auto" src="https://shopfront-cdn.tekoapis.com/static/empty_cart.png"></img>
-                    <Button className="m-auto" color="cyan">Mua sắm ngay</Button>
+                    <Link href="/">
+                        <Button className="m-auto" color="cyan">Mua sắm ngay</Button>
+                    </Link>
                 </div>
             </div>
         </div>

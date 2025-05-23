@@ -6,7 +6,9 @@ html {
 .__variable_d65c78{
   padding-right: 0 !important;
 }
-
+main {
+  min-height: calc(100vh - 200px);
+}
 h1{
     font-size: 17px;
 }
