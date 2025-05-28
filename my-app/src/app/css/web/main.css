@@ -55,6 +55,9 @@ svg{
 .fnc-mobile{
   display:none;
 }
+.rigister-use{
+  display: none;
+}
   /** pricing price bar */
   /* .sliders_control {
     position: relative;
