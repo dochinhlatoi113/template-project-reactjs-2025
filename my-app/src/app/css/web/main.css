@@ -58,7 +58,10 @@ svg{
 .rigister-use{
   display: none;
 }
-.rigister-user-desktop{
+.rigister-user-mobile{
+  display: none;
+}
+.setting-mobile-icon{
   display: none;
 }
   /** pricing price bar */

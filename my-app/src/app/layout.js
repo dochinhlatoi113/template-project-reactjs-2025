@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
               <ResponsiveHeader />
               <main className="flex-grow">{children}</main>
               <ResponsiveFooter />
-              <div style={{ paddingTop: "0px" }}>
+              <div className="setting-mobile-icon" style={{ marginTop: "1%" }}>
                 <Setting />
               </div>
             </ReduxToolKitProvider>

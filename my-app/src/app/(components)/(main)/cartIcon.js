@@ -1,7 +1,7 @@
 //redux
 import { useSelector } from "react-redux";
 import Link from "next/link";
-export default function CartIcon({colorVar = ""}) {
+export default function CartIcon({colorVar = "silver"}) {
     const cartItems = useSelector((state) => state.cart.items);
 
     return (

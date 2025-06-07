@@ -118,7 +118,7 @@ export default function Page() {
                                         </div>
                                         <div className="p-2 border border-gray-200 flex gap-4 items-start relative">
                                             <img
-                                                className="w-[100px] h-[100px] object-cover title-cart-item-mobile"
+                                                className="w-[100px] h-[100px] object-contain title-cart-item-mobile"
                                                 src={item?.image !== "" ? API_MEDIA_PICTURE + item?.image : "/no-image-src.png"}
                                                 alt={item.title}
                                             />

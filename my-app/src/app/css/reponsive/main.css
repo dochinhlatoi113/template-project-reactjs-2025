@@ -245,6 +245,9 @@ product-main
   .rigister-user{
     display: none;
   }
+  .rigister-user-mobile{
+    display: inline-block;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {

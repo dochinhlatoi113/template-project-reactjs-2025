@@ -7,8 +7,8 @@ import ItemLoginAndNotify from "@/app/(components)/(main)/ItemLoginAndNotify";
 export default function Setting() {
    
     return (
-        <div className="">
-            <div className="fixed bottom-0 left-0 w-full bg-yellow-300 fnc-mobile overflow-x-auto">
+        <div className="mt-10">
+            <div className="fixed bottom-0 bg-white left-0 w-full bg-silver fnc-mobile overflow-x-auto">
                 <div className="flex whitespace-nowrap space-x-4 px-4 py-2 min-w-max">
                     <CartIcon></CartIcon>
                     <HeaderNavItem></HeaderNavItem>
