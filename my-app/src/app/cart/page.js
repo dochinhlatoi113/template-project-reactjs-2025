@@ -5,15 +5,17 @@ import { API_MEDIA_PICTURE } from "@/api/api-file";
 import { removeFromCart } from "../redux-toolkit/cartSlice";
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import useCheckSize from "../(heper)/reponsive-check-size";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Checkbox, Label } from "flowbite-react";
 import { Button } from "flowbite-react";
 import Link from "next/link";
 export default function Page() {
     const [inputValue, setInputValue] = useState({});
-    const [inputValuePromotionCode, setValuePromotionCode] = useState(0);
+    const [inputValuePromotionCode, setValuePromotionCode] = useState("");
+    const [discountValue, setDiscountValue] = useState(0);
     const [selectedStatus, setSelectedStatus] = useState({});
-
+    const [showNotification, setShowNotification] = useState(false);
+    const typingTimeoutRef = useRef(null);
     const [checkAll, setCheckAll] = useState(false);
     const [totalCheckAll, setTotalCheckAll] = useState(0);
     //remove item
@@ -81,6 +83,33 @@ export default function Page() {
     const isMobile = useCheckSize();
 
     const gridClass = isMobile ? "" : "grid grid-cols-2 gap-4";
+
+    // checkpromotion
+    useEffect(() => {
+        if (inputValuePromotionCode !== '') {
+            setShowNotification(false);
+            if (typingTimeoutRef.current) {
+                clearTimeout(typingTimeoutRef.current);
+            }
+
+            typingTimeoutRef.current = setTimeout(() => {
+                setShowNotification(true);
+                if (inputValuePromotionCode == "SALE10") {
+                    setDiscountValue(10 % 100)
+                } else {
+                    setDiscountValue(0)
+                }
+            }, 1000);
+        } else {
+            setShowNotification(false);
+        }
+        return () => {
+            if (typingTimeoutRef.current) {
+                clearTimeout(typingTimeoutRef.current);
+            }
+        };
+    }, [inputValuePromotionCode]);
+
 
     return (
         <div>
@@ -231,21 +260,20 @@ export default function Page() {
                                 <div className="flex justify-between items-center border-b pb-1">
                                     <span>Khuyến mãi (nếu có)</span>
                                     <span className="text-green-600">
-                                        {inputValuePromotionCode.toLocaleString("vi-VN", {
-                                            style: "currency",
-                                            currency: "VND",
-                                        })}
+                                        {discountValue}
                                     </span>
                                 </div>
-
+                                {showNotification && <h1>Mã không tồn tại</h1>}
                                 <div className="flex justify-between items-center text-lg font-bold text-red-600">
                                     <span>Tổng thanh toán</span>
-                                    <span>
-                                        {(totalCheckAll - inputValuePromotionCode).toLocaleString("vi-VN", {
-                                            style: "currency",
-                                            currency: "VND",
-                                        })}
-                                    </span>
+                                    {showNotification &&
+                                        <span>
+                                            {(totalCheckAll - inputValuePromotionCode).toLocaleString("vi-VN", {
+                                                style: "currency",
+                                                currency: "VND",
+                                            })}
+                                        </span>
+                                    }
                                 </div>
                             </div>
 
