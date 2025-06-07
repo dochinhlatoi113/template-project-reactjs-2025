@@ -96,6 +96,7 @@ export default function Page() {
                 setShowNotification(true);
                 if (inputValuePromotionCode == "SALE10") {
                     setDiscountValue(10 % 100)
+                    setShowNotification(false);
                 } else {
                     setDiscountValue(0)
                 }
@@ -260,20 +261,26 @@ export default function Page() {
                                 <div className="flex justify-between items-center border-b pb-1">
                                     <span>Khuyến mãi (nếu có)</span>
                                     <span className="text-green-600">
-                                        {discountValue}
+                                        {discountValue.toLocaleString("vi-VN", {
+                                            style: "currency",
+                                            currency: "VND",
+                                        })}
                                     </span>
                                 </div>
                                 {showNotification && <h1>Mã không tồn tại</h1>}
                                 <div className="flex justify-between items-center text-lg font-bold text-red-600">
                                     <span>Tổng thanh toán</span>
-                                    {showNotification &&
-                                        <span>
-                                            {(totalCheckAll - discountValue).toLocaleString("vi-VN", {
+                                    <span>
+                                        {totalCheckAll - discountValue <= 0 ?
+                                            0
+                                            :
+                                            (totalCheckAll - discountValue).toLocaleString("vi-VN", {
                                                 style: "currency",
                                                 currency: "VND",
-                                            })}
-                                        </span>
-                                    }
+                                            })
+                                        }
+
+                                    </span>
                                 </div>
                             </div>
 
