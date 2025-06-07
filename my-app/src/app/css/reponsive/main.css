@@ -229,6 +229,9 @@ product-main
   }
 
   /** footer*/
+  .setting-mobile-icon{
+    display: inline;
+  }
   .main-footer-info {
     display: none;
     font-size: 12px;
