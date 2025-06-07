@@ -268,7 +268,7 @@ export default function Page() {
                                     <span>Tổng thanh toán</span>
                                     {showNotification &&
                                         <span>
-                                            {(totalCheckAll - inputValuePromotionCode).toLocaleString("vi-VN", {
+                                            {(totalCheckAll - discountValue).toLocaleString("vi-VN", {
                                                 style: "currency",
                                                 currency: "VND",
                                             })}
