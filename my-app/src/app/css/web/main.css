@@ -58,6 +58,9 @@ svg{
 .rigister-use{
   display: none;
 }
+.rigister-user-desktop{
+  display: none;
+}
   /** pricing price bar */
   /* .sliders_control {
     position: relative;

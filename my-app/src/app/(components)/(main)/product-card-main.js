@@ -21,7 +21,6 @@ export default function ProductCardMain({
     return (
         <div className="card bg-base-100 h-full object-contain shadow-sm border border-gray-200">
             <div>
-
                 <Link href={slug_item_product !== "" ? `${slug_item_product}` : "#"}>
                     <img className="pt-5 transition-transform duration-300 object-contain hover:scale-105 rounded-lg w-[80%] m-auto image-product-main h-[200px]"
                         src={imgSrc}
@@ -29,11 +28,13 @@ export default function ProductCardMain({
                 </Link>
             </div>
             <div className="card-body">
-                <h1 className="card-title text-[100%] line-clamp-2">
-                    <Link href={slug_item_product !== "" ? `${slug_item_product}` : "#"}>
-                        {title_item_product ?? "no"}
-                    </Link>
-                </h1>
+                <div className="mb-2">
+                    <h1 className="card-title  line-clamp-2">
+                        <Link href={slug_item_product !== "" ? `${slug_item_product}` : "#"}>
+                            {title_item_product ?? "no"}
+                        </Link>
+                    </h1>
+                </div>
                 <div className="flex items-center gap-2 justify-between">
                     {price_item_product != 0 && (
                         <div className="badge badge-secondary">

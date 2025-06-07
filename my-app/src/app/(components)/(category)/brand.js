@@ -37,7 +37,7 @@ export default function BrandCategory({ catParentId, catParentName }) {
 
     // checksize mobile
     const isMobile = useCheckSize()
-    let flexClass = isMobile ? "flex gap-4 overflow-x-auto whitespace-nowrap w-full pb-2" : "grid grid-cols-3  ";
+    let flexClass = isMobile ? "flex gap-4 overflow-x-auto whitespace-nowrap w-full pb-2" : "grid grid-cols-2  ";
     return (
         <>
             <div className={` ${flexClass} gap-4 pt-4 reponsive-category`}>

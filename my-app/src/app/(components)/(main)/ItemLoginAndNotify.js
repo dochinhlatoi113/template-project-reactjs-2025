@@ -2,7 +2,7 @@ import Link from "next/link";
 export default function ItemLoginAndNotify({ colorVar = "text-[#82869E]" }) {
     return (
         <>
-          <li className="flex items-center space-x-2 hover:text-gray-300">
+          <li className="flex items-center space-x-2 hover:text-gray-300  rigister-user-desktop">
                   <Link href="/login">
                     <svg xmlns="http://www.w3.org/2000/svg" fill={colorVar}
                         viewBox="0 0 24 24" stroke="currentColor" className={`w-5 h-5 m-auto `}>

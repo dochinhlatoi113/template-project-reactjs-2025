@@ -101,7 +101,7 @@ export default function Page() {
                                         key={index}
                                         className="border border-gray-300 rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300"
                                     >
-                                        <div className="p-2 border border-gray-200 flex gap-4 items-start relative">
+                                        <div className="btn-mobile-cart-item flex items-center justify-between">
                                             <div className="flex items-center gap-2">
                                                 <Checkbox
                                                     id={`item-${index}`}
@@ -109,6 +109,14 @@ export default function Page() {
                                                     onChange={() => handleSelectItem(index, inputValue, item)}
                                                 />
                                             </div>
+                                            <button
+                                                onClick={() => handleDelete(item, inputValue, index)}
+                                                className="text-gray-400 hover:text-red-500 transition"
+                                            >
+                                                <XMarkIcon />
+                                            </button>
+                                        </div>
+                                        <div className="p-2 border border-gray-200 flex gap-4 items-start relative">
                                             <img
                                                 className="w-[100px] h-[100px] object-cover title-cart-item-mobile"
                                                 src={item?.image !== "" ? API_MEDIA_PICTURE + item?.image : "/no-image-src.png"}
@@ -117,12 +125,6 @@ export default function Page() {
                                             <div className="flex-1">
                                                 <label className="text-base font-semibold text-gray-800 title-cart-item-mobile">{item.title}</label>
                                             </div>
-                                            <button
-                                                onClick={() => handleDelete(item, inputValue, index)}
-                                                className="text-gray-400 hover:text-red-500 transition"
-                                            >
-                                                <XMarkIcon className="w-5 h-5" />
-                                            </button>
                                         </div>
                                         <div className="flex justify-between gap-6 mt-6 items-center">
                                             <div className="flex flex-col gap-2">
@@ -256,14 +258,17 @@ export default function Page() {
                     </>
                 )}
             </div>
-            <div className="empty-car bg-white ">
-                <div className="p-10">
-                    <img className="m-auto" src="https://shopfront-cdn.tekoapis.com/static/empty_cart.png"></img>
-                    <Link href="/">
-                        <Button className="m-auto" color="cyan">Mua sắm ngay</Button>
-                    </Link>
+            {cartItems.length <= 0 &&
+                <div className="empty-car bg-white ">
+                    <h1>Rất tiếc ! hiện bạn 0 có sản phẩm nào</h1>
+                    <div className="p-10">
+                        <img className="m-auto" src="https://shopfront-cdn.tekoapis.com/static/empty_cart.png"></img>
+                        <Link href="/">
+                            <Button className="m-auto" color="cyan">Mua sắm ngay</Button>
+                        </Link>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     );
 }
